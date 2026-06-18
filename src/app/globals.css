@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+    --accent: 243 75% 59%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 240 4% 65%;
+    --border: 0 0% 100% / 0.08;
+    --ring: 243 75% 59%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-padding {
+    @apply px-5 py-20 sm:px-8 md:py-28 lg:px-12;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-6xl;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-3xl;
+  }
+}
