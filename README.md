@@ -33,14 +33,9 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Deploy to Vercel
 
-1. Push this folder to its own GitHub repo (or deploy from monorepo root with root directory set to `geoffrey-portfolio`)
-2. Import project in Vercel
-3. Add domain `geoffreyrcrawford.com`
-4. Update DNS at DreamHost (move nameservers from Squarespace first)
+**Live:** https://www.geoffreyrcrawford.com  
+**GitHub:** https://github.com/GeoffreyC00/geoffreyrcrawford-com
 
-## DNS Cutover
+Pushes to `main` auto-deploy on Vercel.
 
-1. Change nameservers from Squarespace to DreamHost
-2. Add Vercel DNS records per Vercel dashboard
-3. Verify SSL
-4. Cancel Squarespace
+See [BACKUP.md](./BACKUP.md) for backup, restore, and hosting details.
