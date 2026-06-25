@@ -6,6 +6,7 @@ export const siteConfig = {
     "Growth Marketing Strategist and marketing operator helping businesses grow through paid media, AI-powered workflows, conversion systems, analytics, and full-funnel strategy.",
   url: "https://geoffreyrcrawford.com",
   email: "info@geoffreyrcrawford.com",
+  inboxEmail: "geoffreyrcrawford@gmail.com",
   linkedin: "https://www.linkedin.com/in/geoffreyrcrawford",
   instagram: "https://www.instagram.com/geoffreyrcrawford/",
   location: "Los Angeles, CA",
