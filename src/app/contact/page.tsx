@@ -9,22 +9,22 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="section-padding !pb-12">
+      <section className="section-padding !pb-16 !pt-24 md:!pt-28">
         <div className="container-wide">
-          <div className="max-w-3xl">
-            <p className="text-sm font-medium uppercase tracking-widest text-accent">Contact</p>
-            <h1 className="mt-4 text-display-md font-semibold tracking-tight sm:text-5xl">
+          <div className="max-w-4xl">
+            <p className="kicker animate-rise">Contact</p>
+            <h1 className="animate-rise mt-7 font-serif text-display-xl font-light text-pretty [animation-delay:80ms]">
               Let&apos;s build something that performs.
             </h1>
-            <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
-              Ready to discuss paid media, AI systems, or full-funnel growth? I&apos;d love to
-              hear about your project.
+            <p className="animate-rise mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground text-pretty [animation-delay:180ms]">
+              Ready to discuss paid media, AI systems, or full-funnel growth? I&apos;d love to hear
+              about your project.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border !py-16">
+      <section className="section-padding border-t border-hairline !pt-16">
         <div className="container-wide">
           <ContactForm />
         </div>

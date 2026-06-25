@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { CtaSection } from "@/components/shared/cta-section";
 import { Reveal } from "@/components/shared/reveal";
 import type { CaseStudy } from "@/lib/data/case-studies";
@@ -12,44 +11,35 @@ type CaseStudyDetailProps = {
 export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
   return (
     <>
-      <section className="section-padding pb-12">
+      {/* Header */}
+      <section className="section-padding !pb-16 !pt-24 md:!pt-28">
         <div className="container-wide">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="link-underline inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Work
           </Link>
 
-          <div className="mt-10 max-w-3xl">
-            <p className="text-sm font-medium uppercase tracking-widest text-accent">
-              {study.category}
-            </p>
-            <h1 className="mt-4 text-display-md font-semibold tracking-tight sm:text-5xl">
+          <div className="mt-12 max-w-4xl">
+            <p className="kicker">{study.category}</p>
+            <h1 className="mt-7 font-serif text-display-xl font-light text-pretty">
               {study.title}
             </h1>
-            <p className="mt-6 text-xl leading-relaxed text-muted-foreground">{study.summary}</p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {study.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
+            <p className="mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground text-pretty">
+              {study.summary}
+            </p>
           </div>
 
           {study.metrics.length > 0 && (
-            <div className="mt-12 grid gap-4 sm:grid-cols-3">
+            <div className="mt-16 grid grid-cols-1 gap-px border-y border-hairline bg-hairline sm:grid-cols-3">
               {study.metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="rounded-xl border border-border bg-card p-6"
-                >
-                  <p className="text-2xl font-semibold tracking-tight text-foreground">
+                <div key={metric.label} className="bg-background py-8 sm:pr-8">
+                  <p className="font-serif text-4xl font-light tracking-tight text-foreground">
                     {metric.value}
                   </p>
-                  <p className="mt-2 text-sm text-muted-foreground">{metric.label}</p>
+                  <p className="mt-3 text-sm text-muted-foreground">{metric.label}</p>
                 </div>
               ))}
             </div>
@@ -57,75 +47,75 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
         </div>
       </section>
 
-      <section className="section-padding border-t border-border !py-16">
-        <div className="container-wide">
-          <div className="grid gap-16 lg:grid-cols-2">
-            <Reveal>
-              <h2 className="text-2xl font-semibold tracking-tight">The Challenge</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                {study.challenge}
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="text-2xl font-semibold tracking-tight">My Role</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{study.role}</p>
-            </Reveal>
-          </div>
+      {/* Challenge + Role */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide grid gap-x-16 gap-y-12 lg:grid-cols-2">
+          <Reveal>
+            <p className="kicker">The Challenge</p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
+              {study.challenge}
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="kicker">My Role</p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
+              {study.role}
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-card/30 !py-16">
+      {/* Strategy — numbered editorial rows */}
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <Reveal>
-            <h2 className="text-2xl font-semibold tracking-tight">Strategy</h2>
+            <p className="kicker">Strategy</p>
+            <h2 className="mt-6 font-serif text-display-md font-light">How I approached it.</h2>
           </Reveal>
-          <ol className="mt-8 grid gap-4 md:grid-cols-2">
+          <ol className="mt-14">
             {study.strategy.map((item, i) => (
-              <Reveal as="li" key={item} delay={i * 0.05}>
-                <div className="flex h-full gap-4 rounded-lg border border-border bg-background/50 p-5">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/10 text-sm font-medium text-accent">
-                    {i + 1}
+              <Reveal as="li" key={item} delay={i * 0.04}>
+                <div className="group grid grid-cols-[auto_1fr] gap-x-6 border-t border-border py-7 sm:gap-x-10">
+                  <span className="font-mono text-sm text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{item}</p>
+                  <p className="max-w-2xl text-lg leading-relaxed text-foreground/90">{item}</p>
                 </div>
               </Reveal>
             ))}
+            <div className="border-t border-border" />
           </ol>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border !py-16">
-        <div className="container-wide grid gap-16 lg:grid-cols-3">
+      {/* Platforms / Skills / Outcomes */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide grid gap-12 lg:grid-cols-3 lg:gap-16">
           <Reveal>
-            <h2 className="text-lg font-semibold tracking-tight">Platforms & Tools</h2>
-            <ul className="mt-4 space-y-2">
+            <p className="kicker">Platforms &amp; Tools</p>
+            <ul className="mt-6 space-y-2.5">
               {study.platforms.map((item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                <li key={item} className="text-[15px] text-muted-foreground">
                   {item}
                 </li>
               ))}
             </ul>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="text-lg font-semibold tracking-tight">Skills Demonstrated</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <p className="kicker">Skills Demonstrated</p>
+            <ul className="mt-6 space-y-2.5">
               {study.skills.map((skill) => (
-                <Badge key={skill} variant="secondary">
+                <li key={skill} className="text-[15px] text-muted-foreground">
                   {skill}
-                </Badge>
+                </li>
               ))}
-            </div>
+            </ul>
           </Reveal>
           <Reveal delay={0.2}>
-            <h2 className="text-lg font-semibold tracking-tight">Outcomes</h2>
-            <ul className="mt-4 space-y-3">
+            <p className="kicker">Outcomes</p>
+            <ul className="mt-6 space-y-4">
               {study.outcomes.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"
-                >
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <li key={item} className="text-[15px] leading-relaxed text-foreground/90">
                   {item}
                 </li>
               ))}

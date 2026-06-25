@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { LinkButton } from "@/components/ui/link-button";
+import { Reveal } from "@/components/shared/reveal";
 
 type CtaSectionProps = {
   title?: string;
@@ -13,33 +14,37 @@ type CtaSectionProps = {
 
 export function CtaSection({
   title = "Let's build something that performs.",
-  description = "Whether you're hiring, scaling paid media, or need a local business system — let's talk.",
+  description = "Whether you're hiring, scaling paid media, or need a senior operator on a project — let's talk.",
   primaryHref = "/contact",
   primaryLabel = "Get in Touch",
   secondaryHref = "/work-with-me",
   secondaryLabel = "Work With Me",
 }: CtaSectionProps) {
   return (
-    <section className="section-padding">
+    <section className="section-padding border-t border-hairline">
       <div className="container-wide">
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-card px-8 py-16 text-center sm:px-12 sm:py-20">
-          <div className="pointer-events-none absolute inset-0 bg-grid-fade" />
-          <div className="relative">
-            <h2 className="text-display-md font-semibold tracking-tight text-balance sm:text-4xl">
-              {title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">{description}</p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <LinkButton href={primaryHref} size="lg">
-                {primaryLabel}
-                <ArrowRight className="h-4 w-4" />
-              </LinkButton>
-              <LinkButton href={secondaryHref} variant="outline" size="lg">
-                {secondaryLabel}
-              </LinkButton>
+        <Reveal>
+          <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-end">
+            <h2 className="font-serif text-display-xl font-light text-balance">{title}</h2>
+            <div className="lg:pb-3">
+              <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
+                {description}
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <LinkButton href={primaryHref} size="lg">
+                  {primaryLabel}
+                  <ArrowRight className="h-4 w-4" />
+                </LinkButton>
+                <Link
+                  href={secondaryHref}
+                  className="link-underline text-sm font-medium text-foreground"
+                >
+                  {secondaryLabel}
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -47,19 +52,19 @@ export function CtaSection({
 
 export function HeroCta() {
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+    <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
       <LinkButton href="/work-with-me" size="lg">
         Work With Me
         <ArrowRight className="h-4 w-4" />
       </LinkButton>
-      <LinkButton href="/hire-me" variant="secondary" size="lg">
-        View Resume
-      </LinkButton>
+      <Link href="/hire-me" className="link-underline text-sm font-medium text-foreground">
+        View Résumé
+      </Link>
       <Link
         href="/work"
-        className="inline-flex h-12 items-center px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:px-4"
+        className="link-underline text-sm font-medium text-muted-foreground hover:text-foreground"
       >
-        See My Work →
+        See My Work
       </Link>
     </div>
   );

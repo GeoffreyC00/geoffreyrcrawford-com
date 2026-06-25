@@ -14,9 +14,9 @@ type NewsletterCardProps = {
 };
 
 /**
- * Self-contained newsletter call-to-action block. Reuse it on the Insights
- * index, inside content, on lead-magnet pages, or for product launches — pass
- * a distinct `source` (and optional `audienceId`) per placement.
+ * Newsletter call-to-action block — an open editorial layout (no boxed card).
+ * Reuse it on the Insights index, inside content, on lead-magnet pages, or for
+ * product launches by passing a distinct `source` (and optional `audienceId`).
  */
 export function NewsletterCard({
   eyebrow = "Newsletter",
@@ -29,19 +29,13 @@ export function NewsletterCard({
   layout = "row",
 }: NewsletterCardProps) {
   return (
-    <div
-      className={cn(
-        "relative overflow-hidden rounded-2xl border border-border bg-card p-8 sm:p-10",
-        className
-      )}
-    >
-      <div className="pointer-events-none absolute inset-0 bg-grid-fade" />
-      <div className="relative">
-        {eyebrow && (
-          <p className="text-sm font-medium uppercase tracking-widest text-accent">{eyebrow}</p>
-        )}
-        <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
-        <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+    <div className={cn("grid gap-8 border-y border-hairline py-12 lg:grid-cols-2 lg:gap-16", className)}>
+      <div>
+        {eyebrow && <p className="kicker">{eyebrow}</p>}
+        <h2 className="mt-5 font-serif text-display-md font-light text-balance">{title}</h2>
+      </div>
+      <div className="flex flex-col justify-center">
+        <p className="max-w-md text-base leading-relaxed text-muted-foreground text-pretty">
           {description}
         </p>
         <div className="mt-6">

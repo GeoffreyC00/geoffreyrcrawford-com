@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { ArrowRight, Check } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/shared/cta-section";
 import { PageHero } from "@/components/shared/page-hero";
+import { Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
 import { LinkButton } from "@/components/ui/link-button";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Work With Me",
@@ -73,77 +74,82 @@ export default function WorkWithMePage() {
         </LinkButton>
       </PageHero>
 
-      <section className="section-padding border-t border-border !py-16">
+      <section className="section-padding border-t border-hairline !pt-16">
         <div className="container-wide">
-          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            You get someone who has managed real budgets, built real dashboards, and optimized
-            real funnels — not a deck and a handoff. I combine paid media execution with the
-            systems, analytics, and automation that make growth sustainable.
-          </p>
+          <Reveal>
+            <p className="max-w-3xl font-serif text-display-md font-light leading-snug text-balance">
+              You get someone who has managed real budgets, built real dashboards, and optimized
+              real funnels — not a deck and a handoff.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-card/20 !py-16">
+      {/* Offerings — editorial columns */}
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
-          <h2 className="text-2xl font-semibold tracking-tight">What I help with</h2>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <Reveal>
+            <p className="kicker">What I help with</p>
+          </Reveal>
+          <div className="mt-12 grid gap-x-12 gap-y-12 md:grid-cols-3">
             {offerings.map((group) => (
-              <Card key={group.title} className="border-border/80">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold tracking-tight">{group.title}</h3>
-                  <ul className="mt-4 space-y-2">
+              <Reveal key={group.title}>
+                <div className="border-t border-border pt-7">
+                  <h3 className="font-serif text-xl font-light leading-snug">{group.title}</h3>
+                  <ul className="mt-5 space-y-2.5">
                     {group.items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-2 text-sm text-muted-foreground"
-                      >
-                        <Check className="h-4 w-4 shrink-0 text-accent" />
+                      <li key={item} className="text-[15px] text-muted-foreground">
                         {item}
                       </li>
                     ))}
                   </ul>
-                </CardContent>
-              </Card>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border !py-16">
-        <div className="container-wide grid gap-12 lg:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">A good fit if you are...</h2>
-            <ul className="mt-6 space-y-3">
+      {/* Fit + process */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide grid gap-16 lg:grid-cols-2 lg:gap-24">
+          <Reveal>
+            <p className="kicker">A good fit if you are…</p>
+            <ul className="mt-6 space-y-3.5">
               {idealFor.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-muted-foreground">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <li key={item} className="text-lg leading-relaxed text-muted-foreground">
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">How engagements work</h2>
-            <ol className="mt-6 space-y-4">
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="kicker">How engagements work</p>
+            <Stagger className="mt-6">
               {process.map((step, i) => (
-                <li key={step} className="flex gap-4 text-muted-foreground">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 text-sm font-medium text-accent">
-                    {i + 1}
-                  </span>
-                  {step}
-                </li>
+                <StaggerItem key={step}>
+                  <div className="flex gap-5 border-t border-border py-5">
+                    <span className="font-mono text-sm text-muted-foreground">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-[15px] leading-relaxed text-foreground/90">{step}</p>
+                  </div>
+                </StaggerItem>
               ))}
-            </ol>
-          </div>
+              <div className="border-t border-border" />
+            </Stagger>
+          </Reveal>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-card/20 !py-16">
-        <div className="container-wide text-center">
-          <p className="text-sm text-muted-foreground">Also exploring local business systems?</p>
-          <LinkButton href="/local-business" variant="outline" className="mt-4">
-            Local Business Systems →
-          </LinkButton>
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide">
+          <Link
+            href="/local-business"
+            className="link-underline text-sm font-medium text-foreground"
+          >
+            Also exploring local business systems? →
+          </Link>
         </div>
       </section>
 

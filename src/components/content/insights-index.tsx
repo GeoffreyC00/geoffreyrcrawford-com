@@ -4,7 +4,6 @@ import { Pagination } from "@/components/content/pagination";
 import { NewsletterCard } from "@/components/newsletter/newsletter-card";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeader } from "@/components/shared/section-header";
-import { Card, CardContent } from "@/components/ui/card";
 import type { PaginatedInsights } from "@/lib/content/insights";
 import { insightCategories } from "@/lib/data/insights";
 
@@ -44,7 +43,7 @@ export function InsightsIndex({ data }: { data: PaginatedInsights }) {
                 )}
               </div>
 
-              <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-12 grid gap-x-12 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
                 {data.items.map((insight) => (
                   <InsightCard key={insight.slug} insight={insight} />
                 ))}
@@ -68,29 +67,28 @@ export function InsightsIndex({ data }: { data: PaginatedInsights }) {
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-card/20 !py-16">
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <NewsletterCard source="insights-index" />
         </div>
       </section>
 
-      <section className="section-padding border-t border-border !py-16">
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <SectionHeader
+            index="03"
             label="Topics"
             title="What you'll find here."
             description="The recurring themes behind the work — written for operators, recruiters, and business owners who want substance over buzzwords."
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
             {insightCategories.map((category) => (
-              <Card key={category.id} className="border-border/80">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold tracking-tight">{category.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {category.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <div key={category.id} className="border-t border-border pt-6">
+                <h3 className="font-serif text-xl font-light">{category.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                  {category.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>

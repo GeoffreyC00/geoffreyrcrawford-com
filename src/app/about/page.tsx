@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { CtaSection } from "@/components/shared/cta-section";
 import { ProfilePortrait } from "@/components/shared/profile-portrait";
-import { Reveal } from "@/components/shared/reveal";
-import { Badge } from "@/components/ui/badge";
+import { Parallax, Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
 import { roles } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -45,45 +44,48 @@ const platforms = [
 export default function AboutPage() {
   return (
     <>
-      <section className="section-padding !pb-12">
+      {/* Hero — asymmetric editorial intro */}
+      <section className="section-padding !pb-16 !pt-24 md:!pt-28">
         <div className="container-wide">
-          <div className="grid items-start gap-12 lg:grid-cols-[1fr_320px] lg:gap-16">
+          <div className="grid items-end gap-12 lg:grid-cols-[1fr_20rem] lg:gap-20">
             <div className="max-w-3xl">
-              <p className="text-sm font-medium uppercase tracking-widest text-accent">About</p>
-              <h1 className="mt-4 text-display-md font-semibold tracking-tight sm:text-5xl">
-                I&apos;m a marketer who builds.
+              <p className="kicker animate-rise">About</p>
+              <h1 className="animate-rise mt-7 font-serif text-display-2xl font-light text-pretty [animation-delay:80ms]">
+                A marketer who builds.
               </h1>
-              <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
+              <p className="animate-rise mt-8 max-w-xl text-xl leading-relaxed text-muted-foreground text-pretty [animation-delay:180ms]">
                 I combine strategy, technical implementation, creative thinking, and execution —
                 the rare mix that turns marketing budgets into systems that scale.
               </p>
             </div>
-            <ProfilePortrait
-              variant="light"
-              className="mx-auto aspect-[4/5] w-full max-w-xs lg:max-w-none"
-            />
+            <Parallax distance={28} className="animate-rise hidden lg:block [animation-delay:260ms]">
+              <ProfilePortrait variant="light" className="aspect-[4/5] w-full" />
+            </Parallax>
           </div>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border !py-16">
+      {/* Narrative + meta sidebar */}
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
-          <div className="grid gap-16 lg:grid-cols-[1.4fr_1fr] lg:gap-20">
+          <div className="grid gap-16 lg:grid-cols-[1.5fr_1fr] lg:gap-24">
             <Reveal>
-              <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
+              <div className="space-y-8 text-lg leading-relaxed text-muted-foreground text-pretty">
+                <p className="font-serif text-2xl font-light leading-snug text-foreground">
+                  I started in digital marketing the way a lot of people do — running ads. But I was
+                  never satisfied just managing a platform.
+                </p>
                 <p>
-                  I started in digital marketing the way a lot of people do — running ads. But I
-                  was never satisfied just managing a platform. I wanted to know{" "}
-                  <span className="text-foreground">why</span> something worked, whether it would
-                  work again, and how to build it so it didn&apos;t fall apart the moment I looked
-                  away.
+                  I wanted to know <span className="text-foreground">why</span> something worked,
+                  whether it would work again, and how to build it so it didn&apos;t fall apart the
+                  moment I looked away.
                 </p>
                 <p>
                   That curiosity pulled me deeper. Into analytics, because you can&apos;t improve
-                  what you can&apos;t measure. Into landing pages and funnels, because the best ad
-                  in the world fails against a broken conversion path. Into automation and AI,
-                  because the time you save on manual reporting is time you spend actually growing
-                  the business.
+                  what you can&apos;t measure. Into landing pages and funnels, because the best ad in
+                  the world fails against a broken conversion path. Into automation and AI, because
+                  the time you save on manual reporting is time you spend actually growing the
+                  business.
                 </p>
                 <p>
                   Over 7+ years I&apos;ve managed six-figure monthly budgets across Google, Meta,
@@ -105,32 +107,31 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="space-y-10">
+              <div className="space-y-12">
                 <div>
-                  <h2 className="text-lg font-semibold tracking-tight">Focus</h2>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <p className="kicker">Focus</p>
+                  <ul className="mt-5 space-y-2">
                     {roles.map((role) => (
-                      <Badge key={role} variant="secondary">
+                      <li key={role} className="font-serif text-xl font-light text-foreground">
                         {role}
-                      </Badge>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold tracking-tight">Platforms & tools</h2>
-                  <ul className="mt-4 space-y-3">
+                  <p className="kicker">Platforms &amp; tools</p>
+                  <ul className="mt-5 space-y-2.5">
                     {platforms.map((item) => (
-                      <li key={item} className="flex items-center gap-3 text-muted-foreground">
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <li key={item} className="text-[15px] text-muted-foreground">
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold tracking-tight">Based in</h2>
-                  <p className="mt-3 text-muted-foreground">
-                    Los Angeles, CA · Working with teams remote and on-site
+                  <p className="kicker">Based in</p>
+                  <p className="mt-5 text-[15px] text-muted-foreground">
+                    Los Angeles, CA — working with teams remote and on-site.
                   </p>
                 </div>
               </div>
@@ -139,21 +140,33 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-card/20 !py-16">
+      {/* Principles — numbered editorial rows */}
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <Reveal>
-            <h2 className="text-2xl font-semibold tracking-tight">How I work</h2>
+            <p className="kicker">How I work</p>
+            <h2 className="mt-6 font-serif text-display-lg font-light text-balance">
+              Four principles behind the work.
+            </h2>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <Stagger className="mt-16">
             {principles.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.06}>
-                <div className="rounded-xl border border-border bg-card p-6">
-                  <h3 className="text-lg font-semibold tracking-tight">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              <StaggerItem key={p.title}>
+                <div className="group grid gap-x-10 border-t border-border py-9 sm:grid-cols-[5rem_1fr_1.3fr] md:py-11">
+                  <span className="font-mono text-sm text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-3 font-serif text-2xl font-light leading-tight transition-colors duration-300 group-hover:text-accent sm:mt-0">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground sm:mt-0">
+                    {p.body}
+                  </p>
                 </div>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+            <div className="border-t border-border" />
+          </Stagger>
         </div>
       </section>
 

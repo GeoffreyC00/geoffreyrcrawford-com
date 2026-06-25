@@ -4,17 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 100%;
-    --accent: 243 75% 59%;
-    --accent-foreground: 0 0% 100%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 240 4% 65%;
-    --border: 0 0% 100% / 0.08;
-    --ring: 243 75% 59%;
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 
   * {
@@ -23,6 +13,8 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   body {
@@ -30,7 +22,31 @@
   }
 
   ::selection {
-    @apply bg-accent/30 text-white;
+    @apply bg-accent/25 text-foreground;
+  }
+
+  /* Editorial serif headings get optical sizing for a crafted feel. */
+  .font-serif {
+    font-optical-sizing: auto;
+  }
+}
+
+@layer components {
+  /* Small-caps kicker label used above section/headline blocks. */
+  .kicker {
+    @apply font-mono text-xs uppercase tracking-editorial text-muted-foreground;
+  }
+
+  /* Animated underline that wipes in on hover — replaces generic link styles. */
+  .link-underline {
+    @apply relative inline-flex items-center transition-colors;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300 ease-out;
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
   }
 }
 
@@ -39,16 +55,60 @@
     text-wrap: balance;
   }
 
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Generous, editorial vertical rhythm with breathing room on the sides. */
   .section-padding {
-    @apply px-5 py-20 sm:px-8 md:py-28 lg:px-12;
+    @apply px-6 py-24 sm:px-10 md:py-32 lg:px-16;
   }
 
   .container-wide {
-    @apply mx-auto w-full max-w-6xl;
+    @apply mx-auto w-full max-w-[78rem];
   }
 
   .container-narrow {
-    @apply mx-auto w-full max-w-3xl;
+    @apply mx-auto w-full max-w-2xl;
+  }
+
+  /* Masked, line-by-line reveal for display headlines. */
+  .reveal-mask {
+    clip-path: inset(0 0 100% 0);
+    animation: revealMask 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes revealMask {
+    to {
+      clip-path: inset(0 0 -0.15em 0);
+    }
+  }
+
+  .animate-rise {
+    opacity: 0;
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

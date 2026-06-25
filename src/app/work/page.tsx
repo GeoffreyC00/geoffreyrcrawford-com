@@ -23,34 +23,30 @@ export default function WorkPage() {
         description="Case studies organized around the problem and the system that solved it — not company names. Across ecommerce, B2B, creator businesses, analytics, and conversion."
       />
 
-      <section className="section-padding border-t border-border !py-16">
+      <section className="section-padding border-t border-hairline !pt-20">
         <div className="container-wide">
           <Reveal>
-            <p className="text-sm font-medium uppercase tracking-widest text-accent">Featured</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight">Core capabilities</h2>
+            <p className="kicker">Core capabilities</p>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-12 grid gap-x-12 gap-y-16 md:grid-cols-2">
             {featuredCaseStudies.map((study, i) => (
-              <Reveal key={study.slug} delay={i * 0.07}>
-                <CaseStudyCard study={study} featured />
+              <Reveal key={study.slug} delay={i * 0.05}>
+                <CaseStudyCard study={study} index={i + 1} featured />
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-card/20 !py-16">
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <Reveal>
-            <p className="text-sm font-medium uppercase tracking-widest text-accent">More Work</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight">
-              Creative, video & web systems
-            </h2>
+            <p className="kicker">Creative, video &amp; web systems</p>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-12 grid gap-x-12 gap-y-16 md:grid-cols-2">
             {supportingCaseStudies.map((study, i) => (
-              <Reveal key={study.slug} delay={i * 0.07}>
-                <CaseStudyCard study={study} />
+              <Reveal key={study.slug} delay={i * 0.05}>
+                <CaseStudyCard study={study} index={featuredCaseStudies.length + i + 1} />
               </Reveal>
             ))}
           </div>

@@ -1,12 +1,12 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, useReducedMotion, useScroll, useTransform, type Variants } from "framer-motion";
+import { useRef, type ReactNode } from "react";
 
 const easing = [0.22, 1, 0.36, 1] as const;
 
 const variants: Variants = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 22 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -24,9 +24,9 @@ export function Reveal({ children, delay = 0, className, as = "div" }: RevealPro
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-90px" }}
       variants={variants}
-      transition={{ duration: 0.55, delay, ease: easing }}
+      transition={{ duration: 0.7, delay, ease: easing }}
     >
       {children}
     </MotionTag>
@@ -39,13 +39,13 @@ type StaggerProps = {
   stagger?: number;
 };
 
-export function Stagger({ children, className, stagger = 0.08 }: StaggerProps) {
+export function Stagger({ children, className, stagger = 0.09 }: StaggerProps) {
   return (
     <motion.div
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-70px" }}
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: stagger } },
@@ -67,9 +67,39 @@ export function StaggerItem({
     <motion.div
       className={className}
       variants={variants}
-      transition={{ duration: 0.5, ease: easing }}
+      transition={{ duration: 0.65, ease: easing }}
     >
       {children}
     </motion.div>
+  );
+}
+
+/**
+ * Subtle vertical parallax driven by scroll position. Used on editorial
+ * imagery so the page feels alive without being distracting.
+ */
+export function Parallax({
+  children,
+  className,
+  distance = 60,
+}: {
+  children: ReactNode;
+  className?: string;
+  distance?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [distance, -distance]);
+
+  return (
+    <div ref={ref} className={className}>
+      <motion.div style={{ y: reduce ? 0 : y }} className="h-full w-full">
+        {children}
+      </motion.div>
+    </div>
   );
 }

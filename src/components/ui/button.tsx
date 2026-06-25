@@ -3,23 +3,23 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "bg-accent text-accent-foreground shadow-glow hover:bg-accent/90 hover:shadow-glow",
+          "bg-foreground text-background hover:bg-foreground/85",
         secondary:
-          "bg-muted text-foreground shadow-card hover:bg-muted/80 hover:shadow-card-hover",
+          "border border-border bg-transparent text-foreground hover:border-foreground/30 hover:bg-foreground/[0.04]",
         outline:
-          "border border-border bg-transparent text-foreground hover:border-accent/40 hover:bg-accent/5",
+          "border border-border bg-transparent text-foreground hover:border-foreground/30",
         ghost: "text-muted-foreground hover:bg-muted hover:text-foreground",
-        link: "text-accent underline-offset-4 hover:underline",
+        link: "text-foreground underline-offset-4 hover:underline",
       },
       size: {
         default: "h-11 px-6",
-        sm: "h-9 rounded-md px-4 text-xs",
-        lg: "h-12 rounded-lg px-8 text-base",
+        sm: "h-9 px-4 text-xs",
+        lg: "h-12 px-8 text-[15px]",
         icon: "h-10 w-10",
       },
     },

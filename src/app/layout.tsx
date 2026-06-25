@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { SiteShell } from "@/components/layout/site-shell";
 import { siteConfig } from "@/lib/site-config";
@@ -13,6 +13,15 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Editorial display serif — used for headlines and pull quotes to give the
+// site a handcrafted, magazine-quality voice rather than a generic SaaS feel.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+  axes: ["opsz", "SOFT"],
 });
 
 export const metadata: Metadata = {
@@ -48,7 +57,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} font-sans`}
+      >
         <GoogleAnalytics />
         <SiteShell>{children}</SiteShell>
       </body>

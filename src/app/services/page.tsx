@@ -3,14 +3,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/shared/cta-section";
 import { PageHero } from "@/components/shared/page-hero";
-import { Card, CardContent } from "@/components/ui/card";
-import { services } from "@/lib/data/services";
+import { Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
 import { LinkButton } from "@/components/ui/link-button";
+import { services } from "@/lib/data/services";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Paid media, AI systems, conversion optimization, SEO, and video creative — overview of growth marketing services.",
+    "Performance marketing, paid media, analytics, automation, conversion optimization, video, AI workflows, and fractional growth consulting.",
 };
 
 export default function ServicesPage() {
@@ -19,73 +19,65 @@ export default function ServicesPage() {
       <PageHero
         label="Services"
         title="What I help businesses build."
-        description="An overview of how I work — from paid acquisition to AI-powered operations. For consulting engagements, start at Work With Me. For local businesses, see Local Business Systems."
+        description="How I work — from paid acquisition to AI-powered operations. For consulting engagements, start at Work With Me. For local businesses, see Local Business Systems."
       >
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
           <LinkButton href="/work-with-me" size="lg">
             Work With Me
             <ArrowRight className="h-4 w-4" />
           </LinkButton>
-          <LinkButton href="/local-business" variant="outline" size="lg">
+          <Link
+            href="/local-business"
+            className="link-underline text-sm font-medium text-foreground"
+          >
             Local Business
-          </LinkButton>
+          </Link>
         </div>
       </PageHero>
 
-      <section className="section-padding border-t border-border !py-16">
+      <section className="section-padding border-t border-hairline !pt-16">
         <div className="container-wide">
-          <div className="space-y-8">
+          <Stagger>
             {services.map((service, index) => (
-              <Card
-                key={service.id}
-                className="overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-card-hover"
-              >
-                <CardContent className="p-0">
-                  <div className="grid lg:grid-cols-3">
-                    <div className="border-b border-border p-8 lg:border-b-0 lg:border-r">
-                      <span className="text-sm font-mono text-accent">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <h2 className="mt-3 text-2xl font-semibold tracking-tight">
-                        {service.title}
-                      </h2>
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                        {service.description}
-                      </p>
-                    </div>
-                    <div className="col-span-2 p-8">
-                      <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                        Capabilities
-                      </p>
-                      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                        {service.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-center gap-3 text-sm text-foreground"
-                          >
-                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+              <StaggerItem key={service.id}>
+                <div className="group grid gap-x-12 gap-y-5 border-t border-border py-10 md:grid-cols-[6rem_1fr_1.1fr] md:py-12">
+                  <span className="font-mono text-sm text-muted-foreground">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h2 className="font-serif text-[1.75rem] font-light leading-tight transition-colors duration-300 group-hover:text-accent sm:text-3xl">
+                      {service.title}
+                    </h2>
+                    <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted-foreground">
+                      {service.description}
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
+                  <ul className="flex flex-wrap content-start gap-x-6 gap-y-3 md:justify-end md:text-right">
+                    {service.items.map((item) => (
+                      <li key={item} className="text-sm text-muted-foreground">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+            <div className="border-t border-border" />
+          </Stagger>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-card/20 !py-16">
-        <div className="container-wide text-center">
-          <p className="text-muted-foreground">
-            Recruiting?{" "}
-            <Link href="/hire-me" className="text-accent hover:underline">
-              View my hire-me page
-            </Link>{" "}
-            for roles, skills, and experience.
-          </p>
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide">
+          <Reveal>
+            <p className="max-w-2xl font-serif text-display-md font-light text-balance">
+              Recruiting instead?{" "}
+              <Link href="/hire-me" className="text-accent link-underline">
+                View my résumé and experience
+              </Link>{" "}
+              — built for hiring managers.
+            </p>
+          </Reveal>
         </div>
       </section>
 

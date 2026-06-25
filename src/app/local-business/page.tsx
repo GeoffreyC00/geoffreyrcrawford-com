@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/shared/cta-section";
 import { PageHero } from "@/components/shared/page-hero";
+import { Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
 import { LinkButton } from "@/components/ui/link-button";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Local Business Systems",
@@ -45,62 +45,65 @@ export default function LocalBusinessPage() {
         </LinkButton>
       </PageHero>
 
-      <section className="section-padding border-t border-border !py-16">
-        <div className="container-wide grid gap-12 lg:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">Sound familiar?</h2>
-            <ul className="mt-6 space-y-4">
+      <section className="section-padding border-t border-hairline !pt-16">
+        <div className="container-wide grid gap-16 lg:grid-cols-2 lg:gap-24">
+          <Reveal>
+            <p className="kicker">Sound familiar?</p>
+            <ul className="mt-6 space-y-5">
               {problems.map((problem) => (
                 <li
                   key={problem}
-                  className="rounded-lg border border-border bg-card/50 p-4 text-muted-foreground"
+                  className="border-t border-border pt-5 text-lg leading-relaxed text-muted-foreground"
                 >
                   {problem}
                 </li>
               ))}
             </ul>
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">What I build</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="kicker">What I build</p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
               A connected local presence — not a pile of disconnected tactics. From your Google
               Business Profile to your website, lead forms, and optional ad campaigns, everything
               works toward one goal: more qualified inquiries.
             </p>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
+            <p className="mt-5 text-lg leading-relaxed text-muted-foreground text-pretty">
               I&apos;ve done this end-to-end for businesses like{" "}
-              <Link href="/work/full-funnel-web-cro" className="text-accent hover:underline">
+              <Link href="/work/full-funnel-web-cro" className="text-accent link-underline">
                 The Food Experience
               </Link>{" "}
               — from brand and UX through launch.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-card/20 !py-16">
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
-          <h2 className="text-2xl font-semibold tracking-tight">The local business system</h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {systemIncludes.map((item) => (
-              <Card key={item} className="border-border/80">
-                <CardContent className="flex items-start gap-3 p-5">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                  <span className="text-sm text-muted-foreground">{item}</span>
-                </CardContent>
-              </Card>
+          <Reveal>
+            <p className="kicker">The local business system</p>
+          </Reveal>
+          <Stagger className="mt-12 grid gap-x-12 gap-y-px sm:grid-cols-2 lg:grid-cols-3">
+            {systemIncludes.map((item, i) => (
+              <StaggerItem key={item}>
+                <div className="flex items-baseline gap-4 border-t border-border py-5">
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[15px] leading-relaxed text-foreground/90">{item}</span>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border !py-16">
-        <div className="container-wide max-w-2xl">
-          <h2 className="text-2xl font-semibold tracking-tight">Who this is for</h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Restaurants, caterers, contractors, salons, professional services, and any local
-            operator who wants a modern web presence and a clear path from search to contact — without
-            hiring a full agency or figuring out tech alone.
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide max-w-3xl">
+          <p className="kicker">Who this is for</p>
+          <p className="mt-6 font-serif text-display-md font-light leading-snug text-balance">
+            Restaurants, caterers, contractors, salons, and professional services that want a modern
+            web presence and a clear path from search to contact.
           </p>
         </div>
       </section>

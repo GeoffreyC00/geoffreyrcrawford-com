@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { CtaSection, HeroCta } from "@/components/shared/cta-section";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ProfilePortrait } from "@/components/shared/profile-portrait";
-import { Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
+import { Parallax, Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
 import { SectionHeader } from "@/components/shared/section-header";
 import { SocialLinksRow } from "@/components/shared/social-links";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { CaseStudyCard } from "@/components/work/case-study-card";
 import { featuredCaseStudies } from "@/lib/data/case-studies";
 import { capabilities, proofPoints, roles, siteConfig } from "@/lib/site-config";
@@ -27,7 +24,6 @@ const platforms = [
   "GA4",
   "HubSpot",
   "Looker Studio",
-  "Google Tag Manager",
 ];
 
 const personJsonLd = {
@@ -62,175 +58,167 @@ export default function HomePage() {
     <>
       <JsonLd data={personJsonLd} />
       <JsonLd data={websiteJsonLd} />
-      {/* Hero */}
-      <section className="relative overflow-hidden section-padding !pb-20 !pt-24 md:!pt-32">
-        <div className="pointer-events-none absolute inset-0 bg-grid-fade" />
-        <div className="container-wide relative">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_340px] lg:gap-16">
-            <div>
-              <div className="mb-6 flex flex-wrap gap-2">
-                {roles.map((role) => (
-                  <Badge key={role} variant="secondary">
-                    {role}
-                  </Badge>
-                ))}
-              </div>
 
-              <h1 className="animate-slide-up text-display-lg font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                {siteConfig.headline}
+      {/* Hero */}
+      <section className="section-padding !pb-20 !pt-20 md:!pt-28">
+        <div className="container-wide">
+          <div className="grid items-end gap-12 lg:grid-cols-[1fr_22rem] lg:gap-20">
+            <div>
+              <p className="kicker animate-rise">Growth Marketing Strategist — {siteConfig.location}</p>
+
+              <h1 className="mt-8 font-serif text-display-2xl font-light text-pretty">
+                <span className="block overflow-hidden">
+                  <span className="reveal-mask block [animation-delay:80ms]">
+                    Performance marketing
+                  </span>
+                </span>
+                <span className="block overflow-hidden">
+                  <span className="reveal-mask block [animation-delay:200ms]">
+                    systems that scale
+                  </span>
+                </span>
+                <span className="block overflow-hidden">
+                  <span className="reveal-mask block text-accent [animation-delay:320ms]">
+                    revenue.
+                  </span>
+                </span>
               </h1>
 
-              <p className="animate-slide-up mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground [animation-delay:100ms]">
+              <p className="animate-rise mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty [animation-delay:420ms]">
                 {siteConfig.subheadline}
               </p>
 
-              <div className="animate-slide-up mt-10 [animation-delay:200ms]">
+              <div className="animate-rise mt-10 [animation-delay:520ms]">
                 <HeroCta />
               </div>
 
-              <div className="animate-slide-up mt-8 [animation-delay:300ms]">
+              <div className="animate-rise mt-10 [animation-delay:600ms]">
                 <SocialLinksRow />
               </div>
             </div>
 
-            <ProfilePortrait
-              variant="dark"
-              priority
-              className="mx-auto aspect-[4/5] w-full max-w-xs lg:max-w-none"
-            />
+            <Parallax distance={36} className="animate-rise hidden lg:block [animation-delay:300ms]">
+              <ProfilePortrait variant="dark" priority className="aspect-[4/5] w-full" />
+            </Parallax>
           </div>
         </div>
       </section>
 
-      {/* Proof bar */}
-      <section className="border-y border-border bg-card/40">
-        <div className="container-wide px-5 py-10 sm:px-8 lg:px-12">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {proofPoints.map((point) => (
-              <div key={point} className="flex items-center gap-3">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-accent" />
-                <p className="text-sm font-medium text-foreground">{point}</p>
-              </div>
-            ))}
-          </div>
+      {/* Proof row */}
+      <section className="border-y border-hairline">
+        <div className="container-wide grid grid-cols-2 gap-px bg-hairline lg:grid-cols-4">
+          {proofPoints.map((point) => (
+            <div key={point} className="bg-background px-6 py-8 sm:px-8">
+              <p className="text-sm leading-snug text-foreground">{point}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Platform marquee */}
-      <section className="border-b border-border bg-background">
-        <div className="container-wide px-5 py-8 sm:px-8 lg:px-12">
-          <p className="text-center text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Platforms & tools I work across
-          </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {platforms.map((platform) => (
-              <span key={platform} className="text-sm font-medium text-muted-foreground">
-                {platform}
-              </span>
-            ))}
-          </div>
+      {/* Platform strip */}
+      <section className="border-b border-hairline">
+        <div className="container-wide flex flex-wrap items-center gap-x-8 gap-y-3 px-6 py-7 sm:px-10 lg:px-16">
+          <span className="kicker mr-2">Platforms</span>
+          {platforms.map((platform) => (
+            <span key={platform} className="text-sm text-muted-foreground">
+              {platform}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* Capabilities */}
+      {/* Capabilities — editorial index */}
       <section className="section-padding">
         <div className="container-wide">
           <Reveal>
             <SectionHeader
-              label="What I Do"
-              title="Marketing systems — not one-off campaigns."
-              description="I work across the full performance stack: the channels that drive demand, the analytics that prove it, and the automation that makes it repeatable."
+              index="01"
+              label="Capabilities"
+              title="Marketing systems, not one-off campaigns."
+              description="I work across the full performance stack — the channels that drive demand, the analytics that prove it, and the automation that makes it repeatable."
             />
           </Reveal>
 
-          <Stagger className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((cap) => (
+          <Stagger className="mt-20">
+            {capabilities.map((cap, i) => (
               <StaggerItem key={cap.title}>
-                <Card className="h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-card-hover">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold tracking-tight">{cap.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {cap.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <div className="group grid grid-cols-[auto_1fr] gap-x-6 border-t border-border py-8 transition-colors sm:grid-cols-[5rem_1fr_1.2fr] sm:gap-x-10 md:py-10">
+                  <span className="font-mono text-sm text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-serif text-2xl font-light leading-tight transition-colors duration-300 group-hover:text-accent sm:text-[1.75rem]">
+                    {cap.title}
+                  </h3>
+                  <p className="col-start-2 mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground sm:col-start-3 sm:mt-0">
+                    {cap.description}
+                  </p>
+                </div>
               </StaggerItem>
             ))}
+            <div className="border-t border-border" />
           </Stagger>
 
           <div className="mt-12">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-            >
-              Explore services
-              <ArrowRight className="h-4 w-4" />
+            <Link href="/services" className="link-underline text-sm font-medium text-foreground">
+              Explore services →
             </Link>
           </div>
         </div>
       </section>
 
       {/* Selected work */}
-      <section className="section-padding border-t border-border bg-card/20">
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <Reveal>
             <SectionHeader
+              index="02"
               label="Selected Work"
-              title="Problems solved, organized by what I do."
-              description="Case studies framed around the business problem and the system that solved it — across ecommerce, B2B, creator businesses, and analytics."
+              title="Problems solved, framed by what I do."
+              description="Case studies built around the business problem and the system that solved it — across ecommerce, B2B, creator businesses, and analytics."
             />
           </Reveal>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+          <div className="mt-20 grid gap-x-12 gap-y-16 md:grid-cols-2">
             {featuredCaseStudies.map((study, i) => (
-              <Reveal key={study.slug} delay={i * 0.08}>
-                <CaseStudyCard study={study} featured />
+              <Reveal key={study.slug} delay={i * 0.06}>
+                <CaseStudyCard study={study} index={i + 1} featured />
               </Reveal>
             ))}
           </div>
 
-          <div className="mt-12">
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-            >
-              View all case studies
-              <ArrowRight className="h-4 w-4" />
+          <div className="mt-16">
+            <Link href="/work" className="link-underline text-sm font-medium text-foreground">
+              View all case studies →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Positioning */}
-      <section className="section-padding border-t border-border">
+      {/* Pull quote / positioning */}
+      <section className="section-padding border-t border-hairline">
         <div className="container-wide">
-          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
-            <Reveal>
-              <SectionHeader
-                label="How I Think"
-                title="Strategy and execution — not one without the other."
-              />
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
-                <p>
-                  Most marketing problems aren&apos;t channel problems — they&apos;re systems
-                  problems. Spend goes up, dashboards multiply, and nobody can say what actually
-                  drove revenue.
-                </p>
-                <p>
-                  I&apos;ve spent 7+ years closing that gap: managing six-figure monthly budgets,
-                  building the reporting that ties spend to outcomes, and designing the automation
-                  and AI workflows that make a marketing team faster.
-                </p>
-                <p>
-                  I think like an operator and build like an engineer — campaign architecture,
-                  attribution, creative testing, and conversion systems that compound instead of
-                  reset every quarter.
-                </p>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal>
+            <p className="kicker">How I think</p>
+            <blockquote className="mt-8 max-w-4xl font-serif text-display-lg font-light leading-[1.15] text-balance">
+              Most marketing problems aren&apos;t channel problems. They&apos;re{" "}
+              <span className="text-accent">systems problems</span> — spend goes up, dashboards
+              multiply, and nobody can say what actually drove revenue.
+            </blockquote>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="mt-12 grid gap-8 text-base leading-relaxed text-muted-foreground md:grid-cols-2 md:gap-16">
+              <p>
+                I&apos;ve spent 7+ years closing that gap — managing six-figure monthly budgets,
+                building the reporting that ties spend to outcomes, and designing the automation
+                and AI workflows that make a marketing team faster.
+              </p>
+              <p>
+                I think like an operator and build like an engineer: campaign architecture,
+                attribution, creative testing, and conversion systems that compound instead of
+                resetting every quarter.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

@@ -10,21 +10,19 @@ type PageHeroProps = {
 
 export function PageHero({ label, title, description, className, children }: PageHeroProps) {
   return (
-    <section className={cn("section-padding !pb-12", className)}>
+    <section className={cn("section-padding !pb-16 !pt-24 md:!pt-28", className)}>
       <div className="container-wide">
-        <div className="max-w-3xl">
-          {label && (
-            <p className="text-sm font-medium uppercase tracking-widest text-accent">{label}</p>
-          )}
-          <h1 className="mt-4 text-display-md font-semibold tracking-tight text-balance sm:text-5xl">
+        <div className="max-w-4xl">
+          {label && <p className="kicker animate-rise">{label}</p>}
+          <h1 className="animate-rise mt-7 font-serif text-display-xl font-light text-pretty [animation-delay:80ms]">
             {title}
           </h1>
           {description && (
-            <p className="mt-6 text-xl leading-relaxed text-muted-foreground text-balance">
+            <p className="animate-rise mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground text-pretty [animation-delay:180ms]">
               {description}
             </p>
           )}
-          {children && <div className="mt-8">{children}</div>}
+          {children && <div className="animate-rise mt-10 [animation-delay:280ms]">{children}</div>}
         </div>
       </div>
     </section>

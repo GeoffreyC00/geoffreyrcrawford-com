@@ -17,7 +17,7 @@ export function Header() {
       <div className="container-wide flex h-16 items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
+          className="font-serif text-lg font-light tracking-tight text-foreground transition-colors hover:text-accent"
         >
           {siteConfig.name}
         </Link>
