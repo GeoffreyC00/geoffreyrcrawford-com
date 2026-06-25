@@ -13,6 +13,11 @@ export const siteConfig = {
   headline: "I build performance marketing systems that scale revenue.",
   subheadline:
     "Paid media, analytics, AI, and automation — engineered into systems that turn ad spend into predictable, measurable growth.",
+  newsletter: {
+    title: "The systems behind the strategy",
+    description:
+      "Occasional notes on performance marketing, analytics, and AI systems. No noise — just the thinking behind the work.",
+  },
 };
 
 export const navLinks = [
@@ -28,6 +33,29 @@ export const footerPaths = [
   { href: "/local-business", label: "Local Business" },
   { href: "/hire-me", label: "Hire Me" },
   { href: "/work", label: "Case Studies" },
+] as const;
+
+// Footer information architecture — grouped so future content pillars
+// (insights, tools, products, courses, etc.) slot in without a redesign.
+export const footerSections = [
+  {
+    title: "Explore",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/work", label: "Work" },
+      { href: "/services", label: "Services" },
+      { href: "/insights", label: "Insights" },
+    ],
+  },
+  {
+    title: "Work With Me",
+    links: [
+      { href: "/work-with-me", label: "Consulting" },
+      { href: "/local-business", label: "Local Business" },
+      { href: "/hire-me", label: "Hire Me" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
 ] as const;
 
 export const audiencePaths = [
