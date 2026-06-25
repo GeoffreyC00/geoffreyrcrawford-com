@@ -22,7 +22,7 @@ export function Header() {
           {siteConfig.name}
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -39,15 +39,21 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <LinkButton href="/contact" size="sm">
-            Let&apos;s Talk
+        <div className="hidden items-center gap-3 md:flex">
+          <Link
+            href="/hire-me"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Hire Me
+          </Link>
+          <LinkButton href="/work-with-me" size="sm">
+            Work With Me
           </LinkButton>
         </div>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:hidden"
+          className="inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
@@ -56,7 +62,7 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-border bg-background px-5 py-6 md:hidden">
+        <div className="border-t border-border bg-background px-5 py-6 lg:hidden">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
@@ -71,12 +77,26 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/hire-me"
+              onClick={() => setMobileOpen(false)}
+              className="text-base text-muted-foreground"
+            >
+              Hire Me
+            </Link>
+            <Link
+              href="/local-business"
+              onClick={() => setMobileOpen(false)}
+              className="text-base text-muted-foreground"
+            >
+              Local Business
+            </Link>
             <LinkButton
-              href="/contact"
+              href="/work-with-me"
               className="mt-2 w-full"
               onClick={() => setMobileOpen(false)}
             >
-              Let&apos;s Talk
+              Work With Me
             </LinkButton>
           </nav>
         </div>

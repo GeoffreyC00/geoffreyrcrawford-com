@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Linkedin, Mail } from "lucide-react";
-import { navLinks, siteConfig } from "@/lib/site-config";
+import { Instagram, Linkedin, Mail } from "lucide-react";
+import { footerPaths, navLinks, siteConfig } from "@/lib/site-config";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -12,8 +12,8 @@ export function Footer() {
           <div className="lg:col-span-2">
             <p className="text-lg font-semibold tracking-tight">{siteConfig.name}</p>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Growth Marketing Strategist, Paid Media Expert, and AI Consultant helping
-              businesses grow through strategy, execution, and technology.
+              {siteConfig.tagline} Growth marketing operator across paid media, AI systems,
+              analytics, and conversion optimization.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">{siteConfig.location}</p>
           </div>
@@ -35,38 +35,56 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-medium text-foreground">Connect</p>
+            <p className="text-sm font-medium text-foreground">Work With Me</p>
             <ul className="mt-4 space-y-3">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <Mail className="h-4 w-4" />
-                  {siteConfig.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={siteConfig.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
-                </a>
-              </li>
+              {footerPaths.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border pt-8 sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-wrap gap-6 border-t border-border pt-8">
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Mail className="h-4 w-4" />
+            {siteConfig.email}
+          </a>
+          <a
+            href={siteConfig.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Linkedin className="h-4 w-4" />
+            LinkedIn
+          </a>
+          <a
+            href={siteConfig.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Instagram className="h-4 w-4" />
+            Instagram
+          </a>
+        </div>
+
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <p className="text-xs text-muted-foreground">
             &copy; {year} {siteConfig.name}. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground">
-            Growth Marketing &middot; Paid Media &middot; AI Consulting
+            Paid Media &middot; AI Systems &middot; Growth Strategy
           </p>
         </div>
       </div>

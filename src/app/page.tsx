@@ -1,16 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BarChart3, Bot, LineChart, Megaphone, Search } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
+import { AudienceCard } from "@/components/shared/audience-card";
 import { CtaSection, HeroCta } from "@/components/shared/cta-section";
 import { ProfilePortrait } from "@/components/shared/profile-portrait";
 import { SectionHeader } from "@/components/shared/section-header";
+import { SocialLinksRow } from "@/components/shared/social-links";
+import { Badge } from "@/components/ui/badge";
 import { CaseStudyCard } from "@/components/work/case-study-card";
 import { featuredCaseStudies } from "@/lib/data/case-studies";
-import { services } from "@/lib/data/services";
-import { proofPoints, roles, siteConfig } from "@/lib/site-config";
+import { audiencePaths, proofPoints, roles, siteConfig } from "@/lib/site-config";
 
-const serviceIcons = [Megaphone, Bot, LineChart, Search, BarChart3];
+export const metadata: Metadata = {
+  title: siteConfig.title,
+  description: siteConfig.description,
+};
 
 export default function HomePage() {
   return (
@@ -19,8 +23,11 @@ export default function HomePage() {
       <section className="relative overflow-hidden section-padding !pb-20 !pt-24 md:!pt-32">
         <div className="pointer-events-none absolute inset-0 bg-grid-fade" />
         <div className="container-wide relative">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_380px] lg:gap-16 xl:grid-cols-[1fr_420px]">
-            <div className="max-w-4xl">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_360px] lg:gap-16">
+            <div>
+              <p className="mb-4 text-sm font-medium tracking-wide text-accent">
+                {siteConfig.tagline}
+              </p>
               <div className="mb-6 flex flex-wrap gap-2">
                 {roles.map((role) => (
                   <Badge key={role} variant="secondary">
@@ -29,31 +36,35 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <h1 className="animate-slide-up text-display-lg font-semibold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+              <h1 className="animate-slide-up text-display-lg font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
                 {siteConfig.headline}
               </h1>
 
-              <p className="animate-slide-up mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl [animation-delay:100ms]">
+              <p className="animate-slide-up mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground [animation-delay:100ms]">
                 {siteConfig.subheadline}
               </p>
 
               <div className="animate-slide-up mt-10 [animation-delay:200ms]">
                 <HeroCta />
               </div>
+
+              <div className="animate-slide-up mt-8 [animation-delay:300ms]">
+                <SocialLinksRow />
+              </div>
             </div>
 
             <ProfilePortrait
               variant="dark"
               priority
-              className="mx-auto aspect-[4/5] w-full max-w-sm lg:max-w-none"
+              className="mx-auto aspect-[4/5] w-full max-w-xs lg:max-w-none"
             />
           </div>
         </div>
       </section>
 
-      {/* Proof bar */}
+      {/* Proof */}
       <section className="border-y border-border bg-card/40">
-        <div className="container-wide px-5 py-8 sm:px-8 lg:px-12">
+        <div className="container-wide px-5 py-10 sm:px-8 lg:px-12">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {proofPoints.map((point) => (
               <div key={point} className="flex items-center gap-3">
@@ -65,101 +76,79 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services preview */}
+      {/* Audience routing */}
       <section className="section-padding">
         <div className="container-wide">
           <SectionHeader
-            label="Services"
-            title="Strategy, execution, and systems — built to grow revenue."
-            description="From paid media management to AI-powered workflows, I help businesses operate and scale their marketing with precision."
+            label="Start Here"
+            title="What brings you here?"
+            description="This site routes three different paths — hiring, consulting, and local business systems. Pick the one that fits."
           />
-
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => {
-              const Icon = serviceIcons[index];
-              return (
-                <Card
-                  key={service.id}
-                  className="transition-all duration-300 hover:border-accent/30 hover:shadow-card-hover"
-                >
-                  <CardContent className="p-6">
-                    <div className="mb-4 inline-flex rounded-lg bg-accent/10 p-2.5">
-                      <Icon className="h-5 w-5 text-accent" />
-                    </div>
-                    <h3 className="text-lg font-semibold tracking-tight">{service.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-
-          <div className="mt-12">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-            >
-              View all services
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured work */}
-      <section className="section-padding border-t border-border bg-card/20">
-        <div className="container-wide">
-          <SectionHeader
-            label="Selected Work"
-            title="Businesses grown through paid media, data, and systems."
-            description="A sample of consulting engagements across ecommerce, B2B, digital products, and creator brands."
-          />
-
-          <div className="mt-16 grid gap-6 lg:grid-cols-3">
-            {featuredCaseStudies.map((study) => (
-              <CaseStudyCard key={study.slug} study={study} featured />
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {audiencePaths.map((path) => (
+              <AudienceCard
+                key={path.id}
+                title={path.title}
+                description={path.description}
+                href={path.href}
+                cta={path.cta}
+              />
             ))}
-          </div>
-
-          <div className="mt-12">
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-            >
-              View all projects
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
         </div>
       </section>
 
       {/* Positioning */}
+      <section className="section-padding border-t border-border bg-card/20">
+        <div className="container-wide">
+          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
+            <SectionHeader
+              label="What I Build"
+              title="Marketing systems — not just campaigns."
+              description="Paid media, AI workflows, analytics, websites, and automation connected into systems that turn attention into revenue."
+            />
+            <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
+              <p>
+                I&apos;m Geoffrey R. Crawford — a growth marketing operator based in Los Angeles.
+                I&apos;ve spent 7+ years inside accounts, dashboards, and funnels — managing up to
+                $200K+ in monthly ad spend and building the infrastructure that makes marketing
+                scale.
+              </p>
+              <p>
+                That means campaign architecture on Google, Meta, YouTube, Amazon, and Microsoft
+                Ads. It also means reporting systems, landing pages, AI automations, and conversion
+                paths that connect spend to outcomes.
+              </p>
+              <p>
+                I work with brands, creators, education companies, ecommerce businesses, and local
+                operators who need someone who can think strategically and execute directly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured work */}
       <section className="section-padding border-t border-border">
         <div className="container-wide">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div>
-              <SectionHeader
-                label="How I Work"
-                title="At the intersection of marketing, data, and AI."
-              />
-            </div>
-            <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
-              <p>
-                I don&apos;t just run campaigns — I build the systems behind them. Reporting
-                dashboards, conversion funnels, AI workflows, and the strategic frameworks that
-                connect ad spend to revenue.
-              </p>
-              <p>
-                With 7+ years managing budgets up to $200K+ monthly across Google, Meta, YouTube,
-                Amazon, and Microsoft Ads, I bring operator-level experience to every engagement.
-              </p>
-              <p>
-                Whether you&apos;re scaling ecommerce revenue, generating B2B leads, or launching
-                digital products — I help you grow with clarity and execution.
-              </p>
-            </div>
+          <SectionHeader
+            label="Selected Work"
+            title="Proof across industries."
+            description="Think Media, PoolSupplies.com, VoIP Supply, and more — paid media, systems, and growth at different scales."
+          />
+          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+            {featuredCaseStudies.map((study) => (
+              <CaseStudyCard key={study.slug} study={study} featured />
+            ))}
+          </div>
+          <div className="mt-12">
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+            >
+              View all case studies
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

@@ -1,32 +1,36 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/shared/cta-section";
-import { SectionHeader } from "@/components/shared/section-header";
+import { PageHero } from "@/components/shared/page-hero";
 import { Card, CardContent } from "@/components/ui/card";
 import { services } from "@/lib/data/services";
+import { LinkButton } from "@/components/ui/link-button";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Paid media strategy, AI consulting, conversion optimization, SEO, and video ad creative services.",
+    "Paid media, AI systems, conversion optimization, SEO, and video creative — overview of growth marketing services.",
 };
 
 export default function ServicesPage() {
   return (
     <>
-      <section className="section-padding !pb-12">
-        <div className="container-wide">
-          <div className="max-w-3xl">
-            <p className="text-sm font-medium uppercase tracking-widest text-accent">Services</p>
-            <h1 className="mt-4 text-display-md font-semibold tracking-tight sm:text-5xl">
-              Marketing systems built to perform.
-            </h1>
-            <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
-              From paid acquisition to AI automation — I help businesses grow through strategy,
-              execution, and the technology that connects them.
-            </p>
-          </div>
+      <PageHero
+        label="Services"
+        title="What I help businesses build."
+        description="An overview of how I work — from paid acquisition to AI-powered operations. For consulting engagements, start at Work With Me. For local businesses, see Local Business Systems."
+      >
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <LinkButton href="/work-with-me" size="lg">
+            Work With Me
+            <ArrowRight className="h-4 w-4" />
+          </LinkButton>
+          <LinkButton href="/local-business" variant="outline" size="lg">
+            Local Business
+          </LinkButton>
         </div>
-      </section>
+      </PageHero>
 
       <section className="section-padding border-t border-border !py-16">
         <div className="container-wide">
@@ -74,12 +78,14 @@ export default function ServicesPage() {
       </section>
 
       <section className="section-padding border-t border-border bg-card/20 !py-16">
-        <div className="container-wide">
-          <SectionHeader
-            title="Engagements tailored to your stage."
-            description="Whether you need a strategic advisor, a hands-on operator, or someone to build the systems your team runs on — I adapt to what the business needs."
-            align="center"
-          />
+        <div className="container-wide text-center">
+          <p className="text-muted-foreground">
+            Recruiting?{" "}
+            <Link href="/hire-me" className="text-accent hover:underline">
+              View my hire-me page
+            </Link>{" "}
+            for roles, skills, and experience.
+          </p>
         </div>
       </section>
 

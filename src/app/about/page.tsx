@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
 import { CtaSection } from "@/components/shared/cta-section";
 import { ProfilePortrait } from "@/components/shared/profile-portrait";
-import { SectionHeader } from "@/components/shared/section-header";
 import { Badge } from "@/components/ui/badge";
 import { roles } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Geoffrey R. Crawford — Growth Marketing Strategist, Paid Media Expert, and AI Consultant based in Los Angeles, CA.",
+    "Geoffrey R. Crawford — growth marketing operator based in Los Angeles. Paid media, AI systems, analytics, and conversion optimization.",
 };
 
 const expertise = [
-  "Digital marketing",
-  "Paid media",
-  "Content strategy",
-  "Analytics & reporting",
-  "Web development",
-  "AI systems & automation",
+  "Paid media strategy & execution",
+  "AI workflows & marketing automation",
+  "Analytics, dashboards & reporting",
+  "Web development & landing pages",
+  "Content strategy & funnel optimization",
+  "Conversion systems & lead generation",
 ];
 
 const platforms = [
@@ -33,15 +32,15 @@ export default function AboutPage() {
     <>
       <section className="section-padding !pb-12">
         <div className="container-wide">
-          <div className="grid items-start gap-12 lg:grid-cols-[1fr_340px] lg:gap-16">
+          <div className="grid items-start gap-12 lg:grid-cols-[1fr_320px] lg:gap-16">
             <div className="max-w-3xl">
               <p className="text-sm font-medium uppercase tracking-widest text-accent">About</p>
               <h1 className="mt-4 text-display-md font-semibold tracking-tight sm:text-5xl">
-                Operator, strategist, and builder.
+                Operator, strategist, builder.
               </h1>
               <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
-                I help businesses grow through a combination of paid media strategy, data-driven
-                decision making, and the technology systems that make marketing scale.
+                I build marketing systems that combine paid media, AI, analytics, websites,
+                automation, and content strategy — so businesses can grow with clarity, not chaos.
               </p>
             </div>
             <ProfilePortrait
@@ -57,30 +56,26 @@ export default function AboutPage() {
           <div className="grid gap-16 lg:grid-cols-2">
             <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
               <p>
-                I&apos;m Geoffrey R. Crawford — a Growth Marketing Strategist based in Los
-                Angeles, CA, originally from Buffalo, NY.
+                I&apos;m Geoffrey R. Crawford — originally from Buffalo, NY, now based in Los
+                Angeles. For 7+ years I&apos;ve been inside the work: managing paid media budgets
+                up to $200K+ monthly, building reporting systems, optimizing funnels, and shipping
+                websites and automations that make marketing teams faster.
               </p>
               <p>
-                Over the past 7+ years, I&apos;ve managed paid media budgets up to $200K+ monthly
-                across Google, Meta, YouTube, Amazon, and Microsoft Ads. I&apos;ve worked with
-                ecommerce brands doing $1M+ quarterly revenue, B2B companies generating qualified
-                leads at scale, and digital product businesses in the creator economy.
+                I&apos;ve worked with ecommerce brands doing $1M+ quarterly revenue, B2B companies
+                generating qualified leads at scale, creator-led education brands like Think Media,
+                and local businesses that needed a real web presence — not just a template.
               </p>
               <p>
-                My work sits at the intersection of marketing and technology. I don&apos;t just
-                optimize campaigns — I build the dashboards, funnels, landing pages, and AI
-                workflows that make marketing teams faster and more effective.
-              </p>
-              <p>
-                Whether I&apos;m architecting a Google Ads account structure, designing a lead
-                generation funnel, or building an AI-powered reporting system, the goal is the
-                same: help businesses grow revenue with clarity and precision.
+                I&apos;m not an agency. I&apos;m the person you bring in when you need someone who
+                can think strategically, execute directly, and build the systems that connect
+                marketing spend to revenue.
               </p>
             </div>
 
             <div className="space-y-10">
               <div>
-                <h2 className="text-lg font-semibold tracking-tight">What I Do</h2>
+                <h2 className="text-lg font-semibold tracking-tight">How I position</h2>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {roles.map((role) => (
                     <Badge key={role} variant="secondary">
@@ -94,10 +89,7 @@ export default function AboutPage() {
                 <h2 className="text-lg font-semibold tracking-tight">Background</h2>
                 <ul className="mt-4 space-y-3">
                   {expertise.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-3 text-muted-foreground"
-                    >
+                    <li key={item} className="flex items-center gap-3 text-muted-foreground">
                       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                       {item}
                     </li>
@@ -109,10 +101,7 @@ export default function AboutPage() {
                 <h2 className="text-lg font-semibold tracking-tight">Platforms</h2>
                 <ul className="mt-4 space-y-3">
                   {platforms.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-3 text-muted-foreground"
-                    >
+                    <li key={item} className="flex items-center gap-3 text-muted-foreground">
                       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                       {item}
                     </li>
@@ -121,16 +110,6 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section-padding border-t border-border bg-card/20 !py-16">
-        <div className="container-wide">
-          <SectionHeader
-            title="Built for operators, not observers."
-            description="I bring hands-on experience managing real budgets, building real systems, and driving real revenue — not just strategy decks."
-            align="center"
-          />
         </div>
       </section>
 

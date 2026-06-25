@@ -28,9 +28,7 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
             <h1 className="mt-4 text-display-md font-semibold tracking-tight sm:text-5xl">
               {study.title}
             </h1>
-            <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
-              {study.summary}
-            </p>
+            <p className="mt-6 text-xl leading-relaxed text-muted-foreground">{study.summary}</p>
             <div className="mt-8 flex flex-wrap gap-2">
               {study.tags.map((tag) => (
                 <Badge key={tag} variant="secondary">
@@ -46,24 +44,16 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
         <div className="container-wide">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
+              <h2 className="text-2xl font-semibold tracking-tight">Overview</h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                {study.subtitle}
+              </p>
+            </div>
+            <div>
               <h2 className="text-2xl font-semibold tracking-tight">The Challenge</h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                 {study.challenge}
               </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Focus Areas</h2>
-              <ul className="mt-4 space-y-3">
-                {study.focus.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-3 text-muted-foreground"
-                  >
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
@@ -71,27 +61,51 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
 
       <section className="section-padding border-t border-border bg-card/30 !py-16">
         <div className="container-wide">
-          <div className="grid gap-16 lg:grid-cols-2">
+          <h2 className="text-2xl font-semibold tracking-tight">What I Did</h2>
+          <ul className="mt-8 grid gap-4 md:grid-cols-2">
+            {study.approach.map((item) => (
+              <li
+                key={item}
+                className="rounded-lg border border-border bg-background/50 p-5 text-sm leading-relaxed text-muted-foreground"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section-padding border-t border-border !py-16">
+        <div className="container-wide">
+          <div className="grid gap-16 lg:grid-cols-3">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Approach</h2>
-              <ul className="mt-6 space-y-4">
-                {study.approach.map((item) => (
-                  <li
-                    key={item}
-                    className="border-l-2 border-accent/30 pl-4 text-muted-foreground leading-relaxed"
-                  >
+              <h2 className="text-lg font-semibold tracking-tight">Platforms & Tools</h2>
+              <ul className="mt-4 space-y-2">
+                {study.platforms.map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Results</h2>
-              <ul className="mt-6 space-y-4">
+              <h2 className="text-lg font-semibold tracking-tight">Skills Demonstrated</h2>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {study.skills.map((skill) => (
+                  <Badge key={skill} variant="secondary">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold tracking-tight">Results & Impact</h2>
+              <ul className="mt-4 space-y-3">
                 {study.results.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 text-muted-foreground leading-relaxed"
+                    className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"
                   >
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                     {item}
@@ -103,7 +117,14 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
         </div>
       </section>
 
-      <CtaSection />
+      <CtaSection
+        title="Want results like this?"
+        description="Let's talk about paid media, growth systems, or your next marketing challenge."
+        primaryHref="/work-with-me"
+        primaryLabel="Work With Me"
+        secondaryHref="/contact"
+        secondaryLabel="Contact"
+      />
     </>
   );
 }

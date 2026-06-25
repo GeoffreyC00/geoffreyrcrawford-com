@@ -10,15 +10,26 @@ type CaseStudyCardProps = {
   featured?: boolean;
 };
 
+const categoryAccent: Record<string, string> = {
+  "Digital Products": "from-indigo-500/20 to-transparent",
+  eCommerce: "from-emerald-500/15 to-transparent",
+  B2B: "from-blue-500/15 to-transparent",
+  "Creator Economy": "from-violet-500/15 to-transparent",
+  "Local Business": "from-amber-500/15 to-transparent",
+};
+
 export function CaseStudyCard({ study, featured = false }: CaseStudyCardProps) {
+  const gradient = categoryAccent[study.category] ?? "from-accent/10 to-transparent";
+
   return (
     <Link href={`/work/${study.slug}`} className="group block h-full">
       <Card
         className={cn(
-          "h-full transition-all duration-300 hover:border-accent/30 hover:shadow-card-hover",
-          featured && "lg:p-2"
+          "h-full overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-card-hover",
+          featured && "lg:min-h-[320px]"
         )}
       >
+        <div className={cn("h-1.5 bg-gradient-to-r", gradient)} />
         <CardContent className={cn("flex h-full flex-col p-6", featured && "lg:p-8")}>
           <div className="flex items-start justify-between gap-4">
             <div>
