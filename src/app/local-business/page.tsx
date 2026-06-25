@@ -69,7 +69,7 @@ export default function LocalBusinessPage() {
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               I&apos;ve done this end-to-end for businesses like{" "}
-              <Link href="/work/the-food-experience" className="text-accent hover:underline">
+              <Link href="/work/full-funnel-web-cro" className="text-accent hover:underline">
                 The Food Experience
               </Link>{" "}
               — from brand and UX through launch.
@@ -110,7 +110,7 @@ export default function LocalBusinessPage() {
         description="Tell me about your business and what you need — website, Google presence, leads, or the full package."
         primaryHref="/contact"
         primaryLabel="Contact Me"
-        secondaryHref="/work/the-food-experience"
+        secondaryHref="/work/full-funnel-web-cro"
         secondaryLabel="See Local Project"
       />
     </>

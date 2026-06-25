@@ -7,177 +7,253 @@ export type CaseStudy = {
   tags: string[];
   summary: string;
   challenge: string;
-  approach: string[];
-  results: string[];
+  role: string;
+  strategy: string[];
   platforms: string[];
   skills: string[];
+  outcomes: string[];
+  metrics: { value: string; label: string }[];
 };
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "think-media",
-    title: "Think Media",
-    subtitle: "Paid media for a leading YouTube education brand",
-    category: "Digital Products",
+    slug: "enterprise-ecommerce-growth",
+    title: "Enterprise Ecommerce Growth",
+    subtitle: "Multi-channel paid media architecture for a high-volume retailer",
+    category: "eCommerce",
+    featured: true,
+    tags: ["Google Ads", "Amazon Ads", "Microsoft Ads", "ROAS", "Shopping"],
+    summary:
+      "Built and scaled cross-platform paid acquisition for a large ecommerce retailer — designing campaign architecture across Search, Shopping, and marketplace channels that supported millions in annual revenue.",
+    challenge:
+      "A high-volume ecommerce business needed a paid media program that could scale efficiently across seasonal demand swings — without ballooning wasted spend or losing visibility into what was actually driving revenue. Campaigns were fragmented across platforms with inconsistent structure and limited attribution.",
+    role:
+      "I owned paid media strategy and execution end-to-end — account architecture, budget allocation, bidding strategy, and the reporting layer that connected spend to revenue across Google, Amazon, and Microsoft.",
+    strategy: [
+      "Rebuilt account structure around product margin and intent — Search, Shopping, and Performance Max mapped to clear priorities",
+      "Developed a cross-channel budget allocation model based on marginal return, not flat splits",
+      "Layered Amazon Sponsored Products and Brands to capture marketplace demand alongside owned site traffic",
+      "Added Microsoft Ads for incremental, lower-CPC search coverage",
+      "Built revenue-connected reporting so spend decisions were tied to outcomes, not platform vanity metrics",
+    ],
+    platforms: ["Google Ads", "Amazon Ads", "Microsoft Ads", "Google Shopping", "GA4", "Looker Studio"],
+    skills: [
+      "Campaign architecture",
+      "Budget allocation",
+      "ROAS optimization",
+      "Marketplace advertising",
+      "Analytics & reporting",
+    ],
+    outcomes: [
+      "Supported millions in annual ecommerce revenue through paid channels",
+      "Managed six-figure quarterly advertising budgets across platforms",
+      "Built scalable account structures that held up through seasonal peaks",
+      "Improved spend efficiency by reducing overlap and wasted budget",
+    ],
+    metrics: [
+      { value: "$1M+", label: "Quarterly revenue supported" },
+      { value: "3", label: "Ad platforms unified" },
+      { value: "Seasonal", label: "Scaling without efficiency loss" },
+    ],
+  },
+  {
+    slug: "scaling-creator-businesses",
+    title: "Scaling Creator & Education Businesses",
+    subtitle: "Paid acquisition for digital products, webinars, and live events",
+    category: "Creator Economy & Digital Products",
     featured: true,
     tags: ["YouTube Ads", "Meta Ads", "Funnels", "Webinars", "Creative Testing"],
     summary:
-      "Paid acquisition across YouTube and Meta for one of the largest creator-led education brands — driving webinar registrations, digital product sales, and live event attendance through rigorous funnel and creative optimization.",
+      "Drove paid acquisition for a leading creator-led education brand — scaling webinar registrations, digital product sales, and live event attendance through YouTube and Meta with a high-velocity creative testing system.",
     challenge:
-      "Think Media needed scalable paid acquisition across YouTube and Meta without sacrificing efficiency — supporting webinars, digital products, live events, and a fast-moving creative pipeline across multiple funnel stages.",
-    approach: [
-      "Built and managed YouTube and Meta campaigns across cold, warm, and retargeting audiences",
-      "Developed creative testing frameworks for hooks, formats, and messaging at high velocity",
+      "A creator-led education business needed to scale paid acquisition across a complex offer stack — webinars, digital products, and live events — without sacrificing efficiency. Creative burned out fast, and the team needed a system that could keep testing and learning at pace.",
+    role:
+      "I led paid media across YouTube and Meta — campaign strategy, audience structure, and the creative testing framework that fed the funnel, working closely with the creative and content teams.",
+    strategy: [
+      "Structured YouTube and Meta campaigns across cold, warm, and retargeting stages mapped to the funnel",
+      "Built a creative testing framework to iterate on hooks, formats, and angles at high velocity",
       "Optimized webinar and product funnels from ad click through registration and purchase",
-      "Connected ad spend to downstream revenue through reporting and LTV visibility",
-      "Collaborated on landing page strategy and conversion path refinement",
+      "Connected ad spend to downstream revenue and LTV for clearer scaling decisions",
+      "Partnered with creative teams to turn performance data into the next round of concepts",
     ],
-    results: [
-      "Managed significant monthly budgets across YouTube and Meta",
-      "Drove consistent lead volume for webinars and digital product launches",
-      "Increased creative testing velocity and campaign iteration speed",
-      "Improved internal visibility into funnel performance and ROAS",
-    ],
-    platforms: ["YouTube Ads", "Meta Ads", "Google Analytics", "Landing page tools"],
+    platforms: ["YouTube Ads", "Meta Ads", "GA4", "Landing page tooling", "Google Tag Manager"],
     skills: [
-      "Paid media strategy",
-      "Creative testing",
+      "Full-funnel paid media",
+      "Creative strategy & testing",
       "Funnel optimization",
-      "Lead generation",
+      "Cross-functional collaboration",
       "Performance reporting",
     ],
-  },
-  {
-    slug: "pool-supplies",
-    title: "PoolSupplies.com",
-    subtitle: "Multi-channel ecommerce growth at scale",
-    category: "eCommerce",
-    featured: true,
-    tags: ["Google Ads", "Amazon Ads", "Microsoft Ads", "ROAS", "eCommerce"],
-    summary:
-      "End-to-end paid media for a major pool supplies retailer — architecting campaigns across Google, Amazon, and Microsoft Ads with budgets from $1K to $50K+ monthly per channel and quarterly revenue exceeding $1M.",
-    challenge:
-      "PoolSupplies.com needed sophisticated campaign architecture across search, shopping, and marketplace channels — optimizing ROAS through seasonal peaks while supporting $1M+ quarterly revenue targets.",
-    approach: [
-      "Designed Google Shopping, Search, and Performance Max campaign structures",
-      "Managed Amazon Sponsored Products and Brands for marketplace growth",
-      "Built Microsoft Ads campaigns for incremental search coverage",
-      "Developed budget allocation frameworks based on marginal ROAS by channel",
-      "Implemented granular revenue attribution and campaign-level reporting",
+    outcomes: [
+      "Scaled lead volume for webinars and digital product launches",
+      "Increased creative testing velocity and iteration speed",
+      "Improved funnel visibility from ad click through conversion",
+      "Supported launches and live events with reliable paid demand",
     ],
-    results: [
-      "Supported quarterly revenue exceeding $1M through paid channels",
-      "Managed budgets ranging from $1K to $50K+ monthly across platforms",
-      "Improved ROAS through continuous campaign architecture refinement",
-      "Built scalable structures for seasonal demand and peak periods",
-    ],
-    platforms: ["Google Ads", "Amazon Ads", "Microsoft Ads", "Google Analytics"],
-    skills: [
-      "Campaign architecture",
-      "ROAS optimization",
-      "Budget allocation",
-      "eCommerce growth",
-      "Marketplace advertising",
+    metrics: [
+      { value: "YouTube + Meta", label: "Primary growth channels" },
+      { value: "High-velocity", label: "Creative testing system" },
+      { value: "Full-funnel", label: "Acquisition to conversion" },
     ],
   },
   {
-    slug: "voip-supply",
-    title: "VoIP Supply",
-    subtitle: "Long-term B2B paid media partnership",
+    slug: "b2b-lead-generation",
+    title: "B2B Lead Generation & Demand",
+    subtitle: "Long-term paid search program balancing leads and ecommerce",
     category: "B2B",
     featured: true,
-    tags: ["Google Ads", "Microsoft Ads", "B2B", "Lead Generation", "eCommerce"],
+    tags: ["Google Ads", "Microsoft Ads", "Lead Gen", "Attribution", "Reporting"],
     summary:
-      "Sustained consulting engagement managing Google and Microsoft Ads for a B2B telecommunications supplier — balancing qualified lead generation with ecommerce revenue and strategic account growth.",
+      "Ran a sustained B2B paid search program for a specialized supplier — generating qualified leads while supporting ecommerce revenue, with the reporting and account management to back long-term strategic decisions.",
     challenge:
-      "VoIP Supply needed a trusted operator to manage complex B2B paid media accounts — driving qualified leads and ecommerce revenue while delivering transparent reporting and strategic guidance over the long term.",
-    approach: [
-      "Managed Google Ads across Search, Shopping, and Display for B2B and ecommerce goals",
-      "Built and optimized Microsoft Ads for incremental B2B lead volume",
-      "Developed lead gen systems with clear conversion tracking and attribution",
-      "Delivered regular performance reporting with actionable recommendations",
-      "Provided ongoing account management and portfolio-level budget optimization",
+      "A B2B supplier needed a paid search program that could generate qualified leads and support ecommerce revenue at the same time — with transparent reporting a stakeholder could actually act on, sustained over a multi-year relationship.",
+    role:
+      "I served as the paid media lead and strategic partner — managing Google and Microsoft Ads, building conversion tracking, and delivering the reporting cadence that guided budget and strategy decisions.",
+    strategy: [
+      "Structured Google Ads across Search, Shopping, and Display for both lead-gen and ecommerce goals",
+      "Built Microsoft Ads campaigns for incremental B2B search volume at efficient CPCs",
+      "Implemented conversion tracking and attribution to separate qualified leads from noise",
+      "Delivered a regular reporting cadence with clear, actionable recommendations",
+      "Managed budgets at the portfolio level, reallocating toward what produced pipeline",
     ],
-    results: [
-      "Maintained a multi-year consulting relationship with consistent growth",
-      "Drove qualified B2B leads through optimized search campaigns",
-      "Balanced lead gen and ecommerce objectives within unified structures",
-      "Established a transparent reporting cadence for strategic decisions",
-    ],
-    platforms: ["Google Ads", "Microsoft Ads", "Google Analytics", "CRM integrations"],
+    platforms: ["Google Ads", "Microsoft Ads", "GA4", "Google Tag Manager", "CRM integration"],
     skills: [
-      "B2B lead generation",
+      "B2B demand generation",
+      "Attribution & tracking",
       "Strategic account management",
       "Performance reporting",
-      "Ecommerce campaigns",
-      "Long-term consulting",
+      "Budget optimization",
+    ],
+    outcomes: [
+      "Generated qualified B2B leads through optimized search programs",
+      "Balanced lead-gen and ecommerce objectives in one account structure",
+      "Improved attribution visibility into what produced pipeline",
+      "Sustained a multi-year partnership built on transparent reporting",
+    ],
+    metrics: [
+      { value: "Multi-year", label: "Strategic engagement" },
+      { value: "B2B + eComm", label: "Dual objectives" },
+      { value: "Clear", label: "Attribution & reporting" },
     ],
   },
   {
-    slug: "omega-greed",
-    title: "OmegaGreed",
-    subtitle: "Personal brand & YouTube growth",
-    category: "Creator Economy",
-    featured: false,
-    tags: ["YouTube", "Content Strategy", "Thumbnails", "Storytelling"],
+    slug: "ai-marketing-systems",
+    title: "AI Marketing Systems & Reporting",
+    subtitle: "Dashboards, automation, and the infrastructure behind the work",
+    category: "Analytics & Automation",
+    featured: true,
+    tags: ["GA4", "Looker Studio", "Automation", "AI Workflows", "Reporting"],
     summary:
-      "Content strategy and YouTube growth for a gaming and entertainment personal brand — audience building, storytelling, and video packaging that compounds over time.",
+      "Built the reporting systems, dashboards, and AI-assisted workflows that make marketing faster — turning scattered platform data into decisions and reducing the manual work between spend and insight.",
     challenge:
-      "OmegaGreed needed to grow a personal brand on YouTube with compelling packaging, consistent storytelling, and a content direction that could scale beyond individual videos.",
-    approach: [
-      "Developed content strategy aligned with audience interests and platform trends",
-      "Advised on video packaging — titles, thumbnails, and hooks for click-through",
-      "Built storytelling frameworks for serial content and retention",
-      "Used performance data to inform content direction and publishing cadence",
-      "Supported channel growth through strategic planning and iteration",
+      "Marketing data lived in too many places. Pulling a clear answer to \"what's working?\" took days of manual exporting and spreadsheet wrangling — slowing decisions and hiding where budget was being wasted.",
+    role:
+      "I designed and built the analytics and automation layer — reporting dashboards, data connections, and AI-assisted workflows that compressed reporting time and surfaced the metrics that actually drive decisions.",
+    strategy: [
+      "Centralized cross-platform spend and performance data into clear, revenue-connected dashboards",
+      "Automated recurring reporting pulls to eliminate manual exports",
+      "Built AI-assisted workflows for summarizing performance and drafting recommendations",
+      "Standardized naming and tracking so attribution stayed clean as accounts scaled",
+      "Designed reporting around the questions stakeholders actually ask",
     ],
-    results: [
-      "Grew YouTube audience through strategic content and packaging",
-      "Improved content consistency and brand positioning",
-      "Created repeatable frameworks for ideation and production",
-      "Strengthened audience engagement and community building",
-    ],
-    platforms: ["YouTube", "YouTube Analytics", "Content planning tools"],
+    platforms: ["GA4", "Looker Studio", "Google Tag Manager", "Google Sheets API", "Next.js", "AI tooling"],
     skills: [
-      "Content strategy",
-      "YouTube growth",
-      "Video packaging",
-      "Storytelling",
-      "Audience building",
+      "Marketing analytics",
+      "Dashboard design",
+      "Marketing automation",
+      "AI workflow development",
+      "Attribution",
+    ],
+    outcomes: [
+      "Built scalable reporting systems used to guide spend decisions",
+      "Reduced manual reporting time through automation",
+      "Improved attribution visibility across channels",
+      "Created repeatable systems the work could scale on",
+    ],
+    metrics: [
+      { value: "Hours → minutes", label: "Reporting time reduced" },
+      { value: "Unified", label: "Cross-platform data" },
+      { value: "AI-assisted", label: "Insight workflows" },
     ],
   },
   {
-    slug: "the-food-experience",
-    title: "The Food Experience",
-    subtitle: "Local business web presence from concept to launch",
-    category: "Local Business",
+    slug: "performance-creative-video",
+    title: "Performance Creative & Video Marketing",
+    subtitle: "Creative strategy and video built to perform, not just look good",
+    category: "Creative & Video",
     featured: false,
-    tags: ["Web Design", "Branding", "UX", "Mobile", "Launch"],
+    tags: ["YouTube", "Creative Testing", "Video Strategy", "Packaging"],
     summary:
-      "End-to-end website design and launch for a Buffalo, NY catering business — brand positioning, content structure, mobile optimization, and a polished local web presence.",
+      "Developed performance-focused creative and video strategy — from ad concepts and testing frameworks to content packaging that grew audiences and improved paid social and YouTube results.",
     challenge:
-      "The Food Experience needed a professional site that reflected their catering quality, worked flawlessly on mobile, and made it easy for potential clients to explore menus and request quotes.",
-    approach: [
-      "Designed and built a mobile-first website with clear content hierarchy",
-      "Developed brand-aligned visual design and typography",
-      "Structured catering menu content for easy browsing",
-      "Optimized UX for quote requests and contact conversion",
+      "On YouTube and paid social, creative is the lever — but most creative is made on instinct, not feedback. The need was a repeatable way to produce, test, and learn from creative that actually moved performance.",
+    role:
+      "I owned creative strategy for performance — defining testing frameworks, advising on packaging and hooks, and translating performance data into the next round of concepts.",
+    strategy: [
+      "Built testing frameworks for hooks, formats, and messaging tied to performance data",
+      "Advised on video packaging — titles, thumbnails, and openings optimized for retention and click-through",
+      "Developed storytelling structures for serial content and audience growth",
+      "Used analytics to inform creative direction and publishing cadence",
+      "Closed the loop between performance and the next creative iteration",
+    ],
+    platforms: ["YouTube", "Meta Ads", "YouTube Analytics", "Creative tooling"],
+    skills: [
+      "Creative strategy",
+      "Video marketing",
+      "Creative testing",
+      "Audience growth",
+      "Content packaging",
+    ],
+    outcomes: [
+      "Grew audiences through strategic content and packaging",
+      "Improved paid social and video creative performance",
+      "Built repeatable frameworks for creative ideation and testing",
+      "Strengthened the link between creative quality and results",
+    ],
+    metrics: [
+      { value: "Data-driven", label: "Creative testing" },
+      { value: "Retention-first", label: "Video packaging" },
+      { value: "Repeatable", label: "Ideation frameworks" },
+    ],
+  },
+  {
+    slug: "full-funnel-web-cro",
+    title: "Full-Funnel Web & Conversion Systems",
+    subtitle: "Websites and landing pages designed to convert",
+    category: "Web & CRO",
+    featured: false,
+    tags: ["Web Design", "CRO", "Landing Pages", "UX", "Launch"],
+    summary:
+      "Designed and shipped websites and landing pages built around conversion — clear structure, mobile-first UX, and a direct path from visitor to contact, taken from concept through launch.",
+    challenge:
+      "A business needed a professional web presence that worked flawlessly on mobile and made it effortless for visitors to take the next step — not a template that looked fine but converted poorly.",
+    role:
+      "I led the project end-to-end — information architecture, design, content structure, and launch — with conversion as the guiding constraint at every step.",
+    strategy: [
+      "Designed a mobile-first site with a clear content hierarchy and conversion path",
+      "Structured content around how visitors actually decide and what they need to see",
+      "Optimized UX for contact, inquiry, and conversion actions",
+      "Built a clean, maintainable structure that could scale with the business",
       "Managed the project from concept through launch and deployment",
     ],
-    results: [
-      "Launched a polished, mobile-optimized catering website",
-      "Established clear brand presence for a local food business",
-      "Created scalable content structure for menu updates",
-      "Delivered a complete digital experience from strategy to deployment",
-    ],
-    platforms: ["HTML/CSS", "Squarespace embed", "Mobile-first design"],
+    platforms: ["Next.js / Web", "Responsive design", "Landing page tooling", "Analytics"],
     skills: [
-      "Website design",
-      "Small business branding",
-      "UX",
-      "Content structure",
+      "Conversion optimization",
+      "Web design & UX",
+      "Information architecture",
       "Project management",
       "Launch & deployment",
+    ],
+    outcomes: [
+      "Launched polished, mobile-optimized web experiences",
+      "Improved the path from visitor to contact",
+      "Delivered complete projects from strategy through launch",
+      "Built maintainable structures that scale with the business",
+    ],
+    metrics: [
+      { value: "Mobile-first", label: "Designed for how people browse" },
+      { value: "Concept → launch", label: "Owned end-to-end" },
+      { value: "Conversion-led", label: "Every decision" },
     ],
   },
 ];

@@ -37,7 +37,7 @@ export const experienceHighlights = [
     period: "Consulting",
     summary:
       "YouTube and Meta campaigns for a leading digital education brand — webinars, digital products, funnels, and creative testing at scale.",
-    slug: "think-media",
+    slug: "scaling-creator-businesses",
   },
   {
     company: "PoolSupplies.com",
@@ -45,7 +45,7 @@ export const experienceHighlights = [
     period: "Consulting",
     summary:
       "Multi-channel ecommerce growth across Google, Amazon, and Microsoft Ads — campaign architecture supporting $1M+ quarterly revenue.",
-    slug: "pool-supplies",
+    slug: "enterprise-ecommerce-growth",
   },
   {
     company: "VoIP Supply",
@@ -53,7 +53,7 @@ export const experienceHighlights = [
     period: "Long-term engagement",
     summary:
       "B2B and ecommerce paid search — lead generation, performance reporting, and strategic account management.",
-    slug: "voip-supply",
+    slug: "b2b-lead-generation",
   },
   {
     company: "OmegaGreed",
@@ -61,7 +61,7 @@ export const experienceHighlights = [
     period: "Consulting",
     summary:
       "Personal brand growth through content strategy, storytelling, thumbnails, and audience development.",
-    slug: "omega-greed",
+    slug: "performance-creative-video",
   },
   {
     company: "The Food Experience",
@@ -69,7 +69,7 @@ export const experienceHighlights = [
     period: "Project",
     summary:
       "End-to-end website design, UX, and launch for a Buffalo, NY catering business.",
-    slug: "the-food-experience",
+    slug: "full-funnel-web-cro",
   },
 ] as const;
 

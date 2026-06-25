@@ -10,8 +10,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/resume", destination: "/hire-me", permanent: true },
-      { source: "/work/poolsupplies", destination: "/work/pool-supplies", permanent: true },
-      { source: "/work/omegagreed", destination: "/work/omega-greed", permanent: true },
+      { source: "/work/think-media", destination: "/work/scaling-creator-businesses", permanent: true },
+      { source: "/work/poolsupplies", destination: "/work/enterprise-ecommerce-growth", permanent: true },
+      { source: "/work/pool-supplies", destination: "/work/enterprise-ecommerce-growth", permanent: true },
+      { source: "/work/voip-supply", destination: "/work/b2b-lead-generation", permanent: true },
+      { source: "/work/omegagreed", destination: "/work/performance-creative-video", permanent: true },
+      { source: "/work/omega-greed", destination: "/work/performance-creative-video", permanent: true },
+      { source: "/work/the-food-experience", destination: "/work/full-funnel-web-cro", permanent: true },
       {
         source: "/work/geoffreyrcrawford-com",
         destination: "/work",

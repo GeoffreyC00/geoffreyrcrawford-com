@@ -7,49 +7,59 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    id: "paid-media",
+    id: "performance-marketing",
+    title: "Performance Marketing",
+    description:
+      "Full-funnel paid acquisition built around revenue, not vanity metrics — strategy, execution, and the measurement that proves it worked.",
+    items: ["Channel strategy", "Funnel design", "Budget allocation", "Scaling systems"],
+  },
+  {
+    id: "paid-media-strategy",
     title: "Paid Media Strategy",
     description:
-      "Full-funnel paid acquisition across search, social, and marketplace channels — built for scale, efficiency, and measurable revenue growth.",
+      "Campaign architecture and account structure across search, social, and marketplace — designed to scale efficiently and stay measurable.",
     items: ["Google Ads", "Meta Ads", "Microsoft Ads", "Amazon Ads", "YouTube Ads"],
   },
   {
-    id: "ai-consulting",
-    title: "AI Consulting & Automation",
+    id: "marketing-analytics",
+    title: "Marketing Analytics",
     description:
-      "Practical AI systems that reduce manual work, improve decision speed, and connect marketing data to business outcomes.",
-    items: [
-      "Marketing automation",
-      "AI workflows",
-      "Reporting systems",
-      "Data dashboards",
-      "Operational efficiency",
-    ],
+      "Reporting and attribution that answer \"what's actually working?\" — connecting spend to revenue across every channel.",
+    items: ["GA4", "Looker Studio", "Attribution", "Reporting systems"],
   },
   {
-    id: "conversion",
+    id: "marketing-automation",
+    title: "Marketing Automation",
+    description:
+      "The infrastructure behind the work — automated reporting, data connections, and workflows that remove manual busywork.",
+    items: ["Reporting automation", "Data pipelines", "Workflow design", "Tooling integration"],
+  },
+  {
+    id: "conversion-optimization",
     title: "Conversion Optimization",
     description:
-      "Landing pages, funnels, and lead systems designed to turn traffic into pipeline — not just clicks.",
-    items: ["Landing pages", "Funnels", "Lead generation systems"],
+      "Landing pages, funnels, and lead systems engineered to turn traffic into pipeline — not just clicks.",
+    items: ["Landing pages", "Funnel optimization", "Lead systems", "CRO"],
   },
   {
-    id: "seo",
-    title: "SEO & Content Strategy",
+    id: "video-creative",
+    title: "Video Marketing & Creative",
     description:
-      "Technical foundations and content planning that compound organic growth alongside paid performance.",
-    items: ["Technical SEO", "Content planning", "Organic growth"],
+      "Performance-focused creative and video strategy — where creative quality is the real lever on paid social and YouTube.",
+    items: ["Creative testing", "Video strategy", "Packaging", "Paid social content"],
   },
   {
-    id: "video",
-    title: "Video Ad Creative",
+    id: "ai-workflows",
+    title: "AI Workflow Development",
     description:
-      "Performance-focused creative strategy for paid social and YouTube — where creative quality directly drives ROAS.",
-    items: [
-      "Performance-focused creative",
-      "UGC",
-      "Paid social content",
-      "YouTube creative strategy",
-    ],
+      "Practical AI applied to marketing operations — summarizing performance, drafting recommendations, and speeding up decisions.",
+    items: ["AI reporting", "Workflow automation", "Decision support", "Operational efficiency"],
+  },
+  {
+    id: "fractional-growth",
+    title: "Fractional Growth Consulting",
+    description:
+      "Embedded, senior-level growth leadership — strategy and hands-on execution without the cost of a full-time hire.",
+    items: ["Growth strategy", "Team enablement", "Roadmapping", "Hands-on execution"],
   },
 ];

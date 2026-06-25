@@ -10,9 +10,9 @@ export const siteConfig = {
   linkedin: "https://www.linkedin.com/in/geoffreyrcrawford",
   instagram: "https://www.instagram.com/geoffreyrcrawford/",
   location: "Los Angeles, CA",
-  headline: "Growth Marketing, Paid Media & AI Systems",
+  headline: "I build performance marketing systems that scale revenue.",
   subheadline:
-    "I help businesses grow through paid ads, AI-powered workflows, conversion systems, analytics, and full-funnel marketing strategy.",
+    "Paid media, analytics, AI, and automation — engineered into systems that turn ad spend into predictable, measurable growth.",
 };
 
 export const navLinks = [
@@ -58,15 +58,48 @@ export const audiencePaths = [
 ] as const;
 
 export const proofPoints = [
-  "7+ years in digital marketing",
-  "Up to $200K+ monthly ad spend managed",
+  "7+ years in performance marketing",
+  "Six-figure monthly ad budgets managed",
   "Google, Meta, YouTube, Amazon & Microsoft Ads",
-  "eCommerce, SaaS, B2B & creator economy",
+  "eCommerce, B2B, SaaS & creator economy",
 ] as const;
 
 export const roles = [
-  "Growth Marketing Strategist",
-  "Paid Media Expert",
-  "AI Systems Consultant",
-  "Marketing Operator",
+  "Performance Marketing",
+  "Growth Strategy",
+  "Marketing Analytics",
+  "AI & Automation",
+] as const;
+
+export const capabilities = [
+  {
+    title: "Full-Funnel Paid Media",
+    description:
+      "Campaign architecture across Google, Meta, YouTube, Amazon, and Microsoft — built to scale efficiently.",
+  },
+  {
+    title: "Marketing Analytics & Reporting",
+    description:
+      "GA4, Looker Studio, and attribution systems that connect spend to revenue and answer what's working.",
+  },
+  {
+    title: "AI Marketing Systems",
+    description:
+      "Automation and AI-assisted workflows that compress reporting time and speed up decisions.",
+  },
+  {
+    title: "Conversion Optimization",
+    description:
+      "Landing pages, funnels, and lead systems engineered to turn traffic into pipeline.",
+  },
+  {
+    title: "Performance Creative & Video",
+    description:
+      "Creative strategy and testing frameworks that treat creative as the real performance lever.",
+  },
+  {
+    title: "Growth Strategy",
+    description:
+      "Senior, embedded thinking that ties channels, data, and offers into one coherent growth plan.",
+  },
 ] as const;
