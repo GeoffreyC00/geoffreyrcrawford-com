@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Instagram, Linkedin, Mail } from "lucide-react";
-import { NewsletterSignup } from "@/components/shared/newsletter-signup";
+import { NewsletterForm } from "@/components/newsletter/newsletter-form";
 import { footerSections, siteConfig } from "@/lib/site-config";
 
 export function Footer() {
@@ -20,7 +20,7 @@ export function Footer() {
             </p>
           </div>
           <div className="lg:pt-1">
-            <NewsletterSignup />
+            <NewsletterForm source="footer" />
           </div>
         </div>
 

@@ -3,6 +3,10 @@ import { siteConfig } from "@/lib/site-config";
 
 type SubscribeBody = {
   email?: string;
+  /** Where the signup came from (footer, lead-magnet slug, launch, etc.). */
+  source?: string;
+  /** Optional override so different forms can target different audiences. */
+  audienceId?: string;
 };
 
 export async function POST(request: Request) {
@@ -15,6 +19,7 @@ export async function POST(request: Request) {
   }
 
   const email = body.email?.trim();
+  const source = body.source?.trim() || "website";
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!email || !emailPattern.test(email)) {
@@ -22,7 +27,7 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const audienceId = process.env.RESEND_AUDIENCE_ID;
+  const audienceId = body.audienceId?.trim() || process.env.RESEND_AUDIENCE_ID;
   const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
   const toEmail = process.env.CONTACT_TO_EMAIL ?? siteConfig.inboxEmail;
 
@@ -71,8 +76,8 @@ export async function POST(request: Request) {
         to: [toEmail],
         reply_to: email,
         subject: "New newsletter subscriber",
-        text: `New subscriber: ${email}`,
-        html: `<p>New newsletter subscriber: <strong>${email}</strong></p>`,
+        text: `New subscriber: ${email}\nSource: ${source}`,
+        html: `<p>New newsletter subscriber: <strong>${email}</strong></p><p>Source: ${source}</p>`,
       }),
     });
 

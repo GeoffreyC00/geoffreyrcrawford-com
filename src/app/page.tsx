@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CtaSection, HeroCta } from "@/components/shared/cta-section";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ProfilePortrait } from "@/components/shared/profile-portrait";
 import { Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
 import { SectionHeader } from "@/components/shared/section-header";
@@ -29,9 +30,38 @@ const platforms = [
   "Google Tag Manager",
 ];
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  jobTitle: "Growth Marketing Strategist",
+  description: siteConfig.description,
+  email: `mailto:${siteConfig.email}`,
+  address: { "@type": "PostalAddress", addressLocality: "Los Angeles", addressRegion: "CA" },
+  sameAs: [siteConfig.linkedin, siteConfig.instagram],
+  knowsAbout: [
+    "Performance Marketing",
+    "Paid Media",
+    "Marketing Analytics",
+    "Marketing Automation",
+    "Conversion Optimization",
+    "AI Marketing Systems",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.name,
+  url: siteConfig.url,
+};
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={personJsonLd} />
+      <JsonLd data={websiteJsonLd} />
       {/* Hero */}
       <section className="relative overflow-hidden section-padding !pb-20 !pt-24 md:!pt-32">
         <div className="pointer-events-none absolute inset-0 bg-grid-fade" />
