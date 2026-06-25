@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { FileText } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/shared/cta-section";
+import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeader } from "@/components/shared/section-header";
 import { Card, CardContent } from "@/components/ui/card";
+import { articles } from "@/lib/data/articles";
 import { insightCategories } from "@/lib/data/insights";
 
 export const metadata: Metadata = {
@@ -14,44 +17,61 @@ export const metadata: Metadata = {
 export default function InsightsPage() {
   return (
     <>
-      <section className="section-padding !pb-12">
+      <PageHero
+        label="Insights"
+        title="Perspectives on growth."
+        description="Practical thinking on paid media, marketing systems, AI, and building revenue — from someone in the accounts, not the sidelines."
+      />
+
+      <section className="section-padding border-t border-border !py-16">
         <div className="container-wide">
-          <div className="max-w-3xl">
-            <p className="text-sm font-medium uppercase tracking-widest text-accent">Insights</p>
-            <h1 className="mt-4 text-display-md font-semibold tracking-tight sm:text-5xl">
-              Perspectives on growth.
-            </h1>
-            <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
-              Articles on paid media, AI, marketing systems, and growth strategy — coming soon.
-            </p>
+          <p className="text-sm font-medium uppercase tracking-widest text-accent">Latest</p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight">Articles</h2>
+          <div className="mt-10 space-y-4">
+            {articles.map((article) => (
+              <Link key={article.slug} href={`/insights/${article.slug}`} className="group block">
+                <Card className="transition-all duration-300 hover:border-accent/30 hover:shadow-card-hover">
+                  <CardContent className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-widest text-accent">
+                        {article.category}
+                      </p>
+                      <h3 className="mt-2 text-xl font-semibold tracking-tight transition-colors group-hover:text-accent">
+                        {article.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{article.description}</p>
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        {new Date(article.publishedAt).toLocaleDateString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        })}{" "}
+                        · {article.readTime}
+                      </p>
+                    </div>
+                    <ArrowRight className="hidden h-5 w-5 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-accent sm:block" />
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border !py-16">
+      <section className="section-padding border-t border-border bg-card/20 !py-16">
         <div className="container-wide">
           <SectionHeader
             label="Topics"
-            title="What I'll be writing about."
-            description="A framework for future articles covering the strategies, systems, and tools behind modern growth marketing."
+            title="More coming soon."
+            description="Future articles on the strategies, systems, and tools behind modern growth marketing."
           />
-
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {insightCategories.map((category) => (
-              <Card
-                key={category.id}
-                className="transition-all duration-300 hover:border-accent/30 hover:shadow-card-hover"
-              >
+              <Card key={category.id} className="border-border/80">
                 <CardContent className="p-6">
-                  <div className="mb-4 inline-flex rounded-lg bg-muted p-2.5">
-                    <FileText className="h-5 w-5 text-muted-foreground" />
-                  </div>
                   <h3 className="text-lg font-semibold tracking-tight">{category.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {category.description}
-                  </p>
-                  <p className="mt-4 text-xs font-medium uppercase tracking-widest text-accent/60">
-                    Coming soon
                   </p>
                 </CardContent>
               </Card>

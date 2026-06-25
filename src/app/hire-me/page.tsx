@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Download, Linkedin } from "lucide-react";
+import { ArrowRight, Linkedin } from "lucide-react";
 import { CtaSection } from "@/components/shared/cta-section";
 import { PageHero } from "@/components/shared/page-hero";
+import { ResumeDownloadButton } from "@/components/resume/resume-download-button";
 import { Badge } from "@/components/ui/badge";
 import { LinkButton } from "@/components/ui/link-button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -38,15 +39,7 @@ export default function HireMePage() {
             Schedule a Conversation
             <ArrowRight className="h-4 w-4" />
           </LinkButton>
-          <button
-            type="button"
-            disabled
-            className="inline-flex h-12 items-center gap-2 rounded-lg border border-border px-6 text-sm text-muted-foreground opacity-60"
-            title="Resume PDF coming soon"
-          >
-            <Download className="h-4 w-4" />
-            Download Resume (soon)
-          </button>
+          <ResumeDownloadButton />
         </div>
       </PageHero>
 

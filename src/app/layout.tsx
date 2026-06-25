@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { SiteShell } from "@/components/layout/site-shell";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
+        <GoogleAnalytics />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

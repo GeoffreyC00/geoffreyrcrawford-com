@@ -7,21 +7,52 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/lib/site-config";
 
-export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+type FormStatus = "idle" | "loading" | "success" | "error";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+export function ContactForm() {
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = data.get("name") as string;
     const email = data.get("email") as string;
     const message = data.get("message") as string;
 
-    const subject = encodeURIComponent(`Project inquiry from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
+        return;
+      }
+
+      if (response.status === 503 && result.fallback === "mailto") {
+        const subject = encodeURIComponent(`Project inquiry from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+        window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+        setStatus("success");
+        return;
+      }
+
+      setErrorMessage(result.error ?? "Something went wrong. Please try again.");
+      setStatus("error");
+    } catch {
+      setErrorMessage("Network error. Please email directly or try again.");
+      setStatus("error");
+    }
   }
 
   return (
@@ -29,8 +60,8 @@ export function ContactForm() {
       <div className="lg:col-span-2">
         <h2 className="text-2xl font-semibold tracking-tight">Get in touch</h2>
         <p className="mt-4 text-muted-foreground leading-relaxed">
-          Interested in consulting, a project collaboration, or just want to connect? Send a
-          message and I&apos;ll get back to you.
+          Hiring, consulting, or local business project — send a message and I&apos;ll get back to
+          you.
         </p>
 
         <div className="mt-10 space-y-6">
@@ -65,20 +96,13 @@ export function ContactForm() {
       </div>
 
       <div className="lg:col-span-3">
-        {submitted ? (
+        {status === "success" ? (
           <div className="rounded-xl border border-border bg-card p-8 text-center">
-            <p className="text-lg font-medium">Opening your email client...</p>
+            <p className="text-lg font-medium">Message sent!</p>
             <p className="mt-2 text-sm text-muted-foreground">
-              If it didn&apos;t open, email me directly at{" "}
-              <a href={`mailto:${siteConfig.email}`} className="text-accent hover:underline">
-                {siteConfig.email}
-              </a>
+              Thanks for reaching out. I&apos;ll get back to you soon.
             </p>
-            <Button
-              variant="outline"
-              className="mt-6"
-              onClick={() => setSubmitted(false)}
-            >
+            <Button variant="outline" className="mt-6" onClick={() => setStatus("idle")}>
               Send another message
             </Button>
           </div>
@@ -89,7 +113,7 @@ export function ContactForm() {
                 <label htmlFor="name" className="mb-2 block text-sm font-medium">
                   Name
                 </label>
-                <Input id="name" name="name" placeholder="Your name" required />
+                <Input id="name" name="name" placeholder="Your name" required disabled={status === "loading"} />
               </div>
               <div>
                 <label htmlFor="email" className="mb-2 block text-sm font-medium">
@@ -101,6 +125,7 @@ export function ContactForm() {
                   type="email"
                   placeholder="you@company.com"
                   required
+                  disabled={status === "loading"}
                 />
               </div>
             </div>
@@ -111,12 +136,16 @@ export function ContactForm() {
               <Textarea
                 id="message"
                 name="message"
-                placeholder="Tell me about your project or goals..."
+                placeholder="Tell me about your project, role, or goals..."
                 required
+                disabled={status === "loading"}
               />
             </div>
-            <Button type="submit" size="lg">
-              Send Message
+            {status === "error" && errorMessage && (
+              <p className="text-sm text-red-400">{errorMessage}</p>
+            )}
+            <Button type="submit" size="lg" disabled={status === "loading"}>
+              {status === "loading" ? "Sending..." : "Send Message"}
               <Send className="h-4 w-4" />
             </Button>
           </form>

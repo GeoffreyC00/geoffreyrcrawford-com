@@ -62,7 +62,31 @@ npm run dev
 | **Squarespace Domains** | DNS (Vercel preset) + Google Workspace MX |
 | **GitHub** | Source control |
 
-## Contact
+## Environment variables (Vercel)
 
-- Email: info@geoffreyrcrawford.com
-- LinkedIn: https://www.linkedin.com/in/geoffreyrcrawford
+Add these in **Vercel → Project → Settings → Environment Variables**:
+
+| Variable | Purpose |
+|----------|---------|
+| `RESEND_API_KEY` | Contact form email delivery ([resend.com](https://resend.com)) |
+| `CONTACT_TO_EMAIL` | Where form submissions go (`info@geoffreyrcrawford.com`) |
+| `CONTACT_FROM_EMAIL` | Verified sender in Resend (use your domain once verified) |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 measurement ID |
+
+Copy `.env.example` locally for development. Without `RESEND_API_KEY`, the contact form falls back to `mailto:`.
+
+## Google Search Console
+
+1. Go to [search.google.com/search-console](https://search.google.com/search-console)
+2. Add property: `https://www.geoffreyrcrawford.com`
+3. Verify via DNS TXT record in Squarespace Domains (or HTML tag in Vercel)
+4. Submit sitemap: `https://www.geoffreyrcrawford.com/sitemap.xml` (add later if needed)
+
+## Cancel Squarespace website
+
+Your site is live on Vercel. You can cancel **Squarespace website hosting** — keep **Squarespace Domains** for DNS and Google Workspace email.
+
+1. Squarespace → Settings → Billing → cancel website plan
+2. Keep domain + DNS (Vercel preset + Google Workspace MX records)
+3. Do **not** delete Google Workspace MX records
+
