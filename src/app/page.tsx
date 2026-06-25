@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaSection, HeroCta } from "@/components/shared/cta-section";
 import { JsonLd } from "@/components/seo/json-ld";
-import { ProfilePortrait } from "@/components/shared/profile-portrait";
+import { EditorialImage } from "@/components/shared/editorial-image";
 import { Parallax, Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
 import { SectionHeader } from "@/components/shared/section-header";
 import { SocialLinksRow } from "@/components/shared/social-links";
 import { CaseStudyCard } from "@/components/work/case-study-card";
 import { featuredCaseStudies } from "@/lib/data/case-studies";
+import { photos } from "@/lib/photography";
 import { capabilities, proofPoints, roles, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -97,8 +98,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            <Parallax distance={36} className="animate-rise hidden lg:block [animation-delay:300ms]">
-              <ProfilePortrait variant="dark" priority className="aspect-[4/5] w-full" />
+            <Parallax distance={40} className="animate-rise hidden lg:block [animation-delay:300ms]">
+              <EditorialImage
+                src={photos.portraitEditorial.src}
+                alt={photos.portraitEditorial.alt}
+                priority
+                zoom={false}
+                className="aspect-[4/5] w-full"
+                imgClassName="object-top"
+                sizes="(max-width: 1024px) 100vw, 22rem"
+              />
             </Parallax>
           </div>
         </div>
@@ -124,6 +133,25 @@ export default function HomePage() {
               {platform}
             </span>
           ))}
+        </div>
+      </section>
+
+      {/* Full-bleed brand band — creative execution */}
+      <section className="relative">
+        <EditorialImage
+          src={photos.productionCamera.src}
+          alt={photos.productionCamera.alt}
+          className="aspect-[4/5] w-full sm:aspect-[16/10] lg:aspect-[21/9]"
+          sizes="100vw"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="container-wide px-6 pb-10 sm:px-10 lg:px-16 lg:pb-14">
+            <p className="max-w-3xl font-serif text-2xl font-light leading-snug text-balance sm:text-3xl">
+              Marketing, analytics, and the camera — I work at the intersection of performance and
+              creative, not on one side of it.
+            </p>
+          </div>
         </div>
       </section>
 

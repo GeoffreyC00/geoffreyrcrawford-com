@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { CtaSection } from "@/components/shared/cta-section";
-import { ProfilePortrait } from "@/components/shared/profile-portrait";
+import { EditorialImage } from "@/components/shared/editorial-image";
 import { Parallax, Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
+import { photos } from "@/lib/photography";
 import { roles } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -58,8 +59,16 @@ export default function AboutPage() {
                 the rare mix that turns marketing budgets into systems that scale.
               </p>
             </div>
-            <Parallax distance={28} className="animate-rise hidden lg:block [animation-delay:260ms]">
-              <ProfilePortrait variant="light" className="aspect-[4/5] w-full" />
+            <Parallax distance={32} className="animate-rise hidden lg:block [animation-delay:260ms]">
+              <EditorialImage
+                src={photos.portraitStanding.src}
+                alt={photos.portraitStanding.alt}
+                priority
+                zoom={false}
+                className="aspect-[4/5] w-full"
+                imgClassName="object-top"
+                sizes="(max-width: 1024px) 100vw, 20rem"
+              />
             </Parallax>
           </div>
         </div>
@@ -136,6 +145,52 @@ export default function AboutPage() {
                 </div>
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Editorial feature — teaching */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-7">
+              <EditorialImage
+                src={photos.speakingWhiteboard.src}
+                alt={photos.speakingWhiteboard.alt}
+                className="aspect-[4/5] w-full sm:aspect-[3/2]"
+                imgClassName="object-top"
+                sizes="(max-width: 1024px) 100vw, 50rem"
+              />
+            </div>
+            <Reveal className="lg:col-span-5">
+              <p className="kicker">Teaching &amp; leadership</p>
+              <p className="mt-6 font-serif text-display-md font-light leading-snug text-balance">
+                I teach what I build — and I build what I teach.
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
+                Whether it&apos;s a team mastermind or a client working session, the goal is the
+                same: turn complex marketing systems into something a room full of people can
+                actually act on.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-bleed documentary — collaboration */}
+      <section className="relative mt-8">
+        <EditorialImage
+          src={photos.collaborationMeeting.src}
+          alt={photos.collaborationMeeting.alt}
+          className="aspect-[4/5] w-full sm:aspect-[16/10] lg:aspect-[21/9]"
+          sizes="100vw"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="container-wide px-6 pb-10 sm:px-10 lg:px-16 lg:pb-14">
+            <p className="max-w-2xl font-serif text-2xl font-light leading-snug text-balance sm:text-3xl">
+              In the room where the decisions get made.
+            </p>
           </div>
         </div>
       </section>
