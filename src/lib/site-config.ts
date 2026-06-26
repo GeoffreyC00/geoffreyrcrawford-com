@@ -7,89 +7,40 @@ export const siteConfig = {
   url: "https://geoffreyrcrawford.com",
   email: "info@geoffreyrcrawford.com",
   inboxEmail: "geoffreyrcrawford@gmail.com",
-  linkedin: "https://www.linkedin.com/in/geoffreyrcrawford",
+  linkedin: "https://www.linkedin.com/in/geoffrey-crawford-9a761527/",
   instagram: "https://www.instagram.com/geoffreyrcrawford/",
   location: "Los Angeles, CA",
-  headline: "I build performance marketing systems that scale revenue.",
+  headline: "Performance marketing systems that scale revenue.",
   subheadline:
-    "Paid media, analytics, AI, and automation — engineered into systems that turn ad spend into predictable, measurable growth.",
+    "I build the paid media, analytics, and AI systems that turn ad spend into predictable growth.",
   newsletter: {
     title: "The systems behind the strategy",
-    description:
-      "Occasional notes on performance marketing, analytics, and AI systems. No noise — just the thinking behind the work.",
+    description: "Occasional notes on performance marketing, analytics, and AI.",
   },
 };
 
+// Primary navigation — kept deliberately small so it disappears into the background.
 export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
-  { href: "/services", label: "Services" },
   { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const footerPaths = [
-  { href: "/work-with-me", label: "Work With Me" },
-  { href: "/local-business", label: "Local Business" },
-  { href: "/hire-me", label: "Hire Me" },
-  { href: "/work", label: "Case Studies" },
-] as const;
-
-// Footer information architecture — grouped so future content pillars
-// (insights, tools, products, courses, etc.) slot in without a redesign.
-export const footerSections = [
-  {
-    title: "Explore",
-    links: [
-      { href: "/about", label: "About" },
-      { href: "/work", label: "Work" },
-      { href: "/services", label: "Services" },
-      { href: "/insights", label: "Insights" },
-    ],
-  },
-  {
-    title: "Work With Me",
-    links: [
-      { href: "/work-with-me", label: "Consulting" },
-      { href: "/local-business", label: "Local Business" },
-      { href: "/hire-me", label: "Hire Me" },
-      { href: "/contact", label: "Contact" },
-    ],
-  },
-] as const;
-
-export const audiencePaths = [
-  {
-    id: "hire",
-    title: "I'm hiring for a role",
-    description:
-      "Recruiters and hiring managers — view my background, platforms, and case study highlights.",
-    href: "/hire-me",
-    cta: "View Resume",
-  },
-  {
-    id: "consulting",
-    title: "I need marketing help",
-    description:
-      "Brands, creators, coaches, and education companies looking for a hands-on growth operator.",
-    href: "/work-with-me",
-    cta: "Work With Me",
-  },
-  {
-    id: "local",
-    title: "I run a local business",
-    description:
-      "Websites, Google Business Profile, lead capture, and simple systems that turn searches into calls.",
-    href: "/local-business",
-    cta: "Local Business Systems",
-  },
+// Minimal footer links — secondary destinations live here, not in the nav.
+export const footerLinks = [
+  { href: "/about", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/insights", label: "Insights" },
+  { href: "/work-with-me", label: "Consulting" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const proofPoints = [
   "7+ years in performance marketing",
-  "Six-figure monthly ad budgets managed",
-  "Google, Meta, YouTube, Amazon & Microsoft Ads",
-  "eCommerce, B2B, SaaS & creator economy",
+  "Six-figure monthly ad budgets",
+  "Google · Meta · YouTube · Amazon",
+  "eCommerce, B2B & creator economy",
 ] as const;
 
 export const roles = [
@@ -99,35 +50,29 @@ export const roles = [
   "AI & Automation",
 ] as const;
 
-export const capabilities = [
+// One integrated consulting offer, told as three pillars rather than a service matrix.
+export const pillars = [
   {
-    title: "Full-Funnel Paid Media",
-    description:
-      "Campaign architecture across Google, Meta, YouTube, Amazon, and Microsoft — built to scale efficiently.",
+    title: "Acquire customers",
+    body: "Paid media across Google, Meta, YouTube, and Amazon — campaign architecture built to scale efficiently.",
   },
   {
-    title: "Marketing Analytics & Reporting",
-    description:
-      "GA4, Looker Studio, and attribution systems that connect spend to revenue and answer what's working.",
+    title: "Measure performance",
+    body: "Analytics, attribution, and reporting that connect spend to revenue and answer what's actually working.",
   },
   {
-    title: "AI Marketing Systems",
-    description:
-      "Automation and AI-assisted workflows that compress reporting time and speed up decisions.",
+    title: "Build better systems",
+    body: "AI workflows, automation, and conversion systems that make growth repeatable instead of resetting every quarter.",
   },
-  {
-    title: "Conversion Optimization",
-    description:
-      "Landing pages, funnels, and lead systems engineered to turn traffic into pipeline.",
-  },
-  {
-    title: "Performance Creative & Video",
-    description:
-      "Creative strategy and testing frameworks that treat creative as the real performance lever.",
-  },
-  {
-    title: "Growth Strategy",
-    description:
-      "Senior, embedded thinking that ties channels, data, and offers into one coherent growth plan.",
-  },
+] as const;
+
+// What the single consulting engagement includes — presented as one service, not seven.
+export const consultingIncludes = [
+  "Google Ads",
+  "Meta Ads",
+  "Analytics",
+  "AI Systems",
+  "Conversion Optimization",
+  "Automation",
+  "Creative Strategy",
 ] as const;

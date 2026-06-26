@@ -39,13 +39,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <Link
-            href="/hire-me"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Hire Me
-          </Link>
+        <div className="hidden items-center md:flex">
           <LinkButton href="/work-with-me" size="sm">
             Work With Me
           </LinkButton>
@@ -77,20 +71,6 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/hire-me"
-              onClick={() => setMobileOpen(false)}
-              className="text-base text-muted-foreground"
-            >
-              Hire Me
-            </Link>
-            <Link
-              href="/local-business"
-              onClick={() => setMobileOpen(false)}
-              className="text-base text-muted-foreground"
-            >
-              Local Business
-            </Link>
             <LinkButton
               href="/work-with-me"
               className="mt-2 w-full"

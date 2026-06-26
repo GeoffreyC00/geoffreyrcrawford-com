@@ -57,14 +57,11 @@ export function HeroCta() {
         Work With Me
         <ArrowRight className="h-4 w-4" />
       </LinkButton>
-      <Link href="/hire-me" className="link-underline text-sm font-medium text-foreground">
-        View Résumé
-      </Link>
       <Link
         href="/work"
         className="link-underline text-sm font-medium text-muted-foreground hover:text-foreground"
       >
-        See My Work
+        View Work
       </Link>
     </div>
   );

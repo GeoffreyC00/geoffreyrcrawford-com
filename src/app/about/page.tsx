@@ -35,11 +35,8 @@ const platforms = [
   "Meta Ads",
   "YouTube Ads",
   "Amazon Ads",
-  "Microsoft Ads",
   "GA4",
   "Looker Studio",
-  "Google Tag Manager",
-  "HubSpot",
 ];
 
 export default function AboutPage() {
@@ -61,8 +58,8 @@ export default function AboutPage() {
             </div>
             <Parallax distance={32} className="animate-rise hidden lg:block [animation-delay:260ms]">
               <EditorialImage
-                src={photos.portraitStanding.src}
-                alt={photos.portraitStanding.alt}
+                src={photos.portraitEditorial.src}
+                alt={photos.portraitEditorial.alt}
                 priority
                 zoom={false}
                 className="aspect-[4/5] w-full"
@@ -81,36 +78,19 @@ export default function AboutPage() {
             <Reveal>
               <div className="space-y-8 text-lg leading-relaxed text-muted-foreground text-pretty">
                 <p className="font-serif text-2xl font-light leading-snug text-foreground">
-                  I started in digital marketing the way a lot of people do — running ads. But I was
-                  never satisfied just managing a platform.
+                  I started in digital marketing running ads — but I was never satisfied just
+                  managing a platform.
                 </p>
                 <p>
-                  I wanted to know <span className="text-foreground">why</span> something worked,
-                  whether it would work again, and how to build it so it didn&apos;t fall apart the
-                  moment I looked away.
-                </p>
-                <p>
-                  That curiosity pulled me deeper. Into analytics, because you can&apos;t improve
-                  what you can&apos;t measure. Into landing pages and funnels, because the best ad in
-                  the world fails against a broken conversion path. Into automation and AI, because
-                  the time you save on manual reporting is time you spend actually growing the
-                  business.
+                  I wanted to know why something worked, whether it would work again, and how to
+                  build it so it didn&apos;t fall apart the moment I looked away. That curiosity
+                  pulled me into analytics, funnels, and automation.
                 </p>
                 <p>
                   Over 7+ years I&apos;ve managed six-figure monthly budgets across Google, Meta,
-                  YouTube, Amazon, and Microsoft Ads — for ecommerce brands moving millions in
-                  revenue, B2B companies generating qualified pipeline, and creator-led education
-                  businesses scaling digital products and live events.
-                </p>
-                <p>
-                  The throughline isn&apos;t a channel or a tactic. It&apos;s the way I work: treat
-                  marketing as a system. Connect the channels, the data, and the offers into
-                  something coherent — then build the reporting and automation that lets it scale.
-                </p>
-                <p>
-                  I enjoy the hard problems most. The account nobody can make profitable. The
-                  reporting that takes three days and should take three minutes. The funnel that
-                  leaks somewhere nobody&apos;s looked. That&apos;s the work I&apos;m built for.
+                  YouTube, and Amazon — for ecommerce brands, B2B companies, and creator-led
+                  education businesses. The throughline isn&apos;t a channel. It&apos;s the way I
+                  work: treat marketing as a system.
                 </p>
               </div>
             </Reveal>
@@ -173,24 +153,6 @@ export default function AboutPage() {
                 actually act on.
               </p>
             </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-bleed documentary — collaboration */}
-      <section className="relative mt-8">
-        <EditorialImage
-          src={photos.collaborationMeeting.src}
-          alt={photos.collaborationMeeting.alt}
-          className="aspect-[4/5] w-full sm:aspect-[16/10] lg:aspect-[21/9]"
-          sizes="100vw"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0">
-          <div className="container-wide px-6 pb-10 sm:px-10 lg:px-16 lg:pb-14">
-            <p className="max-w-2xl font-serif text-2xl font-light leading-snug text-balance sm:text-3xl">
-              In the room where the decisions get made.
-            </p>
           </div>
         </div>
       </section>

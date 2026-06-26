@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/work",
-    "/services",
     "/work-with-me",
     "/local-business",
     "/hire-me",

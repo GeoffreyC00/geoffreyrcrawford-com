@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/resume", destination: "/hire-me", permanent: true },
+      { source: "/services", destination: "/work-with-me", permanent: true },
       { source: "/work/think-media", destination: "/work/scaling-creator-businesses", permanent: true },
       { source: "/work/poolsupplies", destination: "/work/enterprise-ecommerce-growth", permanent: true },
       { source: "/work/pool-supplies", destination: "/work/enterprise-ecommerce-growth", permanent: true },

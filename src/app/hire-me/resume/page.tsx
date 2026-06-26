@@ -34,7 +34,7 @@ export default function ResumePage() {
             <span>{siteConfig.location}</span>
             <span>{siteConfig.email}</span>
             <span>geoffreyrcrawford.com</span>
-            <span>linkedin.com/in/geoffreyrcrawford</span>
+            <span>linkedin.com/in/geoffrey-crawford-9a761527</span>
           </div>
         </header>
 

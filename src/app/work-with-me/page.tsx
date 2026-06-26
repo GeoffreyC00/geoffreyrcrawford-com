@@ -2,164 +2,111 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/shared/cta-section";
+import { EditorialImage } from "@/components/shared/editorial-image";
 import { PageHero } from "@/components/shared/page-hero";
 import { Reveal, Stagger, StaggerItem } from "@/components/shared/reveal";
 import { LinkButton } from "@/components/ui/link-button";
+import { photos } from "@/lib/photography";
+import { consultingIncludes, pillars } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Work With Me",
+  title: "Consulting",
   description:
-    "Hands-on growth marketing for brands, creators, coaches, and education companies — paid media, funnels, AI systems, and conversion optimization.",
+    "Performance marketing consulting — one integrated engagement spanning paid media, analytics, AI systems, conversion optimization, and creative strategy.",
 };
-
-const offerings = [
-  {
-    title: "Paid Media Strategy & Management",
-    items: [
-      "Google Ads",
-      "Meta Ads",
-      "YouTube Ads",
-      "Campaign architecture",
-      "Budget scaling & ROAS optimization",
-    ],
-  },
-  {
-    title: "Funnels & Conversion Systems",
-    items: [
-      "Landing page strategy",
-      "Lead generation funnels",
-      "Webinar & product launch flows",
-      "Creative testing frameworks",
-      "Conversion path optimization",
-    ],
-  },
-  {
-    title: "AI & Marketing Operations",
-    items: [
-      "AI reporting dashboards",
-      "Marketing automation",
-      "Workflow design",
-      "Analytics & attribution visibility",
-      "Operational efficiency",
-    ],
-  },
-];
-
-const idealFor = [
-  "Brands scaling paid acquisition",
-  "Creators and education companies",
-  "Coaches launching offers or webinars",
-  "eCommerce & B2B companies",
-  "Teams needing a hands-on operator — not an agency layer",
-];
-
-const process = [
-  "Audit where you are — channels, funnels, data, and gaps",
-  "Build a focused plan tied to revenue, not vanity metrics",
-  "Execute directly or embed with your team",
-  "Report clearly and iterate fast",
-];
 
 export default function WorkWithMePage() {
   return (
     <>
       <PageHero
-        label="Work With Me"
-        title="A growth operator in your corner."
-        description="I work directly with business owners, creators, coaches, and brands who need paid media, funnel optimization, AI-powered reporting, and marketing systems that actually move revenue — without the agency overhead."
+        label="Performance Marketing Consulting"
+        title="How I help businesses grow."
+        description="One operator across paid media, analytics, and the systems behind them — not an agency layer or a deck and a handoff."
       >
         <LinkButton href="/contact" size="lg">
-          Start a Conversation
+          Work With Me
           <ArrowRight className="h-4 w-4" />
         </LinkButton>
       </PageHero>
 
-      <section className="section-padding border-t border-hairline !pt-16">
-        <div className="container-wide">
-          <Reveal>
-            <p className="max-w-3xl font-serif text-display-md font-light leading-snug text-balance">
-              You get someone who has managed real budgets, built real dashboards, and optimized
-              real funnels — not a deck and a handoff.
+      {/* Documentary feature — consulting */}
+      <section className="relative">
+        <EditorialImage
+          src={photos.collaborationMeeting.src}
+          alt={photos.collaborationMeeting.alt}
+          className="aspect-[4/5] w-full sm:aspect-[16/10] lg:aspect-[21/9]"
+          sizes="100vw"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/15 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="container-wide px-6 pb-10 sm:px-10 lg:px-16 lg:pb-14">
+            <p className="max-w-2xl font-serif text-2xl font-light leading-snug text-balance sm:text-3xl">
+              Embedded with your team, working on the real problem.
             </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Offerings — editorial columns */}
-      <section className="section-padding border-t border-hairline">
-        <div className="container-wide">
-          <Reveal>
-            <p className="kicker">What I help with</p>
-          </Reveal>
-          <div className="mt-12 grid gap-x-12 gap-y-12 md:grid-cols-3">
-            {offerings.map((group) => (
-              <Reveal key={group.title}>
-                <div className="border-t border-border pt-7">
-                  <h3 className="font-serif text-xl font-light leading-snug">{group.title}</h3>
-                  <ul className="mt-5 space-y-2.5">
-                    {group.items.map((item) => (
-                      <li key={item} className="text-[15px] text-muted-foreground">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* Fit + process */}
+      {/* Three pillars */}
+      <section className="section-padding">
+        <div className="container-wide">
+          <Stagger className="grid gap-x-16 gap-y-14 md:grid-cols-3">
+            {pillars.map((pillar, i) => (
+              <StaggerItem key={pillar.title}>
+                <div className="border-t border-border pt-7">
+                  <span className="font-mono text-sm text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h2 className="mt-6 font-serif text-[1.75rem] font-light leading-tight">
+                    {pillar.title}
+                  </h2>
+                  <p className="mt-4 leading-relaxed text-muted-foreground text-pretty">
+                    {pillar.body}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      {/* One integrated engagement */}
       <section className="section-padding border-t border-hairline">
-        <div className="container-wide grid gap-16 lg:grid-cols-2 lg:gap-24">
+        <div className="container-wide">
           <Reveal>
-            <p className="kicker">A good fit if you are…</p>
-            <ul className="mt-6 space-y-3.5">
-              {idealFor.map((item) => (
-                <li key={item} className="text-lg leading-relaxed text-muted-foreground">
+            <p className="max-w-3xl font-serif text-display-md font-light leading-snug text-balance">
+              It&apos;s one integrated engagement — not seven separate services.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+              {consultingIncludes.map((item) => (
+                <li key={item} className="text-muted-foreground">
                   {item}
                 </li>
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="kicker">How engagements work</p>
-            <Stagger className="mt-6">
-              {process.map((step, i) => (
-                <StaggerItem key={step}>
-                  <div className="flex gap-5 border-t border-border py-5">
-                    <span className="font-mono text-sm text-muted-foreground">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="text-[15px] leading-relaxed text-foreground/90">{step}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-              <div className="border-t border-border" />
-            </Stagger>
+          <Reveal delay={0.15}>
+            <p className="mt-12">
+              <Link
+                href="/local-business"
+                className="link-underline text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
+                Run a local business? See local systems →
+              </Link>
+            </p>
           </Reveal>
-        </div>
-      </section>
-
-      <section className="section-padding border-t border-hairline">
-        <div className="container-wide">
-          <Link
-            href="/local-business"
-            className="link-underline text-sm font-medium text-foreground"
-          >
-            Also exploring local business systems? →
-          </Link>
         </div>
       </section>
 
       <CtaSection
         title="Ready to talk growth?"
-        description="Tell me what you're building and where you're stuck — paid media, funnels, or the systems behind them."
+        description="Tell me what you're building and where you're stuck."
         primaryHref="/contact"
         primaryLabel="Get in Touch"
         secondaryHref="/work"
-        secondaryLabel="See Case Studies"
+        secondaryLabel="See the Work"
       />
     </>
   );

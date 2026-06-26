@@ -4,6 +4,7 @@ export type CaseStudy = {
   subtitle: string;
   category: string;
   featured: boolean;
+  image?: { src: string; alt: string };
   tags: string[];
   summary: string;
   challenge: string;
@@ -22,6 +23,10 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "Multi-channel paid media architecture for a high-volume retailer",
     category: "eCommerce",
     featured: true,
+    image: {
+      src: "/images/photography/collaboration-mastermind.jpg",
+      alt: "Geoffrey R. Crawford reviewing strategy in a working session",
+    },
     tags: ["Google Ads", "Amazon Ads", "Microsoft Ads", "ROAS", "Shopping"],
     summary:
       "Built and scaled cross-platform paid acquisition for a large ecommerce retailer — designing campaign architecture across Search, Shopping, and marketplace channels that supported millions in annual revenue.",
@@ -62,6 +67,10 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "Paid acquisition for digital products, webinars, and live events",
     category: "Creator Economy & Digital Products",
     featured: true,
+    image: {
+      src: "/images/photography/speaking-whiteboard.jpg",
+      alt: "Geoffrey R. Crawford teaching marketing strategy at a whiteboard",
+    },
     tags: ["YouTube Ads", "Meta Ads", "Funnels", "Webinars", "Creative Testing"],
     summary:
       "Drove paid acquisition for a leading creator-led education brand — scaling webinar registrations, digital product sales, and live event attendance through YouTube and Meta with a high-velocity creative testing system.",
@@ -102,6 +111,10 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "Long-term paid search program balancing leads and ecommerce",
     category: "B2B",
     featured: true,
+    image: {
+      src: "/images/photography/collaboration-meeting.jpg",
+      alt: "Geoffrey R. Crawford in a client working session",
+    },
     tags: ["Google Ads", "Microsoft Ads", "Lead Gen", "Attribution", "Reporting"],
     summary:
       "Ran a sustained B2B paid search program for a specialized supplier — generating qualified leads while supporting ecommerce revenue, with the reporting and account management to back long-term strategic decisions.",
@@ -142,6 +155,10 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "Dashboards, automation, and the infrastructure behind the work",
     category: "Analytics & Automation",
     featured: true,
+    image: {
+      src: "/images/photography/production-camera.jpg",
+      alt: "Geoffrey R. Crawford operating a cinema camera on set",
+    },
     tags: ["GA4", "Looker Studio", "Automation", "AI Workflows", "Reporting"],
     summary:
       "Built the reporting systems, dashboards, and AI-assisted workflows that make marketing faster — turning scattered platform data into decisions and reducing the manual work between spend and insight.",

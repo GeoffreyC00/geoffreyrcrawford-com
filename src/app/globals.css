@@ -19,6 +19,8 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.7;
   }
 
   ::selection {
