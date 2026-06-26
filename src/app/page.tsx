@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CtaSection, HeroCta } from "@/components/shared/cta-section";
 import { JsonLd } from "@/components/seo/json-ld";
-import { EditorialImage } from "@/components/shared/editorial-image";
 import { Parallax, Reveal } from "@/components/shared/reveal";
 import { CaseStudyCard } from "@/components/work/case-study-card";
 import { featuredCaseStudies } from "@/lib/data/case-studies";
@@ -50,7 +50,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="section-padding !pb-24 !pt-24 md:!pt-32">
         <div className="container-wide">
-          <div className="grid items-center gap-14 lg:grid-cols-[1fr_24rem] lg:gap-20">
+          <div className="grid items-center gap-14 lg:grid-cols-[1fr_30rem] lg:gap-16">
             <div>
               <p className="kicker animate-rise">Growth Marketing Strategist — {siteConfig.location}</p>
 
@@ -81,16 +81,26 @@ export default function HomePage() {
               </div>
             </div>
 
-            <Parallax distance={40} className="animate-rise hidden lg:block [animation-delay:300ms]">
-              <EditorialImage
-                src={photos.portraitStanding.src}
-                alt={photos.portraitStanding.alt}
+            <Parallax distance={32} className="animate-rise relative hidden lg:block [animation-delay:300ms]">
+              {/* Soft depth behind the subject — a restrained glow and gradient
+                  that match the dark theme, à la Stripe / Linear / Vercel. */}
+              <div aria-hidden className="absolute inset-0 -z-10">
+                <div className="absolute left-1/2 top-[18%] h-[68%] w-[88%] -translate-x-1/2 rounded-full bg-accent/10 blur-[90px]" />
+                <div className="absolute left-1/2 top-[34%] h-[58%] w-[68%] -translate-x-1/2 rounded-full bg-foreground/[0.06] blur-[70px]" />
+              </div>
+
+              <Image
+                src={photos.portraitHero.src}
+                alt={photos.portraitHero.alt}
+                width={photos.portraitHero.width}
+                height={photos.portraitHero.height}
                 priority
-                zoom={false}
-                className="aspect-[4/5] w-full"
-                imgClassName="object-top"
-                sizes="(max-width: 1024px) 100vw, 24rem"
+                sizes="(max-width: 1024px) 0px, 30rem"
+                className="h-auto w-full object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.55)]"
               />
+
+              {/* Fade the lower edge so the figure melts into the page. */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background to-transparent" />
             </Parallax>
           </div>
         </div>

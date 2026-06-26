@@ -4,7 +4,14 @@
  * everywhere it's used. Documentary photos by Think Media.
  */
 export const photos = {
-  /** Home hero — contemplative environmental portrait. */
+  /** Home hero — transparent cutout portrait, arms crossed, for the dark theme. */
+  portraitHero: {
+    src: "/images/photography/portrait-hero.png",
+    alt: "Geoffrey R. Crawford, arms crossed, confident studio portrait",
+    width: 859,
+    height: 1172,
+  },
+  /** About hero — contemplative environmental portrait. */
   portraitEditorial: {
     src: "/images/photography/portrait-editorial.jpg",
     alt: "Geoffrey R. Crawford seated, in thought, soft daylight",
