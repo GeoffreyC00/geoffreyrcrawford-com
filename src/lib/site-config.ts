@@ -7,6 +7,7 @@ export const siteConfig = {
   url: "https://geoffreyrcrawford.com",
   email: "info@geoffreyrcrawford.com",
   inboxEmail: "geoffreyrcrawford@gmail.com",
+  phone: "(716) 861-3482",
   linkedin: "https://www.linkedin.com/in/geoffrey-crawford-9a761527/",
   instagram: "https://www.instagram.com/geoffreyrcrawford/",
   location: "Los Angeles, CA",

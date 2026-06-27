@@ -5,7 +5,7 @@ import { LinkButton } from "@/components/ui/link-button";
 
 export function ResumeDownloadButton() {
   return (
-    <LinkButton href="/hire-me/resume?print=1" variant="outline" size="lg">
+    <LinkButton href="/geoffrey-crawford-resume.pdf" variant="outline" size="lg" download>
       <Download className="h-4 w-4" />
       Download Resume
     </LinkButton>

@@ -126,8 +126,29 @@
     color: black !important;
   }
 
+  /* Single US Letter sheet — margins live on the sheet padding, so we zero the
+     page box to avoid doubled margins and keep the layout WYSIWYG. */
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
   .resume-page {
     max-width: 100% !important;
+    margin: 0 !important;
     padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .resume-sheet {
+    width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Avoid breaking an experience entry across pages. */
+  .resume-entry {
+    break-inside: avoid;
   }
 }
