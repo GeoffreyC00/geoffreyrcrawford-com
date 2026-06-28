@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/hire-me/resume",
     "/contact",
     "/insights",
+    "/tools",
+    "/tools/ai-campaign-builder",
   ];
 
   const insights = getAllInsightMeta();

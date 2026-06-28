@@ -24,6 +24,7 @@ export const siteConfig = {
 export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
+  { href: "/tools", label: "Tools" },
   { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -32,6 +33,7 @@ export const navLinks = [
 export const footerLinks = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
+  { href: "/tools", label: "Tools" },
   { href: "/insights", label: "Insights" },
   { href: "/work-with-me", label: "Consulting" },
   { href: "/contact", label: "Contact" },

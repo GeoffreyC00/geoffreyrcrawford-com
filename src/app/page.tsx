@@ -4,8 +4,10 @@ import Link from "next/link";
 import { CtaSection, HeroCta } from "@/components/shared/cta-section";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Parallax, Reveal } from "@/components/shared/reveal";
+import { ToolCard } from "@/components/tools/tool-card";
 import { CaseStudyCard } from "@/components/work/case-study-card";
 import { featuredCaseStudies } from "@/lib/data/case-studies";
+import { featuredTool } from "@/lib/data/tools";
 import { photos } from "@/lib/photography";
 import { proofPoints, siteConfig } from "@/lib/site-config";
 
@@ -140,6 +142,32 @@ export default function HomePage() {
               View all work →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Tools */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide">
+          <Reveal>
+            <p className="kicker">Tools</p>
+            <h2 className="mt-6 max-w-2xl font-serif text-display-lg font-light text-balance">
+              Free AI marketing tools.
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty">
+              I&apos;m building practical tools that turn marketing strategy, AI, and analytics
+              into systems people can actually use.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="mt-14">
+              <ToolCard
+                tool={featuredTool}
+                description="Plan campaign structure, budget allocation, tracking, and creative angles in minutes."
+                cta="Use the Tool"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 
