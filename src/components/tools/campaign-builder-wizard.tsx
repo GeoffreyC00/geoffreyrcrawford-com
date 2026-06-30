@@ -113,6 +113,30 @@ export function CampaignBuilderWizard() {
 
   const totalSteps = STEP_FIELDS.length;
 
+  // Prefill from a saved campaign's "Edit & rebuild" handoff, if present.
+  useEffect(() => {
+    let raw: string | null = null;
+    try {
+      raw = sessionStorage.getItem("acb:prefill");
+    } catch {
+      return;
+    }
+    if (!raw) return;
+    try {
+      const data = JSON.parse(raw) as Partial<CampaignBuilderInput>;
+      setForm(data);
+      setStep(totalSteps - 1); // jump to review so they can tweak and rebuild
+    } catch {
+      /* ignore malformed prefill */
+    } finally {
+      try {
+        sessionStorage.removeItem("acb:prefill");
+      } catch {
+        /* non-fatal */
+      }
+    }
+  }, [totalSteps]);
+
   function set<K extends keyof CampaignBuilderInput>(key: K, value: CampaignBuilderInput[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
     setErrors((prev) => ({ ...prev, [key]: false }));
