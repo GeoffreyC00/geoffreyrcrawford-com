@@ -52,17 +52,14 @@ export function CtaSection({
 
 export function HeroCta() {
   return (
-    <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-      <LinkButton href="/work-with-me" size="lg">
-        Work With Me
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+      <LinkButton href="/tools" size="lg">
+        Use Free Tools
         <ArrowRight className="h-4 w-4" />
       </LinkButton>
-      <Link
-        href="/work"
-        className="link-underline text-sm font-medium text-muted-foreground hover:text-foreground"
-      >
-        View Work
-      </Link>
+      <LinkButton href="/work-with-me" variant="secondary" size="lg">
+        Work With Me
+      </LinkButton>
     </div>
   );
 }

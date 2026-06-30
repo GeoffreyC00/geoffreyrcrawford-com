@@ -21,12 +21,14 @@ export const siteConfig = {
 };
 
 // Primary navigation — kept deliberately small so it disappears into the background.
+// Tool-first navigation — Tools leads, supporting pages follow. The primary
+// conversion (Work With Me) lives as the header button, and Contact stays in
+// the footer rather than the top nav.
 export const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/work", label: "Work" },
   { href: "/tools", label: "Tools" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
   { href: "/insights", label: "Insights" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
 // Minimal footer links — secondary destinations live here, not in the nav.

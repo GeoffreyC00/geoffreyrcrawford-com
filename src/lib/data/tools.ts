@@ -10,6 +10,7 @@ export type Tool = {
   name: string;
   tagline: string;
   description: string;
+  bestFor: string;
   href: string;
   cta: string;
   status: "live" | "soon";
@@ -20,6 +21,7 @@ export const tools: Tool[] = toolRegistry.map((tool) => ({
   name: tool.name,
   tagline: tool.tagline,
   description: tool.description,
+  bestFor: tool.bestFor,
   href: tool.href,
   cta: tool.cta,
   status: tool.status,

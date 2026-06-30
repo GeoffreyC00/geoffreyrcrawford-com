@@ -55,7 +55,7 @@ export async function POST(request: Request) {
   // Per-tool validation.
   if (toolSlug === "ai-campaign-builder") {
     const input = parseCampaignInput(b.input);
-    if (!input || !isValidCampaignPlan(b.output)) {
+    if (!input || !isValidCampaignPlan(b.output) || !tool.summarizeRun) {
       return NextResponse.json({ error: "Invalid run payload." }, { status: 400 });
     }
     const output = b.output as CampaignPlan;

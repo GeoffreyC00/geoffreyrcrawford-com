@@ -4,6 +4,7 @@ import {
   getPaginatedInsights,
 } from "@/lib/content/insights";
 import { caseStudies } from "@/lib/data/case-studies";
+import { toolRegistry } from "@/lib/tools/registry";
 import { absoluteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -18,8 +19,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/insights",
     "/tools",
-    "/tools/ai-campaign-builder",
   ];
+
+  // Every tool (live + coming soon) from the registry.
+  const toolPages = toolRegistry.map((tool) => ({
+    url: absoluteUrl(tool.href),
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: tool.status === "live" ? 0.9 : 0.5,
+  }));
 
   const insights = getAllInsightMeta();
   const { totalPages } = getPaginatedInsights(1);
@@ -45,6 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    ...toolPages,
     ...insights.map((meta) => ({
       url: absoluteUrl(meta.path),
       lastModified: new Date(meta.updatedAt ?? meta.publishedAt),
