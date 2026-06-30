@@ -101,6 +101,16 @@
       transform: translateY(0);
     }
   }
+
+  /* Indeterminate progress sweep used by the campaign builder loading state. */
+  @keyframes loadingbar {
+    0% {
+      transform: translateX(-120%);
+    }
+    100% {
+      transform: translateX(420%);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -149,6 +159,30 @@
 
   /* Avoid breaking an experience entry across pages. */
   .resume-entry {
+    break-inside: avoid;
+  }
+
+  /* Campaign blueprint → clean printable / PDF document. Force legible dark
+     text on white and keep the budget bars visible. */
+  .blueprint {
+    color: #111 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .blueprint * {
+    color: #1c1c1c !important;
+    border-color: #e5e5e5 !important;
+  }
+  .blueprint .text-muted-foreground {
+    color: #555 !important;
+  }
+  .blueprint .bg-hairline {
+    background: #ececec !important;
+  }
+  .blueprint .bg-foreground\/45 {
+    background: #222 !important;
+  }
+  .blueprint section {
     break-inside: avoid;
   }
 }

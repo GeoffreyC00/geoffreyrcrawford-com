@@ -1,8 +1,10 @@
 /**
- * Catalog of public AI marketing tools. New tools are added here and surface
- * automatically on the /tools index and (optionally) the homepage. Keeping this
- * data-driven means adding a tool is a single entry, no component changes.
+ * Display catalog for the marketing surface (/tools index + homepage). This is
+ * a thin projection of the canonical tool registry so there is a single source
+ * of truth: add tools in `@/lib/tools/registry`, and they surface here too.
  */
+import { toolRegistry } from "@/lib/tools/registry";
+
 export type Tool = {
   slug: string;
   name: string;
@@ -13,17 +15,14 @@ export type Tool = {
   status: "live" | "soon";
 };
 
-export const tools: Tool[] = [
-  {
-    slug: "ai-campaign-builder",
-    name: "AI Campaign Builder",
-    tagline: "Paid media planning",
-    description:
-      "Build a practical campaign structure for Google, Meta, YouTube, Microsoft, or Amazon Ads based on your business, budget, offer, and growth goal.",
-    href: "/tools/ai-campaign-builder",
-    cta: "Build a Campaign",
-    status: "live",
-  },
-];
+export const tools: Tool[] = toolRegistry.map((tool) => ({
+  slug: tool.slug,
+  name: tool.name,
+  tagline: tool.tagline,
+  description: tool.description,
+  href: tool.href,
+  cta: tool.cta,
+  status: tool.status,
+}));
 
 export const featuredTool = tools[0];

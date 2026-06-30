@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import { CampaignBuilderForm } from "@/components/tools/campaign-builder-form";
+import { CampaignBuilderWizard } from "@/components/tools/campaign-builder-wizard";
 import { JsonLd } from "@/components/seo/json-ld";
 import { LinkButton } from "@/components/ui/link-button";
 import { siteConfig } from "@/lib/site-config";
@@ -55,8 +55,8 @@ export default function AiCampaignBuilderPage() {
 
       {/* Builder */}
       <section id="builder" className="section-padding border-t border-hairline !pt-16 scroll-mt-24">
-        <div className="container-wide max-w-3xl">
-          <CampaignBuilderForm />
+        <div className="container-wide">
+          <CampaignBuilderWizard />
         </div>
       </section>
     </>

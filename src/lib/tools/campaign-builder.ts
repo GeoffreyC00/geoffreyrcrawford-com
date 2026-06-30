@@ -131,6 +131,7 @@ export type CampaignPlan = {
   budgetSummary: string;
   budgetAllocation: { label: string; percent: number }[];
   funnelStrategy: string[];
+  audienceStrategy: string[];
   tracking: string[];
   landingPageNotes: string[];
   creativeAngles: string[];
@@ -441,6 +442,53 @@ function landingPageNotes(input: CampaignBuilderInput): string[] {
   }
 }
 
+function audienceStrategy(input: CampaignBuilderInput, platform: EffectivePlatform): string[] {
+  const notes: string[] = [];
+
+  if (platform.family === "search") {
+    notes.push(
+      "On search you target intent, not people — build audiences from keyword themes that match where the buyer is in their decision, then layer in-market and remarketing audiences as bid modifiers."
+    );
+  } else if (platform.family === "marketplace") {
+    notes.push(
+      "On Amazon you target products and categories — segment by branded, category, and competitor ASINs so you can read intent and adjust bids by tier."
+    );
+  } else {
+    notes.push(
+      "Start broad and let the platform's algorithm find your buyer — modern social/video targeting performs best when creative does the qualifying, not narrow interest stacks."
+    );
+  }
+
+  // Reflect the operator's own description back as a concrete segmentation cue.
+  notes.push(
+    `Translate your audience — "${shortSelling(input.audience)}" — into one primary segment to launch against, then expand only after you have a winning control.`
+  );
+
+  if (input.businessType === "b2b" || input.businessType === "saas") {
+    notes.push(
+      "For B2B, prioritize by firmographics and role; exclude existing customers and current pipeline, and feed your CRM lists back in for retargeting and lookalikes."
+    );
+  } else if (input.businessType === "local") {
+    notes.push(
+      "Tighten geo-targeting to a realistic service radius and dayparting to when you can actually answer — wasted impressions outside your area are pure spend leakage."
+    );
+  } else if (input.businessType === "ecommerce" || input.goal === "product") {
+    notes.push(
+      "Build the retargeting ladder: all visitors → product viewers → add-to-cart → past purchasers, each with its own message and budget."
+    );
+  } else {
+    notes.push(
+      "Define one warm and one cold segment to start; keep them separate so prospecting and retargeting performance never blur together."
+    );
+  }
+
+  notes.push(
+    "Exclude converters and existing customers from prospecting so you're paying to acquire, not to reach people you already have."
+  );
+
+  return notes;
+}
+
 function creativeAngles(input: CampaignBuilderInput, platform: EffectivePlatform): string[] {
   const selling = shortSelling(input.selling);
   const angles = [
@@ -564,6 +612,7 @@ export function generateCampaignPlan(input: CampaignBuilderInput): CampaignPlan 
     budgetSummary: budgetSummary(input.budget),
     budgetAllocation,
     funnelStrategy,
+    audienceStrategy: audienceStrategy(input, platform),
     tracking: trackingList(input, platform),
     landingPageNotes: landingPageNotes(input),
     creativeAngles: creativeAngles(input, platform),
@@ -594,6 +643,7 @@ export function isValidCampaignPlan(value: unknown): value is CampaignPlan {
     Array.isArray(p.budgetAllocation) &&
     p.budgetAllocation.length > 0 &&
     isStrArr(p.funnelStrategy) &&
+    isStrArr(p.audienceStrategy) &&
     isStrArr(p.tracking) &&
     isStrArr(p.landingPageNotes) &&
     isStrArr(p.creativeAngles) &&

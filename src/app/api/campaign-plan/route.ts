@@ -58,7 +58,7 @@ async function generateWithAI(
     "You are Geoffrey R. Crawford, a senior growth marketing strategist who builds paid media systems.",
     "Produce a practical, specific paid media campaign plan for the user's inputs.",
     "Return ONLY JSON matching this TypeScript type, with no extra commentary:",
-    "{ summary: string; platformLabel: string; platformAssumed: boolean; structure: {name:string; detail:string}[]; budgetSummary: string; budgetAllocation: {label:string; percent:number}[]; funnelStrategy: string[]; tracking: string[]; landingPageNotes: string[]; creativeAngles: string[]; actionPlan: {day:string; task:string}[]; whatToWatch: {metric:string; why:string}[] }",
+    "{ summary: string; platformLabel: string; platformAssumed: boolean; structure: {name:string; detail:string}[]; budgetSummary: string; budgetAllocation: {label:string; percent:number}[]; funnelStrategy: string[]; audienceStrategy: string[]; tracking: string[]; landingPageNotes: string[]; creativeAngles: string[]; actionPlan: {day:string; task:string}[]; whatToWatch: {metric:string; why:string}[] }",
     "budgetAllocation percentages MUST sum to 100. Keep copy concise, concrete, and free of fluff. 3–5 items per list.",
   ].join("\n");
 
