@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CtaSection } from "@/components/shared/cta-section";
 import { PageHero } from "@/components/shared/page-hero";
 import { Reveal } from "@/components/shared/reveal";
+import { AiSystemsPortfolioStrip } from "@/components/work/ai-systems-portfolio-strip";
 import { CaseStudyFeature } from "@/components/work/case-study-feature";
 import { featuredCaseStudies } from "@/lib/data/case-studies";
 
@@ -21,14 +22,14 @@ export default function WorkPage() {
       />
 
       <section className="section-padding border-t border-hairline">
-        <div className="container-wide">
-          <div className="space-y-24 md:space-y-32">
-            {featuredCaseStudies.map((study, i) => (
+        <div className="container-wide space-y-24 md:space-y-32">
+          <AiSystemsPortfolioStrip />
+
+          {featuredCaseStudies.map((study, i) => (
               <Reveal key={study.slug}>
                 <CaseStudyFeature study={study} reverse={i % 2 === 1} />
               </Reveal>
             ))}
-          </div>
         </div>
       </section>
 

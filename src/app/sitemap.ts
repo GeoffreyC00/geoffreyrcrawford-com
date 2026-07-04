@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/insights",
     "/tools",
+    "/work/ai-marketing-systems",
   ];
 
   // Every tool (live + coming soon) from the registry.
