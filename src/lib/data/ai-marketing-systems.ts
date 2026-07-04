@@ -132,3 +132,110 @@ export const marketingOsSampleKpis = [
   { label: "Blended ROAS", value: "3.2×", delta: "+0.3" },
   { label: "New customers", value: "842", delta: "+6%" },
 ];
+
+/** Anonymized impact metrics for recruiter-facing proof. */
+export const impactMetrics = [
+  { value: "6 hrs → 20 min", label: "Weekly reporting cycle" },
+  { value: "4 platforms", label: "Unified in one dashboard" },
+  { value: "15+ modules", label: "Executive to operational views" },
+  { value: "Auto-sync", label: "Sheets + API data pipeline" },
+] as const;
+
+/** Connected data sources shown in architecture preview (generic labels). */
+export const dataSources = [
+  { name: "Google Ads", type: "API sync" },
+  { name: "Meta Ads", type: "API sync" },
+  { name: "Google Sheets", type: "Auto-pull" },
+  { name: "Commerce platform", type: "Order sync" },
+  { name: "CRM", type: "Enrichment" },
+  { name: "Attribution API", type: "Touchpoints" },
+] as const;
+
+export const automationPipeline = {
+  title: "Data → Dashboard → Decision",
+  description:
+    "Instead of exporting CSVs from five platforms every Monday, the system pulls spend, revenue, and customer data on a schedule — normalizes it, caches it locally, and surfaces it through executive dashboards, alerts, and export-ready briefings.",
+  outputs: [
+    "Executive weekly briefing",
+    "Spend & pacing alerts",
+    "Attribution & ROI views",
+    "Slack-ready reports",
+    "Printable PDF exports",
+  ],
+};
+
+/** Fictional weekly briefing — demonstrates the executive narrative layer. */
+export const weeklyBriefingSample = {
+  status: "Attention needed" as const,
+  headline: "Prospecting efficiency dipped while brand held strong — reallocate before month-end.",
+  whatHappened:
+    "Total spend came in 4% above plan. Meta prospecting CPA rose 18% week-over-week while Google brand search maintained a 6.1× ROAS. New customer volume held flat despite higher spend.",
+  whyItMatters:
+    "The prospecting efficiency drop suggests creative fatigue on top-of-funnel ads. Brand search is under-invested relative to its return. Budget pacing is on track overall, but channel mix needs adjustment.",
+  whatNext: [
+    "Refresh top 3 Meta prospecting creatives — test 2 new hooks this week",
+    "Increase Google brand budget by 15% while prospecting tests run",
+    "Review landing page conversion on paid social traffic (down 0.4 pts)",
+    "Confirm tracking on new campaign UTMs before scaling",
+  ],
+  decisions: [
+    { priority: "High", action: "Pause underperforming Meta ad set (CPA 2.1× target)" },
+    { priority: "Medium", action: "Scale Google brand — ROAS holding above threshold" },
+    { priority: "Low", action: "Audit YouTube view-through attribution window" },
+  ],
+};
+
+/** Sample campaign rows for portfolio workspace preview. */
+export const portfolioCampaigns = [
+  { name: "Brand Search — Core", platform: "Google", spend: "$12.4K", roas: "6.1×", status: "Scale" },
+  { name: "Prospecting — Video", platform: "Meta", spend: "$18.2K", roas: "2.4×", status: "Review" },
+  { name: "Retargeting — Site visitors", platform: "Meta", spend: "$8.1K", roas: "4.8×", status: "Hold" },
+  { name: "YouTube — Awareness", platform: "YouTube", spend: "$6.3K", roas: "3.9×", status: "Test" },
+  { name: "Shopping — Best sellers", platform: "Google", spend: "$9.8K", roas: "3.2×", status: "Hold" },
+] as const;
+
+export const portfolioWorkspace = {
+  title: "Campaign Portfolio Workspace",
+  subtitle: "Compare, filter, and drill into live campaign performance.",
+  description:
+    "A command center for media buyers and leadership — sortable campaign tables, multi-campaign compare mode, trend sparklines, and a detail drawer for deep dives. Built to replace the weekly \"export everything to Sheets\" ritual.",
+};
+
+/** Sample budget pacing data for preview. */
+export const budgetPacingSample = [
+  { initiative: "Brand & Search", planned: "$45K", actual: "$42.1K", pct: 94, status: "On track" },
+  { initiative: "Prospecting", planned: "$38K", actual: "$41.8K", pct: 110, status: "Over pace" },
+  { initiative: "Retargeting", planned: "$22K", actual: "$19.4K", pct: 88, status: "Under pace" },
+  { initiative: "Content & Video", planned: "$15K", actual: "$14.2K", pct: 95, status: "On track" },
+] as const;
+
+export const budgetPlanner = {
+  title: "Budget Planner & Pacing",
+  subtitle: "Planned vs actual, by initiative and month.",
+  description:
+    "Leadership sets monthly budgets by initiative. The system tracks actual spend against plan in real time, flags over/under pacing, and merges budget alerts with performance alerts so teams catch problems before month-end.",
+};
+
+export const techStack = {
+  title: "Built with modern full-stack tooling",
+  description:
+    "Production-grade marketing OS — not a Looker Studio embed. Custom Next.js app with API integrations, client-side caching, and export workflows.",
+  categories: [
+    {
+      label: "Frontend",
+      items: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Recharts"],
+    },
+    {
+      label: "Data & APIs",
+      items: ["Google Ads API", "Meta Graph API", "Google Sheets", "HubSpot", "Attribution APIs"],
+    },
+    {
+      label: "Intelligence",
+      items: ["Rule-based insight engine", "Executive brief generator", "Alert & pacing logic", "AI-ready architecture"],
+    },
+    {
+      label: "Distribution",
+      items: ["Slack report export", "PDF generation", "Print-ready HTML", "Scheduled sync"],
+    },
+  ],
+};

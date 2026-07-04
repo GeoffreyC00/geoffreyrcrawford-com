@@ -1,4 +1,10 @@
-import { marketingOsSampleKpis } from "@/lib/data/ai-marketing-systems";
+import {
+  budgetPacingSample,
+  dataSources,
+  marketingOsSampleKpis,
+  portfolioCampaigns,
+  weeklyBriefingSample,
+} from "@/lib/data/ai-marketing-systems";
 
 /**
  * CSS-only dashboard mockups for the portfolio case study. All numbers are
@@ -130,6 +136,194 @@ export function AttributionPreview({ channels }: { channels: ChannelRow[] }) {
       <p className="mt-4 text-[10px] text-zinc-600">
         Sample attribution model · last-touch with paid assist · fictional data
       </p>
+    </PreviewChrome>
+  );
+}
+
+const statusColors: Record<string, string> = {
+  Scale: "text-emerald-400",
+  Review: "text-amber-400",
+  Hold: "text-zinc-400",
+  Test: "text-sky-400",
+};
+
+/** Weekly executive briefing preview — what happened / why / what next. */
+export function WeeklyBriefingPreview() {
+  const { status, headline, whatHappened, whyItMatters, whatNext, decisions } = weeklyBriefingSample;
+
+  return (
+    <PreviewChrome title="Weekly Briefing">
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-amber-400">
+          {status}
+        </span>
+        <span className="text-[10px] text-zinc-500">Week of Mar 10 · sample data</span>
+      </div>
+
+      <p className="mt-4 font-serif text-base font-light leading-snug text-zinc-100">{headline}</p>
+
+      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+        {[
+          { label: "What happened", text: whatHappened },
+          { label: "Why it matters", text: whyItMatters },
+          {
+            label: "What to do next",
+            text: whatNext.slice(0, 2).join(" · "),
+          },
+        ].map((col) => (
+          <div key={col.label} className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-3">
+            <p className="text-[10px] uppercase tracking-editorial text-zinc-500">{col.label}</p>
+            <p className="mt-2 text-[11px] leading-relaxed text-zinc-400">{col.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-4 rounded-lg border border-zinc-800 bg-zinc-900/40 p-3">
+        <p className="text-[10px] uppercase tracking-editorial text-zinc-500">Priority decisions</p>
+        <ul className="mt-2 space-y-1.5">
+          {decisions.map((d) => (
+            <li key={d.action} className="flex items-start gap-2 text-[11px] text-zinc-400">
+              <span
+                className={`mt-0.5 shrink-0 rounded px-1 py-0.5 text-[9px] uppercase ${
+                  d.priority === "High"
+                    ? "bg-red-500/15 text-red-400"
+                    : d.priority === "Medium"
+                      ? "bg-amber-500/15 text-amber-400"
+                      : "bg-zinc-700/50 text-zinc-500"
+                }`}
+              >
+                {d.priority}
+              </span>
+              {d.action}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </PreviewChrome>
+  );
+}
+
+/** Automation pipeline — data sources → sync → dashboard → outputs. */
+export function AutomationPipelinePreview() {
+  return (
+    <PreviewChrome title="Automation Pipeline">
+      <div className="flex flex-wrap gap-2">
+        {dataSources.map((src) => (
+          <div
+            key={src.name}
+            className="rounded-md border border-zinc-800 bg-zinc-900/50 px-3 py-2"
+          >
+            <p className="text-[11px] text-zinc-300">{src.name}</p>
+            <p className="text-[9px] text-zinc-600">{src.type}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="my-4 flex items-center justify-center gap-2 text-zinc-600">
+        <div className="h-px flex-1 bg-zinc-800" />
+        <span className="text-[10px] uppercase tracking-editorial">Sync engine · 5 min refresh</span>
+        <div className="h-px flex-1 bg-zinc-800" />
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        {[
+          { label: "Dashboards", desc: "Executive + operational views" },
+          { label: "Alerts", desc: "Pacing, CPA, tracking breaks" },
+          { label: "Exports", desc: "Slack, PDF, print-ready" },
+        ].map((node) => (
+          <div
+            key={node.label}
+            className="rounded-lg border border-accent/20 bg-accent/5 px-4 py-3 text-center"
+          >
+            <p className="text-[11px] font-medium text-zinc-200">{node.label}</p>
+            <p className="mt-1 text-[10px] text-zinc-500">{node.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-4 text-center text-[10px] text-zinc-600">
+        Google Sheets + platform APIs → normalized cache → live dashboard
+      </p>
+    </PreviewChrome>
+  );
+}
+
+/** Campaign portfolio workspace preview. */
+export function PortfolioWorkspacePreview() {
+  return (
+    <PreviewChrome title="Portfolio Workspace">
+      <div className="overflow-hidden rounded-lg border border-zinc-800">
+        <table className="w-full text-left text-xs">
+          <thead>
+            <tr className="border-b border-zinc-800 bg-zinc-900/60 text-zinc-500">
+              <th className="px-3 py-2 font-normal">Campaign</th>
+              <th className="hidden px-3 py-2 font-normal sm:table-cell">Platform</th>
+              <th className="px-3 py-2 font-normal">Spend</th>
+              <th className="px-3 py-2 font-normal">ROAS</th>
+              <th className="px-3 py-2 font-normal">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {portfolioCampaigns.map((row) => (
+              <tr key={row.name} className="border-b border-zinc-800/60 last:border-0">
+                <td className="max-w-[120px] truncate px-3 py-2.5 text-zinc-300">{row.name}</td>
+                <td className="hidden px-3 py-2.5 text-zinc-500 sm:table-cell">{row.platform}</td>
+                <td className="px-3 py-2.5 text-zinc-400">{row.spend}</td>
+                <td className="px-3 py-2.5 text-zinc-300">{row.roas}</td>
+                <td className={`px-3 py-2.5 ${statusColors[row.status] ?? "text-zinc-400"}`}>
+                  {row.status}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-3 text-[10px] text-zinc-600">
+        Compare up to 5 campaigns · time presets · detail drawer · fictional data
+      </p>
+    </PreviewChrome>
+  );
+}
+
+/** Budget pacing preview — planned vs actual by initiative. */
+export function BudgetPacingPreview() {
+  return (
+    <PreviewChrome title="Budget Planner">
+      <div className="space-y-3">
+        {budgetPacingSample.map((row) => (
+          <div key={row.initiative} className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-3">
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-[11px] text-zinc-300">{row.initiative}</p>
+              <span
+                className={`text-[10px] ${
+                  row.status === "Over pace"
+                    ? "text-amber-400"
+                    : row.status === "Under pace"
+                      ? "text-sky-400"
+                      : "text-emerald-400"
+                }`}
+              >
+                {row.status}
+              </span>
+            </div>
+            <div className="mt-2 flex items-center justify-between text-[10px] text-zinc-500">
+              <span>
+                {row.actual} / {row.planned}
+              </span>
+              <span>{row.pct}%</span>
+            </div>
+            <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-zinc-800">
+              <div
+                className={`h-full rounded-full ${
+                  row.pct > 100 ? "bg-amber-500/70" : "bg-accent/50"
+                }`}
+                style={{ width: `${Math.min(row.pct, 100)}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 text-[10px] text-zinc-600">March 2026 · by initiative · fictional data</p>
     </PreviewChrome>
   );
 }

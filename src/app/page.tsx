@@ -8,6 +8,7 @@ import { Parallax, Reveal } from "@/components/shared/reveal";
 import { StatusPill, ToolCard } from "@/components/tools/tool-card";
 import { LinkButton } from "@/components/ui/link-button";
 import { CaseStudyCard } from "@/components/work/case-study-card";
+import { AiSystemsPortfolioStrip } from "@/components/work/ai-systems-portfolio-strip";
 import { featuredCaseStudies } from "@/lib/data/case-studies";
 import { featuredTool, tools } from "@/lib/data/tools";
 import { photos } from "@/lib/photography";
@@ -253,12 +254,19 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-x-16 gap-y-14 md:grid-cols-2">
-            {featuredCaseStudies.slice(0, 2).map((study, i) => (
-              <Reveal key={study.slug} delay={i * 0.06}>
-                <CaseStudyCard study={study} />
-              </Reveal>
-            ))}
+          <div className="mt-14 space-y-14">
+            <AiSystemsPortfolioStrip />
+
+            <div className="grid gap-x-16 gap-y-14 md:grid-cols-2">
+              {featuredCaseStudies
+                .filter((s) => s.slug !== "ai-marketing-systems")
+                .slice(0, 2)
+                .map((study, i) => (
+                  <Reveal key={study.slug} delay={i * 0.06}>
+                    <CaseStudyCard study={study} />
+                  </Reveal>
+                ))}
+            </div>
           </div>
         </div>
       </section>

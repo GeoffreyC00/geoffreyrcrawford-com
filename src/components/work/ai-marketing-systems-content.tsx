@@ -2,16 +2,29 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CtaSection } from "@/components/shared/cta-section";
 import { Reveal } from "@/components/shared/reveal";
-import { AttributionPreview, MarketingOsPreview } from "@/components/work/dashboard-preview";
+import {
+  AttributionPreview,
+  AutomationPipelinePreview,
+  BudgetPacingPreview,
+  MarketingOsPreview,
+  PortfolioWorkspacePreview,
+  WeeklyBriefingPreview,
+} from "@/components/work/dashboard-preview";
 import { LinkButton } from "@/components/ui/link-button";
 import {
   aiAutomation,
   aiSystemsHero,
   attributionDashboard,
+  automationPipeline,
+  budgetPlanner,
   confidentialityNote,
+  impactMetrics,
   marketingOs,
   myRoleBullets,
   overviewCopy,
+  portfolioWorkspace,
+  techStack,
+  weeklyBriefingSample,
   whatIBuild,
 } from "@/lib/data/ai-marketing-systems";
 
@@ -46,6 +59,16 @@ export function AiMarketingSystemsContent() {
             <p className="mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground text-pretty">
               {aiSystemsHero.subheadline}
             </p>
+          </div>
+
+          {/* Impact metrics strip */}
+          <div className="mt-14 grid grid-cols-2 gap-px border border-hairline bg-hairline lg:grid-cols-4">
+            {impactMetrics.map((m) => (
+              <div key={m.label} className="bg-background px-6 py-6 sm:px-8">
+                <p className="font-serif text-2xl font-light text-foreground">{m.value}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{m.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -88,7 +111,68 @@ export function AiMarketingSystemsContent() {
         </div>
       </section>
 
-      {/* Featured: Marketing OS */}
+      {/* Automation Pipeline */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
+            <Reveal>
+              <SectionHeading
+                kicker="How it works"
+                title={automationPipeline.title}
+              />
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground text-pretty">
+                {automationPipeline.description}
+              </p>
+              <ul className="mt-8 space-y-2">
+                {automationPipeline.outputs.map((out) => (
+                  <li key={out} className="flex items-center gap-2 text-sm text-foreground/90">
+                    <span className="h-1 w-1 rounded-full bg-accent" />
+                    {out}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <AutomationPipelinePreview />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Weekly Briefing */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
+            <Reveal className="lg:order-2">
+              <SectionHeading
+                kicker="Executive layer"
+                title="Automated weekly briefings — not slide decks."
+              />
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground text-pretty">
+                Every week, leadership gets a structured briefing: what happened, why it matters,
+                and what to do next — plus a prioritized decision queue. Generated from live data,
+                not assembled by hand from five platform exports.
+              </p>
+
+              <blockquote className="mt-8 border-l-2 border-accent/40 pl-5">
+                <p className="font-serif text-lg font-light italic leading-relaxed text-foreground/90">
+                  &ldquo;{weeklyBriefingSample.headline}&rdquo;
+                </p>
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Sample briefing headline · fictional data
+                </p>
+              </blockquote>
+            </Reveal>
+
+            <Reveal delay={0.1} className="lg:order-1">
+              <WeeklyBriefingPreview />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Marketing OS */}
       <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
@@ -116,12 +200,43 @@ export function AiMarketingSystemsContent() {
         </div>
       </section>
 
-      {/* Featured: Attribution & ROI */}
+      {/* Portfolio + Budget — side by side previews */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide space-y-20">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
+            <Reveal>
+              <SectionHeading kicker="Operations layer" title={portfolioWorkspace.title} />
+              <p className="mt-2 text-lg text-muted-foreground">{portfolioWorkspace.subtitle}</p>
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground text-pretty">
+                {portfolioWorkspace.description}
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <PortfolioWorkspacePreview />
+            </Reveal>
+          </div>
+
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
+            <Reveal className="lg:order-2">
+              <SectionHeading kicker="Planning layer" title={budgetPlanner.title} />
+              <p className="mt-2 text-lg text-muted-foreground">{budgetPlanner.subtitle}</p>
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground text-pretty">
+                {budgetPlanner.description}
+              </p>
+            </Reveal>
+            <Reveal delay={0.1} className="lg:order-1">
+              <BudgetPacingPreview />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Attribution & ROI */}
       <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
             <Reveal className="lg:order-2">
-              <p className="kicker">Featured system</p>
+              <p className="kicker">Intelligence layer</p>
               <h2 className="mt-6 font-serif text-display-md font-light">
                 {attributionDashboard.title}
               </h2>
@@ -175,6 +290,37 @@ export function AiMarketingSystemsContent() {
         </div>
       </section>
 
+      {/* Tech Stack */}
+      <section className="section-padding border-t border-hairline">
+        <div className="container-wide">
+          <Reveal>
+            <SectionHeading kicker="Tech stack" title={techStack.title} />
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
+              {techStack.description}
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {techStack.categories.map((cat, i) => (
+              <Reveal key={cat.label} delay={i * 0.05}>
+                <div className="rounded-2xl border border-border bg-muted/20 p-6">
+                  <p className="font-mono text-[10px] uppercase tracking-editorial text-muted-foreground">
+                    {cat.label}
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {cat.items.map((item) => (
+                      <li key={item} className="text-sm text-foreground/90">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* My Role */}
       <section className="section-padding border-t border-hairline">
         <div className="container-wide grid gap-12 lg:grid-cols-[1fr_1.2fr]">
@@ -182,8 +328,8 @@ export function AiMarketingSystemsContent() {
             <SectionHeading kicker="My role" title="Product, data, and marketing — end to end." />
             <p className="mt-8 text-lg leading-relaxed text-muted-foreground text-pretty">
               I don&apos;t just advise on dashboards — I architect them, map the data, design the UX,
-              wire the AI layer, and ship the product. This work sits at the intersection of growth
-              marketing, marketing operations, and AI product development.
+              wire the intelligence layer, and ship the product. This work sits at the intersection
+              of growth marketing, marketing operations, and AI product development.
             </p>
           </Reveal>
 
@@ -219,8 +365,12 @@ export function AiMarketingSystemsContent() {
         <div className="container-wide">
           <Reveal>
             <h2 className="max-w-2xl font-serif text-display-md font-light text-balance">
-              Want to see how I think through marketing systems?
+              Building marketing intelligence systems?
             </h2>
+            <p className="mt-4 max-w-xl text-lg text-muted-foreground">
+              Whether you&apos;re hiring for product, growth ops, or performance leadership — this
+              is the kind of work I do.
+            </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
               <LinkButton href="/contact" size="lg">
                 Contact Me

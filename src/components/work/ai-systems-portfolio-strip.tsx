@@ -20,8 +20,9 @@ export function AiSystemsPortfolioStrip() {
               AI Marketing Systems
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
-              Dashboards, attribution views, customer intelligence, and AI workflows — anonymized
-              case study for product, growth ops, and performance roles.
+              AI-driven dashboards, automated reporting, and multi-platform data pipelines — built
+              as a full marketing OS. Anonymized previews for product, growth ops, and analytics
+              roles.
             </p>
           </div>
           <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
