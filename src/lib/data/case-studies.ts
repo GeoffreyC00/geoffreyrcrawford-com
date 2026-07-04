@@ -151,8 +151,8 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "ai-marketing-systems",
-    title: "AI Marketing Systems & Reporting",
-    subtitle: "Dashboards, automation, and the infrastructure behind the work",
+    title: "AI Marketing Intelligence Platform",
+    subtitle: "An AI-powered marketing operating system — dashboards, automation, and executive intelligence",
     category: "Analytics & Automation",
     featured: true,
     image: {

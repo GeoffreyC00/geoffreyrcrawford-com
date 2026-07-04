@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { CtaSection, HeroCta } from "@/components/shared/cta-section";
+import { FeaturedProjectSection } from "@/components/product/featured-project-section";
+import { CtaSection } from "@/components/shared/cta-section";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Parallax, Reveal } from "@/components/shared/reveal";
+import { Reveal } from "@/components/shared/reveal";
 import { StatusPill, ToolCard } from "@/components/tools/tool-card";
 import { LinkButton } from "@/components/ui/link-button";
 import { CaseStudyCard } from "@/components/work/case-study-card";
-import { AiSystemsPortfolioStrip } from "@/components/work/ai-systems-portfolio-strip";
 import { featuredCaseStudies } from "@/lib/data/case-studies";
+import { platformProduct } from "@/lib/data/platform-case-study";
 import { featuredTool, tools } from "@/lib/data/tools";
-import { photos } from "@/lib/photography";
 import { proofPoints, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Free AI Marketing Tools",
+  title: "AI Marketing Systems & Product Builder",
   description:
-    "Free AI marketing tools for people building better campaigns — practical campaign planning, creative, analytics, and optimization, built by a marketer actively managing paid media.",
+    "Geoffrey R. Crawford builds AI-powered marketing systems — dashboards, reporting platforms, automation workflows, and decision-support tools. Plus free AI marketing tools.",
 };
 
 const personJsonLd = {
@@ -25,18 +24,18 @@ const personJsonLd = {
   "@type": "Person",
   name: siteConfig.name,
   url: siteConfig.url,
-  jobTitle: "Growth Marketing Strategist",
+  jobTitle: "Marketing Systems Product Builder",
   description: siteConfig.description,
   email: `mailto:${siteConfig.email}`,
   address: { "@type": "PostalAddress", addressLocality: "Los Angeles", addressRegion: "CA" },
   sameAs: [siteConfig.linkedin, siteConfig.instagram],
   knowsAbout: [
-    "Performance Marketing",
-    "Paid Media",
-    "Marketing Analytics",
-    "Marketing Automation",
-    "Conversion Optimization",
     "AI Marketing Systems",
+    "Marketing Automation",
+    "Executive Dashboards",
+    "Product Design",
+    "Marketing Analytics",
+    "Performance Marketing",
   ],
 };
 
@@ -47,14 +46,13 @@ const websiteJsonLd = {
   url: siteConfig.url,
 };
 
-const proofCapabilities = [
-  "Paid media",
-  "Marketing analytics",
-  "AI workflows",
-  "Executive dashboards",
-  "eCommerce",
-  "Creator economy",
-  "B2B / lead gen",
+const builderCapabilities = [
+  "AI-powered dashboards",
+  "Marketing automation",
+  "Executive reporting",
+  "Attribution systems",
+  "Internal software",
+  "Decision support tools",
 ];
 
 export default function HomePage() {
@@ -63,59 +61,72 @@ export default function HomePage() {
       <JsonLd data={personJsonLd} />
       <JsonLd data={websiteJsonLd} />
 
-      {/* Hero — tool-first */}
-      <section className="section-padding !pb-20 !pt-24 md:!pt-32">
+      {/* Hero — product builder positioning */}
+      <section className="section-padding !pb-16 !pt-24 md:!pt-32">
         <div className="container-wide">
-          <div className="grid items-center gap-14 lg:grid-cols-[1fr_28rem] lg:gap-16">
-            <div>
-              <p className="kicker animate-rise">Free AI marketing tools</p>
+          <div className="max-w-4xl">
+            <p className="kicker animate-rise">Product · AI · Marketing Systems</p>
 
-              <h1 className="mt-8 font-serif text-display-2xl font-light text-pretty">
-                <span className="block overflow-hidden">
-                  <span className="reveal-mask block [animation-delay:80ms]">
-                    Build better marketing
-                  </span>
+            <h1 className="mt-8 font-serif text-display-2xl font-light text-pretty">
+              <span className="block overflow-hidden">
+                <span className="reveal-mask block [animation-delay:80ms]">
+                  I build AI-powered
                 </span>
-                <span className="block overflow-hidden">
-                  <span className="reveal-mask block [animation-delay:200ms]">
-                    campaigns with
-                  </span>
+              </span>
+              <span className="block overflow-hidden">
+                <span className="reveal-mask block text-accent [animation-delay:200ms]">
+                  marketing systems.
                 </span>
-                <span className="block overflow-hidden">
-                  <span className="reveal-mask block text-accent [animation-delay:320ms]">
-                    free AI tools.
-                  </span>
-                </span>
-              </h1>
+              </span>
+            </h1>
 
-              <p className="animate-rise mt-8 max-w-xl text-xl leading-relaxed text-muted-foreground text-pretty [animation-delay:420ms]">
-                Practical campaign planning, creative, analytics, and optimization tools — built by
-                a marketer actively managing paid media accounts.
-              </p>
+            <p className="animate-rise mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground text-pretty [animation-delay:320ms]">
+              Dashboards, reporting platforms, automation workflows, and decision-support tools —
+              designed and shipped as product, not spreadsheets.
+            </p>
 
-              <div className="animate-rise mt-10 [animation-delay:520ms]">
-                <HeroCta />
-              </div>
+            <div className="animate-rise mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:420ms]">
+              <LinkButton href={platformProduct.slug} size="lg">
+                Explore the Platform
+                <ArrowRight className="h-4 w-4" />
+              </LinkButton>
+              <Link
+                href="/tools"
+                className="link-underline text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
+                Free AI tools →
+              </Link>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <Parallax distance={32} className="animate-rise relative hidden lg:block [animation-delay:300ms]">
-              <div aria-hidden className="absolute inset-0 -z-10">
-                <div className="absolute left-1/2 top-[18%] h-[68%] w-[88%] -translate-x-1/2 rounded-full bg-accent/10 blur-[90px]" />
-                <div className="absolute left-1/2 top-[34%] h-[58%] w-[68%] -translate-x-1/2 rounded-full bg-foreground/[0.06] blur-[70px]" />
+      {/* Featured Project — immediately below hero, impossible to miss */}
+      <FeaturedProjectSection variant="homepage" />
+
+      {/* Builder capabilities strip */}
+      <section className="section-padding border-t border-hairline !py-16">
+        <div className="container-wide">
+          <Reveal>
+            <p className="kicker">What I build</p>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {builderCapabilities.map((cap) => (
+                <span
+                  key={cap}
+                  className="rounded-full border border-border px-4 py-2 text-sm text-muted-foreground"
+                >
+                  {cap}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          <div className="mt-14 grid grid-cols-2 gap-px border border-hairline bg-hairline lg:grid-cols-4">
+            {proofPoints.map((point) => (
+              <div key={point} className="bg-background px-6 py-8 sm:px-8">
+                <p className="text-sm leading-snug text-foreground">{point}</p>
               </div>
-
-              <Image
-                src={photos.portraitHero.src}
-                alt={photos.portraitHero.alt}
-                width={photos.portraitHero.width}
-                height={photos.portraitHero.height}
-                priority
-                sizes="(max-width: 1024px) 0px, 28rem"
-                className="h-auto w-full object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.55)]"
-              />
-
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background to-transparent" />
-            </Parallax>
+            ))}
           </div>
         </div>
       </section>
@@ -130,7 +141,7 @@ export default function HomePage() {
                   <div className="flex items-center gap-3">
                     <StatusPill status="live" />
                     <span className="font-mono text-[11px] uppercase tracking-editorial text-muted-foreground">
-                      Featured tool
+                      Free tool
                     </span>
                   </div>
                   <h2 className="mt-6 font-serif text-display-lg font-light text-balance">
@@ -181,7 +192,7 @@ export default function HomePage() {
               <div>
                 <p className="kicker">The toolkit</p>
                 <h2 className="mt-6 max-w-2xl font-serif text-display-lg font-light text-balance">
-                  AI marketing tools for operators.
+                  Free AI marketing tools for operators.
                 </h2>
               </div>
               <Link href="/tools" className="link-underline text-sm font-medium text-foreground">
@@ -200,52 +211,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Proof */}
-      <section className="section-padding border-t border-hairline">
-        <div className="container-wide">
-          <Reveal>
-            <p className="kicker">Built from real campaign experience</p>
-            <h2 className="mt-6 max-w-3xl font-serif text-display-lg font-light text-balance">
-              Not theory — tools shaped by managing live paid media every day.
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
-              These tools come from real work across paid media, analytics, AI workflows, and
-              executive reporting — for eCommerce, creator, and B2B businesses.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-12 flex flex-wrap gap-2.5">
-              {proofCapabilities.map((cap) => (
-                <span
-                  key={cap}
-                  className="rounded-full border border-border px-4 py-2 text-sm text-muted-foreground"
-                >
-                  {cap}
-                </span>
-              ))}
-            </div>
-          </Reveal>
-
-          <div className="mt-14 grid grid-cols-2 gap-px border border-hairline bg-hairline lg:grid-cols-4">
-            {proofPoints.map((point) => (
-              <div key={point} className="bg-background px-6 py-8 sm:px-8">
-                <p className="text-sm leading-snug text-foreground">{point}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Selected work — supporting proof */}
+      {/* Selected work */}
       <section className="section-padding border-t border-hairline">
         <div className="container-wide">
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <p className="kicker">Selected work</p>
+                <p className="kicker">More work</p>
                 <h2 className="mt-6 max-w-2xl font-serif text-display-lg font-light text-balance">
-                  Problems solved, not logos collected.
+                  Problems solved across industries.
                 </h2>
               </div>
               <Link href="/work" className="link-underline text-sm font-medium text-foreground">
@@ -254,28 +228,24 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="mt-14 space-y-14">
-            <AiSystemsPortfolioStrip />
-
-            <div className="grid gap-x-16 gap-y-14 md:grid-cols-2">
-              {featuredCaseStudies
-                .filter((s) => s.slug !== "ai-marketing-systems")
-                .slice(0, 2)
-                .map((study, i) => (
-                  <Reveal key={study.slug} delay={i * 0.06}>
-                    <CaseStudyCard study={study} />
-                  </Reveal>
-                ))}
-            </div>
+          <div className="mt-14 grid gap-x-16 gap-y-14 md:grid-cols-2">
+            {featuredCaseStudies
+              .filter((s) => s.slug !== "ai-marketing-systems")
+              .slice(0, 2)
+              .map((study, i) => (
+                <Reveal key={study.slug} delay={i * 0.06}>
+                  <CaseStudyCard study={study} />
+                </Reveal>
+              ))}
           </div>
         </div>
       </section>
 
       <CtaSection
-        title="Start with a free tool. Scale with a partner."
-        description="Use the free Campaign Builder to plan your next campaign — or work with me to build the whole system."
-        primaryHref="/tools/ai-campaign-builder"
-        primaryLabel="Use the Free Campaign Builder"
+        title="Building marketing technology?"
+        description="Explore the platform case study — or use the free Campaign Builder to plan your next campaign."
+        primaryHref={platformProduct.slug}
+        primaryLabel="Explore the Platform"
         secondaryHref="/work-with-me"
         secondaryLabel="Work With Me"
       />

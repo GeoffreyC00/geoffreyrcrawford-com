@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Geoffrey R. Crawford",
-  title: "Growth Marketing, Paid Media & AI Systems",
+  title: "Growth Marketing & AI Product Builder",
   tagline: "Marketing systems that turn attention into revenue.",
   description:
-    "Growth Marketing Strategist and marketing operator helping businesses grow through paid media, AI-powered workflows, conversion systems, analytics, and full-funnel strategy.",
+    "Product builder and growth strategist — I design and ship AI-powered marketing systems, dashboards, automation workflows, and decision-support tools for marketing teams.",
   url: "https://geoffreyrcrawford.com",
   email: "info@geoffreyrcrawford.com",
   inboxEmail: "geoffreyrcrawford@gmail.com",
@@ -20,11 +20,9 @@ export const siteConfig = {
   },
 };
 
-// Primary navigation — kept deliberately small so it disappears into the background.
-// Tool-first navigation — Tools leads, supporting pages follow. The primary
-// conversion (Work With Me) lives as the header button, and Contact stays in
-// the footer rather than the top nav.
+// Primary navigation — Platform leads so recruiters find the flagship product immediately.
 export const navLinks = [
+  { href: "/work/ai-marketing-systems", label: "Platform" },
   { href: "/tools", label: "Tools" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
@@ -33,6 +31,7 @@ export const navLinks = [
 
 // Minimal footer links — secondary destinations live here, not in the nav.
 export const footerLinks = [
+  { href: "/work/ai-marketing-systems", label: "Platform" },
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
   { href: "/tools", label: "Tools" },

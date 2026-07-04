@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { AiMarketingSystemsContent } from "@/components/work/ai-marketing-systems-content";
+import { PlatformCaseStudyContent } from "@/components/product/platform-case-study-content";
+import { caseStudyHero } from "@/lib/data/platform-case-study";
 
 export const metadata: Metadata = {
-  title: "AI Marketing Systems",
+  title: "AI Marketing Intelligence Platform",
   description:
-    "Portfolio case study: AI-powered marketing dashboards, attribution reporting, customer intelligence, and executive decision systems — built with anonymized sample data.",
+    "Product case study: AI-powered marketing operating system with unified attribution, executive reporting, automation, and decision support — built with fictional demo data.",
   alternates: { canonical: "/work/ai-marketing-systems" },
+  openGraph: {
+    title: `${caseStudyHero.headline} | Geoffrey R. Crawford`,
+    description: caseStudyHero.subheadline,
+  },
 };
 
 export default function AiMarketingSystemsPage() {
-  return <AiMarketingSystemsContent />;
+  return <PlatformCaseStudyContent />;
 }

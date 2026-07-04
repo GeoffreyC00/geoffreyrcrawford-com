@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CtaSection } from "@/components/shared/cta-section";
 import { PageHero } from "@/components/shared/page-hero";
 import { Reveal } from "@/components/shared/reveal";
-import { AiSystemsPortfolioStrip } from "@/components/work/ai-systems-portfolio-strip";
+import { FeaturedProjectSection } from "@/components/product/featured-project-section";
 import { ToolCard } from "@/components/tools/tool-card";
 import { tools } from "@/lib/data/tools";
 
@@ -26,7 +26,7 @@ export default function ToolsPage() {
 
       <section className="section-padding !pt-0">
         <div className="container-wide space-y-16">
-          <AiSystemsPortfolioStrip />
+          <FeaturedProjectSection variant="standalone" />
 
           <div>
             <Reveal>
@@ -47,12 +47,12 @@ export default function ToolsPage() {
       </section>
 
       <CtaSection
-        title="Need the full system, not just a tool?"
-        description="The tools are a starting point. When you're ready to build and run the whole growth system, let's talk."
-        primaryHref="/work-with-me"
-        primaryLabel="Work With Me"
-        secondaryHref="/contact"
-        secondaryLabel="Get in Touch"
+        title="See the full platform case study"
+        description="Explore how I designed and built an AI-powered marketing operating system — then try the free tools."
+        primaryHref="/work/ai-marketing-systems"
+        primaryLabel="Explore the Platform"
+        secondaryHref="/work-with-me"
+        secondaryLabel="Work With Me"
       />
     </>
   );

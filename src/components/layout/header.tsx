@@ -23,20 +23,27 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "text-sm transition-colors hover:text-foreground",
-                pathname === link.href || pathname.startsWith(`${link.href}/`)
-                  ? "text-foreground"
-                  : "text-muted-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isPlatform = link.href === "/work/ai-marketing-systems";
+            const isActive =
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-sm transition-colors hover:text-foreground",
+                  isActive
+                    ? "text-foreground"
+                    : isPlatform
+                      ? "text-accent/90 hover:text-accent"
+                      : "text-muted-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center md:flex">

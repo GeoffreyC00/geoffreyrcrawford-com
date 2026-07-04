@@ -50,6 +50,19 @@
   .link-underline:hover::after {
     @apply origin-left scale-x-100;
   }
+
+  /* Premium product card — Stripe/Linear inspired */
+  .product-card {
+    @apply overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300;
+  }
+  .product-card:hover {
+    @apply border-white/[0.12] bg-white/[0.04] shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_20px_60px_-20px_rgba(0,0,0,0.5)];
+    transform: translateY(-2px);
+  }
+
+  .product-frame {
+    @apply relative;
+  }
 }
 
 @layer utilities {
