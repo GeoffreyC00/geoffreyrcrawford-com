@@ -142,7 +142,7 @@ export function PlatformCaseStudyContent() {
       </section>
 
       {/* §4 Product Highlights */}
-      <section className="section-padding border-t border-hairline">
+      <section id="customer-intelligence" className="section-padding border-t border-hairline scroll-mt-24">
         <div className="container-wide">
           <Reveal>
             <SectionHeading kicker="03" title="Product Highlights" />
@@ -159,7 +159,7 @@ export function PlatformCaseStudyContent() {
       </section>
 
       {/* §5 System Architecture */}
-      <section className="section-padding border-t border-hairline">
+      <section id="automation" className="section-padding border-t border-hairline scroll-mt-24">
         <div className="container-wide">
           <Reveal>
             <SectionHeading kicker="04" title="System Architecture" />

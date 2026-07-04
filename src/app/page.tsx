@@ -7,8 +7,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { Reveal } from "@/components/shared/reveal";
 import { StatusPill, ToolCard } from "@/components/tools/tool-card";
 import { LinkButton } from "@/components/ui/link-button";
-import { CaseStudyCard } from "@/components/work/case-study-card";
-import { featuredCaseStudies } from "@/lib/data/case-studies";
+import { SelectedWorkGrid } from "@/components/work/selected-work-grid";
 import { platformProduct } from "@/lib/data/platform-case-study";
 import { featuredTool, tools } from "@/lib/data/tools";
 import { proofPoints, siteConfig } from "@/lib/site-config";
@@ -103,6 +102,33 @@ export default function HomePage() {
 
       {/* Featured Project — immediately below hero, impossible to miss */}
       <FeaturedProjectSection variant="homepage" />
+
+      {/* Selected Work — three product pillars */}
+      <section className="section-padding border-t border-hairline !py-20">
+        <div className="container-wide">
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="kicker">Selected work</p>
+                <h2 className="mt-6 max-w-2xl font-serif text-display-lg font-light text-balance">
+                  AI product systems for marketing.
+                </h2>
+                <p className="mt-4 max-w-xl text-muted-foreground text-pretty">
+                  Not campaigns — products. Internal software, intelligence platforms, and
+                  automation systems built for marketing teams.
+                </p>
+              </div>
+              <Link href="/work" className="link-underline text-sm font-medium text-foreground">
+                View all work →
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.08} className="mt-12">
+            <SelectedWorkGrid />
+          </Reveal>
+        </div>
+      </section>
 
       {/* Builder capabilities strip */}
       <section className="section-padding border-t border-hairline !py-16">
@@ -207,36 +233,6 @@ export default function HomePage() {
                 <ToolCard tool={tool} className="h-full" />
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Selected work */}
-      <section className="section-padding border-t border-hairline">
-        <div className="container-wide">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <p className="kicker">More work</p>
-                <h2 className="mt-6 max-w-2xl font-serif text-display-lg font-light text-balance">
-                  Problems solved across industries.
-                </h2>
-              </div>
-              <Link href="/work" className="link-underline text-sm font-medium text-foreground">
-                View all work →
-              </Link>
-            </div>
-          </Reveal>
-
-          <div className="mt-14 grid gap-x-16 gap-y-14 md:grid-cols-2">
-            {featuredCaseStudies
-              .filter((s) => s.slug !== "ai-marketing-systems")
-              .slice(0, 2)
-              .map((study, i) => (
-                <Reveal key={study.slug} delay={i * 0.06}>
-                  <CaseStudyCard study={study} />
-                </Reveal>
-              ))}
           </div>
         </div>
       </section>
