@@ -137,9 +137,9 @@ export default function AboutPage() {
               <EditorialImage
                 src={photos.speakingWhiteboard.src}
                 alt={photos.speakingWhiteboard.alt}
-                className="aspect-[4/5] w-full sm:aspect-[3/2]"
-                imgClassName="object-top"
-                sizes="(max-width: 1024px) 100vw, 50rem"
+                className="aspect-[4/5] w-full max-h-[32rem] sm:max-h-none lg:aspect-[5/6]"
+                imgClassName="object-cover object-[center_20%]"
+                sizes="(max-width: 1024px) 100vw, 42rem"
               />
             </div>
             <Reveal className="lg:col-span-5">

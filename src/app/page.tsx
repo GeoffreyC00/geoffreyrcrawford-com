@@ -3,8 +3,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FeaturedProjectSection } from "@/components/product/featured-project-section";
 import { CtaSection } from "@/components/shared/cta-section";
+import { HeroPortrait } from "@/components/shared/hero-portrait";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Reveal } from "@/components/shared/reveal";
+import { Parallax, Reveal } from "@/components/shared/reveal";
 import { StatusPill, ToolCard } from "@/components/tools/tool-card";
 import { LinkButton } from "@/components/ui/link-button";
 import { SelectedWorkGrid } from "@/components/work/selected-work-grid";
@@ -60,42 +61,52 @@ export default function HomePage() {
       <JsonLd data={personJsonLd} />
       <JsonLd data={websiteJsonLd} />
 
-      {/* Hero — product builder positioning */}
+      {/* Hero — product builder + personal portrait */}
       <section className="section-padding !pb-16 !pt-24 md:!pt-32">
         <div className="container-wide">
-          <div className="max-w-4xl">
-            <p className="kicker animate-rise">Product · AI · Marketing Systems</p>
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_26rem] lg:gap-16">
+            <div className="order-1">
+              <p className="kicker animate-rise">Product · AI · Marketing Systems</p>
 
-            <h1 className="mt-8 font-serif text-display-2xl font-light text-pretty">
-              <span className="block overflow-hidden">
-                <span className="reveal-mask block [animation-delay:80ms]">
-                  I build AI-powered
+              <h1 className="mt-8 font-serif text-display-2xl font-light text-pretty">
+                <span className="block overflow-hidden">
+                  <span className="reveal-mask block [animation-delay:80ms]">
+                    I build AI-powered
+                  </span>
                 </span>
-              </span>
-              <span className="block overflow-hidden">
-                <span className="reveal-mask block text-accent [animation-delay:200ms]">
-                  marketing systems.
+                <span className="block overflow-hidden">
+                  <span className="reveal-mask block text-accent [animation-delay:200ms]">
+                    marketing systems.
+                  </span>
                 </span>
-              </span>
-            </h1>
+              </h1>
 
-            <p className="animate-rise mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground text-pretty [animation-delay:320ms]">
-              Dashboards, reporting platforms, automation workflows, and decision-support tools —
-              designed and shipped as product, not spreadsheets.
-            </p>
+              <p className="animate-rise mt-8 max-w-xl text-xl leading-relaxed text-muted-foreground text-pretty [animation-delay:320ms]">
+                Dashboards, reporting platforms, automation workflows, and decision-support tools —
+                designed and shipped as product, not spreadsheets.
+              </p>
 
-            <div className="animate-rise mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:420ms]">
-              <LinkButton href={platformProduct.slug} size="lg">
-                Explore the Platform
-                <ArrowRight className="h-4 w-4" />
-              </LinkButton>
-              <Link
-                href="/tools"
-                className="link-underline text-sm font-medium text-muted-foreground hover:text-foreground"
-              >
-                Free AI tools →
-              </Link>
+              <div className="animate-rise mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:420ms]">
+                <LinkButton href={platformProduct.slug} size="lg">
+                  Explore the Platform
+                  <ArrowRight className="h-4 w-4" />
+                </LinkButton>
+                <Link
+                  href="/tools"
+                  className="link-underline text-sm font-medium text-muted-foreground hover:text-foreground"
+                >
+                  Free AI tools →
+                </Link>
+              </div>
             </div>
+
+            {/* Portrait — below headline on mobile, right column on desktop */}
+            <Parallax
+              distance={24}
+              className="animate-rise order-2 mx-auto w-full max-w-[20rem] lg:order-2 lg:mx-0 lg:max-w-none [animation-delay:280ms]"
+            >
+              <HeroPortrait priority />
+            </Parallax>
           </div>
         </div>
       </section>

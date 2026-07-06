@@ -4,10 +4,17 @@
  * everywhere it's used. Documentary photos by Think Media.
  */
 export const photos = {
-  /** Home hero — transparent cutout portrait, arms crossed, for the dark theme. */
+  /** Home hero — transparent cutout portrait, arms crossed. */
+  headshot: {
+    src: "/images/geoffrey-crawford-headshot.png",
+    alt: "Geoffrey Crawford professional headshot",
+    width: 859,
+    height: 1172,
+  },
+  /** @deprecated Use photos.headshot — kept for backward compatibility */
   portraitHero: {
-    src: "/images/photography/portrait-hero.png",
-    alt: "Geoffrey R. Crawford, arms crossed, confident studio portrait",
+    src: "/images/geoffrey-crawford-headshot.png",
+    alt: "Geoffrey Crawford professional headshot",
     width: 859,
     height: 1172,
   },
@@ -31,10 +38,12 @@ export const photos = {
     src: "/images/photography/production-camera.jpg",
     alt: "Geoffrey R. Crawford operating a cinema camera on set",
   },
-  /** About feature — teaching at a whiteboard. */
+  /** About — teaching at a whiteboard. */
   speakingWhiteboard: {
-    src: "/images/photography/speaking-whiteboard.jpg",
-    alt: "Geoffrey R. Crawford teaching in front of a whiteboard",
+    src: "/images/geoffrey-crawford-speaking.jpg",
+    alt: "Geoffrey Crawford speaking during a marketing strategy session",
+    width: 683,
+    height: 1024,
   },
   /** About documentary — leading a working conversation. */
   collaborationMeeting: {
