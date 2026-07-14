@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { ArchitectureDiagram } from "@/components/product/architecture-diagram";
 import { PlatformHeroVisual } from "@/components/product/platform-hero-visual";
 import { ProductModuleGrid } from "@/components/product/product-module-grid";
 import { TechStackGrid } from "@/components/product/tech-stack-grid";
@@ -169,9 +169,22 @@ export function PlatformCaseStudyContent() {
             </p>
           </Reveal>
 
-          <div className="mt-16">
-            <ArchitectureDiagram />
-          </div>
+          <Reveal delay={0.1} className="mt-14">
+            <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0A0A0A] shadow-[0_0_0_1px_rgba(255,255,255,0.03)_inset,0_24px_80px_-20px_rgba(0,0,0,0.6)]">
+              <Image
+                src="/images/architecture/ai-marketing-intelligence-architecture-desktop.png"
+                alt="AI Marketing Intelligence Platform system architecture — marketing and business data flowing through a unified data layer into an AI intelligence engine and executive dashboards"
+                width={1600}
+                height={1000}
+                className="h-auto w-full"
+                sizes="(max-width: 1200px) 100vw, 78rem"
+                priority={false}
+              />
+            </div>
+            <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-editorial text-muted-foreground">
+              System architecture · left-to-right data flow
+            </p>
+          </Reveal>
         </div>
       </section>
 
