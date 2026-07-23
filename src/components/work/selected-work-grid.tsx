@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { SelectedWorkProject } from "@/lib/data/selected-work";
 import { selectedWorkProjects } from "@/lib/data/selected-work";
 import { cn } from "@/lib/utils";
@@ -14,16 +14,14 @@ function SelectedWorkCard({ project }: { project: SelectedWorkProject }) {
       )}
     >
       <div className="flex items-start justify-between gap-4">
-        {project.featured ? (
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-editorial text-accent">
-            <Sparkles className="h-3 w-3" />
-            Hero project
-          </span>
-        ) : (
-          <span className="font-mono text-[10px] uppercase tracking-editorial text-muted-foreground">
-            Product system
-          </span>
-        )}
+        <span
+          className={cn(
+            "font-mono text-[10px] uppercase tracking-editorial",
+            project.featured ? "text-accent" : "text-muted-foreground"
+          )}
+        >
+          {project.badge ?? "Marketing system"}
+        </span>
         <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
       </div>
 
@@ -47,13 +45,13 @@ function SelectedWorkCard({ project }: { project: SelectedWorkProject }) {
       </div>
 
       <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
-        <span className="link-underline">View project</span>
+        <span className="link-underline">View case study</span>
       </span>
     </Link>
   );
 }
 
-/** Three-card Selected Work grid for the homepage. */
+/** Three-card Featured Marketing Projects grid for the homepage. */
 export function SelectedWorkGrid() {
   return (
     <div className="grid gap-5 lg:grid-cols-3">

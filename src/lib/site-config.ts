@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Geoffrey R. Crawford",
-  title: "Growth Marketing & AI Product Builder",
+  title: "Growth Marketing Strategist & Performance Marketing Leader",
   tagline: "Marketing systems that turn attention into revenue.",
   description:
-    "Product builder and growth strategist — I design and ship AI-powered marketing systems, dashboards, automation workflows, and decision-support tools for marketing teams.",
+    "Growth Marketing Strategist with 8+ years in performance marketing, paid acquisition, analytics, experimentation, and marketing systems — helping businesses scale revenue with strategy and technical execution.",
   url: "https://geoffreyrcrawford.com",
   email: "info@geoffreyrcrawford.com",
   inboxEmail: "geoffreyrcrawford@gmail.com",
@@ -20,20 +20,20 @@ export const siteConfig = {
   },
 };
 
-// Primary navigation — Platform leads so recruiters find the flagship product immediately.
+// Work-first navigation — recruiters find proof before product.
 export const navLinks = [
-  { href: "/work/ai-marketing-systems", label: "Platform" },
-  { href: "/tools", label: "Tools" },
   { href: "/work", label: "Work" },
+  { href: "/work/ai-marketing-systems", label: "Systems" },
   { href: "/about", label: "About" },
+  { href: "/tools", label: "Tools" },
   { href: "/insights", label: "Insights" },
 ] as const;
 
 // Minimal footer links — secondary destinations live here, not in the nav.
 export const footerLinks = [
-  { href: "/work/ai-marketing-systems", label: "Platform" },
-  { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
+  { href: "/work/ai-marketing-systems", label: "Systems" },
+  { href: "/about", label: "About" },
   { href: "/tools", label: "Tools" },
   { href: "/insights", label: "Insights" },
   { href: "/work-with-me", label: "Consulting" },
@@ -41,8 +41,8 @@ export const footerLinks = [
 ] as const;
 
 export const proofPoints = [
-  "7+ years in performance marketing",
-  "Six-figure monthly ad budgets",
+  "8+ years in performance marketing",
+  "$200K+ monthly paid media managed",
   "Google · Meta · YouTube · Amazon",
   "eCommerce, B2B & creator economy",
 ] as const;

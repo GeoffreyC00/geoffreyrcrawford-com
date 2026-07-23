@@ -3,8 +3,8 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 
 /**
- * Featured portfolio strip for the AI Marketing Systems case study — surfaces
- * on Work and Tools index pages so recruiters can find it quickly.
+ * Featured portfolio strip for the marketing systems case study —
+ * surfaces on Work and Tools so recruiters can find it quickly.
  */
 export function AiSystemsPortfolioStrip() {
   return (
@@ -15,14 +15,13 @@ export function AiSystemsPortfolioStrip() {
       >
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div className="max-w-2xl">
-            <p className="kicker">Portfolio · AI systems</p>
+            <p className="kicker">Featured marketing system</p>
             <h2 className="mt-5 font-serif text-display-md font-light text-balance transition-colors duration-300 group-hover:text-accent">
-              AI Marketing Systems
+              Unified Marketing Intelligence Platform
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
-              AI-driven dashboards, automated reporting, and multi-platform data pipelines — built
-              as a full marketing OS. Anonymized previews for product, growth ops, and analytics
-              roles.
+              Paid media, attribution, CRM, and executive reporting in one system — built for
+              growth teams that need clearer decisions, not more spreadsheets.
             </p>
           </div>
           <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">

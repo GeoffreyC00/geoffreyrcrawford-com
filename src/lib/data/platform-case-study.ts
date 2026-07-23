@@ -5,12 +5,12 @@
 
 export const platformProduct = {
   slug: "/work/ai-marketing-systems",
-  name: "AI Marketing Intelligence Platform",
-  tagline: "An AI-powered marketing operating system",
+  name: "Unified Marketing Intelligence Platform",
+  tagline: "A marketing operating system for faster decisions",
   shortDescription:
-    "Designed and built an AI-powered marketing operating system that unifies advertising, attribution, CRM, reporting, automation, and executive decision making.",
+    "Designed and built a marketing operating system that unifies advertising, attribution, CRM, reporting, automation, and executive decision making — with AI where it accelerates insight.",
   homepageDescription:
-    "See how I designed and built an AI-powered operating system that unifies marketing analytics, attribution, automation, reporting, and executive decision making.",
+    "How I connected paid media, attribution, CRM, and reporting into one system — so leadership can see performance clearly and act faster.",
 } as const;
 
 export const caseStudyHero = {

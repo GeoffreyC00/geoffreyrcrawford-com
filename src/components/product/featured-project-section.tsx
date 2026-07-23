@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PlatformHeroVisual } from "@/components/product/platform-hero-visual";
 import { Reveal } from "@/components/shared/reveal";
 import { LinkButton } from "@/components/ui/link-button";
@@ -11,8 +11,7 @@ type FeaturedProjectSectionProps = {
 };
 
 /**
- * Flagship product section — impossible to miss on the homepage.
- * Recruiters should discover the platform within 10 seconds.
+ * Featured marketing system — business-outcome framing for recruiters.
  */
 export function FeaturedProjectSection({ variant = "homepage" }: FeaturedProjectSectionProps) {
   const isHomepage = variant === "homepage";
@@ -25,7 +24,6 @@ export function FeaturedProjectSection({ variant = "homepage" }: FeaturedProject
           : "section-padding border-t border-hairline"
       }
     >
-      {/* Subtle grid texture */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]"
@@ -34,9 +32,8 @@ export function FeaturedProjectSection({ variant = "homepage" }: FeaturedProject
       <div className="container-wide relative">
         <Reveal>
           <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-accent" />
             <span className="font-mono text-xs uppercase tracking-editorial text-accent">
-              Featured Project
+              Featured marketing system
             </span>
           </div>
 
@@ -57,14 +54,14 @@ export function FeaturedProjectSection({ variant = "homepage" }: FeaturedProject
 
               <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
                 <LinkButton href={platformProduct.slug} size="lg">
-                  Explore the Case Study
+                  View Case Study
                   <ArrowRight className="h-4 w-4" />
                 </LinkButton>
                 <Link
-                  href={platformProduct.slug}
+                  href="/work"
                   className="link-underline text-sm font-medium text-muted-foreground hover:text-foreground"
                 >
-                  View product architecture →
+                  Explore all work →
                 </Link>
               </div>
             </div>
