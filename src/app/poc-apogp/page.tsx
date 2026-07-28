@@ -125,8 +125,8 @@ export default function PocApogpPage() {
         </div>
       </section>
 
-      {/* Who We Are */}
-      <section id="about" className="apogp-section bg-[var(--brand-gold)]">
+      {/* Who We Are — gold band */}
+      <section id="about" className="apogp-section apogp-band-gold">
         <div className="apogp-wrap grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
             <h2 className="apogp-headline apogp-headline-lg">
@@ -156,8 +156,8 @@ export default function PocApogpPage() {
         </div>
       </section>
 
-      {/* Services — improved content, original brand styling */}
-      <section id="services" className="apogp-section bg-[var(--brand-gold)]">
+      {/* Services — purple band */}
+      <section id="services" className="apogp-section apogp-band-purple">
         <div className="apogp-wrap">
           <h2 className="apogp-headline apogp-headline-lg">Our Services</h2>
           <p className="apogp-body mt-4 max-w-2xl">
@@ -168,9 +168,9 @@ export default function PocApogpPage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {services.map((service) => (
               <div key={service.title} className="apogp-service">
-                <Home className="mb-3 h-5 w-5 text-[var(--brand-purple)]" strokeWidth={1.75} />
-                <h3 className="text-lg font-bold text-[var(--brand-text-purple)]">{service.title}</h3>
-                <p className="mt-2 text-[0.95rem] leading-relaxed text-[var(--brand-text-purple)]">
+                <Home className="mb-3 h-5 w-5 text-[var(--brand-gold)]" strokeWidth={1.75} />
+                <h3 className="text-lg font-bold text-[var(--brand-gold)]">{service.title}</h3>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-[var(--brand-gold)]">
                   {service.body}
                 </p>
               </div>
@@ -179,52 +179,52 @@ export default function PocApogpPage() {
         </div>
       </section>
 
-      {/* Trusted partners */}
-      <section className="apogp-section bg-[var(--brand-gold)]">
-        <div className="apogp-wrap">
-          <h2 className="apogp-headline apogp-headline-lg">
-            Trusted by organizations and leaders in the affordable housing industry.
-          </h2>
-          <p className="apogp-body mt-5 max-w-3xl">
-            A Part of GOD&apos;s Plan, Inc. delivers expert guidance with heart, precision, and a
-            mission to support decent, sanitary, and stable housing throughout Western New York.
-          </p>
-
-          <ul className="mt-10 space-y-0 border-t border-[var(--brand-purple)]/30">
-            {trusted.map((org) => (
-              <li
-                key={org}
-                className="border-b border-[var(--brand-purple)]/30 py-4 text-base font-semibold text-[var(--brand-text-purple)] sm:text-lg"
-              >
-                {org}
-              </li>
-            ))}
-          </ul>
+      {/* Trusted partners — gold band */}
+      <section className="apogp-section apogp-band-gold">
+        <div className="apogp-wrap grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[4/5]">
+            <Image
+              src="/images/apogp/community.jpg"
+              alt="Community housing"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+            />
+          </div>
+          <div>
+            <h2 className="apogp-headline apogp-headline-lg">
+              Trusted by organizations and leaders in the affordable housing industry.
+            </h2>
+            <p className="apogp-body mt-5">
+              A Part of GOD&apos;s Plan, Inc. delivers expert guidance with heart, precision, and a
+              mission to support decent, sanitary, and stable housing throughout Western New York.
+            </p>
+            <ul className="mt-8 space-y-0 border-t border-[var(--brand-purple)]/30">
+              {trusted.map((org) => (
+                <li
+                  key={org}
+                  className="border-b border-[var(--brand-purple)]/30 py-4 text-base font-semibold text-[var(--brand-text-purple)] sm:text-lg"
+                >
+                  {org}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* Leadership */}
-      <section id="leadership" className="apogp-section bg-[var(--brand-gold)]">
+      {/* Leadership — purple band */}
+      <section id="leadership" className="apogp-section apogp-band-purple">
         <div className="apogp-wrap grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
-          <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/4] lg:aspect-[4/5]">
-            <Image
-              src="/images/apogp/community.jpg"
-              alt="Community-focused housing"
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </div>
-
           <div>
             <h2 className="apogp-headline apogp-headline-lg">Leadership</h2>
-            <p className="mt-4 text-xl font-bold text-[var(--brand-text-purple)]">
+            <p className="mt-4 text-xl font-bold text-[var(--brand-gold)]">
               Froziner (F.) Renee Bellamy
             </p>
-            <p className="mt-1 text-base font-semibold text-[var(--brand-purple)]">
+            <p className="mt-1 text-base font-semibold text-[var(--brand-gold)]">
               Owner &amp; President · Licensed Real Estate Broker
             </p>
-            <p className="mt-2 text-sm text-[var(--brand-text-purple)]/80">
+            <p className="mt-2 text-sm text-[var(--brand-gold)]/80">
               Brokerage ID: 10311209829
             </p>
 
@@ -245,21 +245,31 @@ export default function PocApogpPage() {
 
             <div className="apogp-divider my-8" />
 
-            <p className="text-sm font-bold uppercase tracking-wide text-[var(--brand-text-purple)]">
+            <p className="text-sm font-bold uppercase tracking-wide text-[var(--brand-gold)]">
               Credentials
             </p>
-            <ul className="mt-3 space-y-1.5 text-[0.95rem] text-[var(--brand-text-purple)]">
+            <ul className="mt-3 space-y-1.5 text-[0.95rem] text-[var(--brand-gold)]">
               <li>Licensed Real Estate Broker</li>
               <li>HUD · Tax Credit · USDA-RD · State Housing Programs</li>
               <li>1,500+ residential units overseen</li>
               <li>NYS MWBE Certified</li>
             </ul>
           </div>
+
+          <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/4] lg:aspect-[4/5]">
+            <Image
+              src="/images/apogp/hero.jpg"
+              alt="Multifamily residential property"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
         </div>
       </section>
 
-      {/* Stats — gold, purple text, simple dividers (no dark strip) */}
-      <section className="border-y border-[var(--brand-purple)]/25 bg-[var(--brand-gold)]">
+      {/* Stats — gold band */}
+      <section className="apogp-band-gold border-y border-[var(--brand-purple)]/25">
         <div className="apogp-wrap grid grid-cols-2 md:grid-cols-4">
           {[
             { value: "40+", label: "Years of Leadership" },
@@ -284,27 +294,29 @@ export default function PocApogpPage() {
         </div>
       </section>
 
-      {/* Let's Work Together */}
-      <section className="apogp-section bg-[var(--brand-gold)]">
+      {/* Let's Work Together — gold band with purple panel (matches live site) */}
+      <section className="apogp-section apogp-band-gold">
         <div className="apogp-wrap max-w-3xl">
-          <h2 className="apogp-headline apogp-headline-lg">Let&apos;s Work Together</h2>
-          <p className="apogp-body mt-5">
-            We&apos;re always open to new opportunities. Whether you&apos;re a developer, a
-            for-profit or not-for-profit organization, or a property owner, we&apos;re here to
-            provide expert property management, consulting, and support.
-          </p>
-          <p className="apogp-body mt-4">
-            Please get in touch, and a member of our team will contact you to begin the proposal
-            process.
-          </p>
-          <a href="#contact" className="apogp-btn mt-8">
-            Contact Us
-          </a>
+          <div className="apogp-cta-panel">
+            <h2 className="apogp-headline apogp-headline-lg">Let&apos;s Work Together</h2>
+            <p className="apogp-body mt-5">
+              We&apos;re always open to new opportunities. Whether you&apos;re a developer, a
+              for-profit or not-for-profit organization, or a property owner, we&apos;re here to
+              provide expert property management, consulting, and support.
+            </p>
+            <p className="apogp-body mt-4">
+              Please get in touch, and a member of our team will contact you to begin the proposal
+              process.
+            </p>
+            <a href="#contact" className="apogp-btn-inverse mt-8">
+              Contact Us
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Fair Housing */}
-      <section id="fair-housing" className="border-t border-[var(--brand-purple)]/20 bg-[var(--brand-gold)] py-12">
+      {/* Fair Housing — gold band */}
+      <section id="fair-housing" className="apogp-band-gold border-t border-[var(--brand-purple)]/20 py-12">
         <div className="apogp-wrap">
           <h2 className="apogp-headline text-2xl">Fair Housing Notice</h2>
           <p className="apogp-body mt-4 max-w-3xl text-[0.95rem]">
@@ -316,8 +328,8 @@ export default function PocApogpPage() {
         </div>
       </section>
 
-      {/* Footer — matches original gold footer */}
-      <footer id="contact" className="border-t border-[var(--brand-purple)]/30 bg-[var(--brand-gold)]">
+      {/* Footer — gold (matches live site) */}
+      <footer id="contact" className="apogp-band-gold border-t border-[var(--brand-purple)]/30">
         <div className="apogp-wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Image

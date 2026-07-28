@@ -10,7 +10,7 @@ export default function PocApogpLayout({ children }: { children: ReactNode }) {
       <style>{`
         html, body {
           background: #efcc72 !important;
-          color: #49097f;
+          color: #4c0b7f;
         }
       `}</style>
       {children}

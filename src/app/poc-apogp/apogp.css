@@ -1,12 +1,12 @@
 /* A Part of GOD's Plan, Inc. — brand system matching live site */
 .apogp-poc {
-  /* Gold from live screenshots; purple sampled from logo asset */
+  /* Colors sampled from live apogpinc.com section backgrounds */
   --brand-gold: #efcc72;
   --brand-gold-light: #f1d27a;
   --brand-gold-soft: #f6e3a8;
-  --brand-purple: #49097f;
+  --brand-purple: #4c0b7f;
   --brand-purple-dark: #3a0766;
-  --brand-text-purple: #49097f;
+  --brand-text-purple: #4c0b7f;
   --brand-white: #ffffff;
   --brand-black: #111111;
   --brand-overlay: rgba(17, 17, 17, 0.42);
@@ -84,6 +84,22 @@
   opacity: 1;
 }
 
+/* Black button used inside purple CTA boxes (matches live site) */
+.apogp-poc .apogp-btn-inverse {
+  display: inline-block;
+  background: var(--brand-black);
+  color: var(--brand-white);
+  border: 1px solid var(--brand-gold);
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 0;
+}
+
+.apogp-poc .apogp-btn-inverse:hover {
+  opacity: 0.9;
+}
+
 .apogp-poc .apogp-section {
   padding: 3.75rem 0;
 }
@@ -92,6 +108,56 @@
   .apogp-poc .apogp-section {
     padding: 4.25rem 0;
   }
+}
+
+/* Gold section: purple type (default) */
+.apogp-poc .apogp-band-gold {
+  background: var(--brand-gold);
+  color: var(--brand-text-purple);
+}
+
+/* Purple section: gold type — matches live site alternation */
+.apogp-poc .apogp-band-purple {
+  background: var(--brand-purple);
+  color: var(--brand-gold);
+}
+
+.apogp-poc .apogp-band-purple .apogp-headline,
+.apogp-poc .apogp-band-purple .apogp-body {
+  color: var(--brand-gold);
+}
+
+.apogp-poc .apogp-band-purple .apogp-service {
+  border-color: rgba(239, 204, 114, 0.45);
+}
+
+.apogp-poc .apogp-band-purple .apogp-divider {
+  background: var(--brand-gold);
+  opacity: 0.35;
+}
+
+/* Purple CTA panel on gold background (Let's Work Together) */
+.apogp-poc .apogp-cta-panel {
+  background: var(--brand-purple);
+  padding: 2.75rem 1.75rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .apogp-poc .apogp-cta-panel {
+    padding: 3.5rem 3rem;
+  }
+}
+
+.apogp-poc .apogp-cta-panel .apogp-headline {
+  color: var(--brand-gold);
+}
+
+.apogp-poc .apogp-cta-panel .apogp-body {
+  color: var(--brand-white);
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .apogp-poc .apogp-nav a {
@@ -109,7 +175,7 @@
 }
 
 .apogp-poc .apogp-service {
-  border: 1px solid rgba(73, 9, 127, 0.45);
+  border: 1px solid rgba(76, 11, 127, 0.45);
   background: transparent;
   padding: 1.35rem 1.25rem;
   border-radius: 0;
