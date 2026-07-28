@@ -41,17 +41,17 @@ export default function PocApogpPage() {
   return (
     <div className="apogp-poc min-h-screen">
       {/* Subtle POC note — brand-aligned, not dark */}
-      <div className="border-b border-[var(--brand-purple)]/20 bg-[var(--brand-gold-light)] px-4 py-2 text-center">
-        <p className="text-[11px] font-medium tracking-wide text-[var(--brand-text-purple)]">
+      <div className="bg-[var(--brand-gold)] px-4 py-1.5 text-center">
+        <p className="text-[10px] tracking-wide text-[var(--brand-text-purple)]/70">
           Proof of concept · Expanded redesign matching A Part of GOD&apos;s Plan, Inc. brand ·
           Private preview link
         </p>
       </div>
 
-      {/* Header — gold + purple nav */}
-      <header className="border-b border-[var(--brand-purple)]/15 bg-[var(--brand-gold)]">
-        <div className="apogp-wrap flex items-center justify-between gap-6 py-3 md:py-4">
-          <div className="flex items-center gap-3 sm:gap-4">
+      {/* Header — gold + purple nav, matching live site proportions */}
+      <header className="bg-[var(--brand-gold)]">
+        <div className="apogp-wrap flex items-center justify-between gap-6 py-2.5 md:py-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <Link href="/poc-apogp" className="block shrink-0">
               <Image
                 src="/images/apogp/logo.png"
@@ -59,19 +59,19 @@ export default function PocApogpPage() {
                 width={240}
                 height={135}
                 priority
-                className="h-[3.25rem] w-auto object-contain sm:h-16 md:h-[4.5rem]"
+                className="h-12 w-auto object-contain sm:h-14 md:h-[4.25rem]"
               />
             </Link>
             <Image
               src="/images/apogp/nys-mwbe-certified.png"
               alt="New York State MWBE Certified"
-              width={100}
-              height={75}
-              className="h-8 w-auto object-contain sm:h-10 md:h-11"
+              width={80}
+              height={60}
+              className="h-7 w-auto object-contain opacity-95 sm:h-8 md:h-9"
             />
           </div>
 
-          <nav className="apogp-nav hidden items-center gap-8 md:flex">
+          <nav className="apogp-nav hidden items-center gap-7 lg:gap-9 md:flex">
             <a href="#home" data-active="true">
               Home
             </a>
@@ -91,13 +91,13 @@ export default function PocApogpPage() {
       </header>
 
       {/* Hero */}
-      <section id="home" className="relative min-h-[70vh] overflow-hidden md:min-h-[78vh]">
+      <section id="home" className="relative min-h-[58vh] overflow-hidden md:min-h-[68vh]">
         <Image
           src="/images/apogp/hero.jpg"
           alt="Multifamily residential property"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-[center_40%]"
           sizes="100vw"
         />
         <div
@@ -106,19 +106,19 @@ export default function PocApogpPage() {
           aria-hidden
         />
 
-        <div className="apogp-wrap relative flex min-h-[70vh] items-center py-20 md:min-h-[78vh] md:py-24">
-          <div className="max-w-3xl">
+        <div className="apogp-wrap relative flex min-h-[58vh] items-center py-16 md:min-h-[68vh] md:py-20">
+          <div className="max-w-2xl md:max-w-3xl">
             <h1 className="apogp-headline apogp-headline-hero">
               Real Estate with Purpose.
               <br />
               Property Management You Can Trust.
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white md:text-lg">
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white md:mt-6 md:max-w-2xl md:text-base">
               Founded and led by CEO F. Renee Bellamy, who brings more than 40 years of leadership
               and expertise in affordable housing, compliance, property management, and consulting
               throughout Western New York.
             </p>
-            <a href="#about" className="apogp-btn mt-8">
+            <a href="#about" className="apogp-btn mt-7">
               Learn more
             </a>
           </div>
@@ -144,12 +144,12 @@ export default function PocApogpPage() {
             </p>
           </div>
 
-          <div className="relative aspect-[5/4] w-full overflow-hidden">
+          <div className="relative aspect-[3/2] w-full overflow-hidden">
             <Image
               src="/images/apogp/building.jpg"
               alt="Residential property"
               fill
-              className="object-cover"
+              className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
@@ -157,7 +157,7 @@ export default function PocApogpPage() {
       </section>
 
       {/* Services — improved content, original brand styling */}
-      <section id="services" className="apogp-section border-t border-[var(--brand-purple)]/20 bg-[var(--brand-gold-light)]">
+      <section id="services" className="apogp-section bg-[var(--brand-gold)]">
         <div className="apogp-wrap">
           <h2 className="apogp-headline apogp-headline-lg">Our Services</h2>
           <p className="apogp-body mt-4 max-w-2xl">
@@ -204,7 +204,7 @@ export default function PocApogpPage() {
       </section>
 
       {/* Leadership */}
-      <section id="leadership" className="apogp-section border-t border-[var(--brand-purple)]/20 bg-[var(--brand-gold-light)]">
+      <section id="leadership" className="apogp-section bg-[var(--brand-gold)]">
         <div className="apogp-wrap grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/4] lg:aspect-[4/5]">
             <Image
@@ -285,7 +285,7 @@ export default function PocApogpPage() {
       </section>
 
       {/* Let's Work Together */}
-      <section className="apogp-section bg-[var(--brand-gold-light)]">
+      <section className="apogp-section bg-[var(--brand-gold)]">
         <div className="apogp-wrap max-w-3xl">
           <h2 className="apogp-headline apogp-headline-lg">Let&apos;s Work Together</h2>
           <p className="apogp-body mt-5">

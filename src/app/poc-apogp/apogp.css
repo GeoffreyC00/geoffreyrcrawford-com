@@ -1,14 +1,15 @@
 /* A Part of GOD's Plan, Inc. — brand system matching live site */
 .apogp-poc {
+  /* Gold from live screenshots; purple sampled from logo asset */
   --brand-gold: #efcc72;
-  --brand-gold-light: #f3d681;
+  --brand-gold-light: #f1d27a;
   --brand-gold-soft: #f6e3a8;
-  --brand-purple: #4f0b88;
-  --brand-purple-dark: #3e086d;
-  --brand-text-purple: #50108c;
+  --brand-purple: #49097f;
+  --brand-purple-dark: #3a0766;
+  --brand-text-purple: #49097f;
   --brand-white: #ffffff;
   --brand-black: #111111;
-  --brand-overlay: rgba(17, 17, 17, 0.48);
+  --brand-overlay: rgba(17, 17, 17, 0.42);
 
   font-family: Arial, Helvetica, sans-serif;
   background: var(--brand-gold);
@@ -55,8 +56,9 @@
 }
 
 .apogp-poc .apogp-headline-hero {
-  font-size: clamp(2rem, 5vw, 3.35rem);
+  font-size: clamp(1.85rem, 4.6vw, 3.1rem);
   color: var(--brand-white);
+  font-weight: 700;
 }
 
 .apogp-poc .apogp-body {
@@ -69,11 +71,11 @@
   display: inline-block;
   background: var(--brand-gold);
   color: var(--brand-purple);
-  border: 1.5px solid var(--brand-purple);
-  padding: 0.7rem 1.35rem;
-  font-size: 0.95rem;
+  border: 1px solid var(--brand-purple);
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 0;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
@@ -83,7 +85,13 @@
 }
 
 .apogp-poc .apogp-section {
-  padding: 4.5rem 0;
+  padding: 3.75rem 0;
+}
+
+@media (min-width: 768px) {
+  .apogp-poc .apogp-section {
+    padding: 4.25rem 0;
+  }
 }
 
 .apogp-poc .apogp-nav a {
@@ -101,9 +109,10 @@
 }
 
 .apogp-poc .apogp-service {
-  border: 1px solid var(--brand-purple);
+  border: 1px solid rgba(73, 9, 127, 0.45);
   background: transparent;
-  padding: 1.5rem 1.35rem;
+  padding: 1.35rem 1.25rem;
+  border-radius: 0;
 }
 
 .apogp-poc .apogp-divider {
