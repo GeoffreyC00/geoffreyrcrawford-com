@@ -3,22 +3,43 @@
  * AI is framed as a capability within broader marketing leadership.
  */
 
-export const credibilityStats = [
-  { value: "8+", label: "Years experience" },
-  { value: "$200K+", label: "Monthly paid media managed" },
-  { value: "4", label: "Major ad platforms" },
-  { value: "Think Media", label: "Creator & education growth" },
+/** Quantitative proof only — current employer lives in its own trust block. */
+export const credibilityMetrics = [
+  {
+    value: "8+",
+    label: "Years managing paid acquisition",
+  },
+  {
+    value: "$200K+",
+    label: "Monthly advertising spend managed",
+  },
+  {
+    value: "5",
+    label: "Advertising platforms",
+  },
 ] as const;
 
-export const credibilityTags = [
-  "Marketing Strategy",
+export const currentEngagement = {
+  eyebrow: "Currently leading paid growth",
+  organization: "Think Media",
+  role: "Senior Growth Marketing Strategist",
+} as const;
+
+/** Highest-signal strategic capabilities — keep short. */
+export const credibilityCapabilities = [
   "Paid Acquisition",
-  "AI Workflows",
+  "Growth Strategy",
   "Analytics",
   "Marketing Systems",
-  "Executive Reporting",
-  "Experimentation",
-  "Attribution",
+  "AI Automation",
+] as const;
+
+export const credibilityPlatforms = [
+  "Google",
+  "Meta",
+  "Microsoft",
+  "Amazon",
+  "YouTube",
 ] as const;
 
 export const workIntersection = [

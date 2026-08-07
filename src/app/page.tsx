@@ -10,8 +10,10 @@ import { StatusPill, ToolCard } from "@/components/tools/tool-card";
 import { LinkButton } from "@/components/ui/link-button";
 import { SelectedWorkGrid } from "@/components/work/selected-work-grid";
 import {
-  credibilityStats,
-  credibilityTags,
+  credibilityCapabilities,
+  credibilityMetrics,
+  credibilityPlatforms,
+  currentEngagement,
   selectedResults,
   workIntersection,
 } from "@/lib/data/homepage";
@@ -131,38 +133,70 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Credibility */}
-      <section className="section-padding border-t border-hairline !py-16">
+      {/* Credibility — metrics + current engagement trust block */}
+      <section className="section-padding border-t border-hairline !py-16 md:!py-20">
         <div className="container-wide">
           <Reveal>
             <p className="kicker">Credibility</p>
           </Reveal>
 
-          <div className="mt-10 grid grid-cols-2 gap-px border border-hairline bg-hairline lg:grid-cols-4">
-            {credibilityStats.map((stat) => (
-              <div key={stat.label} className="bg-background px-6 py-8 sm:px-8">
-                <p className="font-serif text-2xl font-light text-foreground sm:text-3xl">
-                  {stat.value}
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-
-          <Reveal delay={0.08}>
-            <div className="mt-10 flex flex-wrap gap-2.5">
-              {credibilityTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-border px-4 py-2 text-sm text-muted-foreground"
+          {/* Three quantitative signals — open columns, not equal cards */}
+          <Reveal delay={0.04}>
+            <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-0">
+              {credibilityMetrics.map((metric, i) => (
+                <div
+                  key={metric.label}
+                  className={`sm:px-8 ${i === 0 ? "sm:pl-0" : ""} ${
+                    i > 0 ? "sm:border-l sm:border-hairline" : ""
+                  } ${i === credibilityMetrics.length - 1 ? "sm:pr-0" : ""}`}
                 >
-                  {tag}
-                </span>
+                  <p className="font-serif text-4xl font-light tracking-tight text-foreground sm:text-5xl">
+                    {metric.value}
+                  </p>
+                  <p className="mt-3 max-w-[14rem] text-sm leading-snug text-muted-foreground">
+                    {metric.label}
+                  </p>
+                </div>
               ))}
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              Platforms: Google · Meta · Microsoft · Amazon · YouTube
-            </p>
+          </Reveal>
+
+          {/* Current organization — separate trust signal */}
+          <Reveal delay={0.08}>
+            <div className="mt-14 border-t border-hairline pt-12 md:mt-16 md:pt-14">
+              <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                    {currentEngagement.eyebrow}
+                  </p>
+                  <p className="mt-4 font-serif text-3xl font-light tracking-tight text-foreground sm:text-4xl">
+                    {currentEngagement.organization}
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+                    {currentEngagement.role}
+                  </p>
+                </div>
+
+                <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:text-right">
+                  Trusted with paid acquisition for a leading creator-education brand —
+                  strategy, spend, and systems.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Capabilities + platforms — quiet supporting layer */}
+          <Reveal delay={0.12}>
+            <div className="mt-12 flex flex-col gap-5 border-t border-hairline pt-10 sm:mt-14 sm:pt-12">
+              <p className="max-w-3xl text-sm leading-relaxed text-foreground/80">
+                {credibilityCapabilities.join("  ·  ")}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                <span className="text-foreground/60">Expert across</span>
+                {"  "}
+                {credibilityPlatforms.join("  ·  ")}
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
