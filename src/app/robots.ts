@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/hire-me/resume", "/poc-apogp"],
+      disallow: ["/hire-me/resume", "/poc-apogp", "/first-lead-campaign"],
     },
     sitemap: "https://geoffreyrcrawford.com/sitemap.xml",
   };

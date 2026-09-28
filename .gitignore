@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Paid product files. Keep these out of the public site and git history.
+/private-products/

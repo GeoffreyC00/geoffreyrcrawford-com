@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/footer";
  * Standalone POC routes (e.g. /poc-apogp) render without Geoffrey's site chrome
  * so the proof-of-concept feels like its own website.
  */
-const STANDALONE_PREFIXES = ["/poc-apogp"];
+const STANDALONE_PREFIXES = ["/poc-apogp", "/first-lead-campaign"];
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -17,7 +17,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   );
 
   if (isStandalone) {
-    return <main className="min-h-screen">{children}</main>;
+    return <div className="min-h-screen">{children}</div>;
   }
 
   return (
