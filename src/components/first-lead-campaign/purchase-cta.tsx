@@ -27,8 +27,8 @@ export function PurchaseCta({
         className={cn(
           controlClass,
           onDark
-            ? "bg-white text-[#141413] transition-colors hover:bg-[#f4f2ee]"
-            : "bg-[#141413] text-white transition-colors hover:bg-[#2a2926]"
+            ? "bg-white text-[#1B2B4B] transition-colors hover:bg-[#f4f2ee]"
+            : "bg-[#1B2B4B] text-white shadow-[0_14px_32px_-18px_rgba(27,43,75,0.85)] transition-colors hover:bg-[#243656]"
         )}
       >
         {LABEL}
@@ -44,7 +44,10 @@ export function PurchaseCta({
         aria-disabled="true"
         className={cn(
           controlClass,
-          "cursor-not-allowed border border-[#cfcbc4] bg-[#eceae6] text-[#8a847c]"
+          "cursor-not-allowed",
+          onDark
+            ? "bg-white text-[#1B2B4B]"
+            : "bg-[#1B2B4B] text-white shadow-[0_14px_32px_-18px_rgba(27,43,75,0.85)]"
         )}
       >
         {LABEL}
