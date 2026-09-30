@@ -2,6 +2,16 @@ import { cn } from "@/lib/utils";
 
 const LABEL = "Get the Kit — $47";
 
+function directCheckoutUrl(checkoutUrl: string): string {
+  try {
+    const url = new URL(checkoutUrl);
+    url.searchParams.set("wanted", "true");
+    return url.toString();
+  } catch {
+    return checkoutUrl;
+  }
+}
+
 type PurchaseCtaProps = {
   checkoutUrl: string | null;
   className?: string;
@@ -23,7 +33,7 @@ export function PurchaseCta({
   if (checkoutUrl) {
     return (
       <a
-        href={checkoutUrl}
+        href={directCheckoutUrl(checkoutUrl)}
         className={cn(
           controlClass,
           onDark
