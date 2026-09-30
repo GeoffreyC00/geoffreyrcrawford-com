@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { MetaPixel } from "@/components/analytics/meta-pixel";
 import { SiteShell } from "@/components/layout/site-shell";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} font-sans`}
       >
         <GoogleAnalytics />
+        <MetaPixel />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

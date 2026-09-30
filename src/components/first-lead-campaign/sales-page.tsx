@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ExampleGenerator } from "@/components/first-lead-campaign/example-generator";
 import { LandingFooter } from "@/components/first-lead-campaign/landing-footer";
 import { LandingHeader } from "@/components/first-lead-campaign/landing-header";
 import { PurchaseCta } from "@/components/first-lead-campaign/purchase-cta";
@@ -204,6 +205,8 @@ export function SalesPage({ checkoutUrl }: { checkoutUrl: string | null }) {
             </ul>
           </div>
         </section>
+
+        <ExampleGenerator checkoutUrl={checkoutUrl} />
 
         <section className="bg-white px-5 py-14 sm:px-8 sm:py-20">
           <div className="mx-auto grid w-full max-w-6xl items-center gap-8 sm:grid-cols-[14rem_1fr] sm:gap-12 lg:grid-cols-[16rem_1fr]">
