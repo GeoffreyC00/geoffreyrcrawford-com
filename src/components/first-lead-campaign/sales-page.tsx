@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ExampleGenerator } from "@/components/first-lead-campaign/example-generator";
 import { LandingFooter } from "@/components/first-lead-campaign/landing-footer";
 import { LandingHeader } from "@/components/first-lead-campaign/landing-header";
 import { PurchaseCta } from "@/components/first-lead-campaign/purchase-cta";
@@ -8,19 +7,31 @@ import { firstLeadCampaign } from "@/lib/products/first-lead-campaign";
 const included = [
   {
     n: "01",
-    title: "Step-by-step guide",
-    body: "A PDF you follow in order: one offer, the area you can serve, two ads, one Instant Form, a test lead, and the reply.",
+    title: "PDF field guide",
+    body: "A digital PDF you follow in order: one offer, the area you can serve, two ads, one Instant Form, a test lead, and the reply.",
   },
   {
     n: "02",
-    title: "Fill-in workbook",
+    title: "Excel workbook",
     body: "Blank cells for your answers, with a fictional Northline Heating & Air example beside them. Opens in Excel or Google Sheets.",
   },
   {
     n: "03",
-    title: "Prompts and a checklist",
-    body: "Short prompts for the offer, the ads, and the reply, plus the checks to mark before you submit.",
+    title: "Campaign setup checklist",
+    body: "The checks to mark before you submit, so the offer, the area, the ads, and the form match.",
   },
+  {
+    n: "04",
+    title: "Ad-copy prompts",
+    body: "Short prompts for drafting the offer, the ads, and the reply. You edit the draft before it goes into an ad.",
+  },
+] as const;
+
+const kitContents = [
+  "PDF field guide",
+  "Excel workbook",
+  "Campaign setup checklist",
+  "Ad-copy prompts",
 ] as const;
 
 const offerRows = [
@@ -163,27 +174,40 @@ export function SalesPage({ checkoutUrl }: { checkoutUrl: string | null }) {
           <div className="mx-auto w-full max-w-6xl">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#8a6232]">
-                For owners of an established local service business
+                The First Lead Campaign Kit
               </p>
-              <h1 className="mt-4 max-w-xl font-serif text-[2.7rem] font-medium leading-[0.98] tracking-tight text-balance text-[#1B2B4B] sm:text-6xl lg:text-7xl">
-                Build one Meta lead campaign.
+              <h1 className="mt-3 max-w-3xl font-serif text-[1.85rem] font-medium leading-[1.08] tracking-tight text-balance text-[#1B2B4B] sm:text-5xl lg:text-6xl">
+                Set up your first Meta lead campaign for your local service business.
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#3d4556] sm:text-xl">
-                A step-by-step playbook and a fill-in workbook. You set up one Leads campaign with
-                an Instant Form.
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-[#3d4556] sm:text-xl">
+                Follow a step-by-step guide and fill-in workbook to plan one Meta Leads campaign
+                with an Instant Form.
               </p>
-              <p className="mt-5 text-base font-semibold text-[#1B2B4B]">
-                PDF guide + Excel workbook
+              <p className="mt-4 text-base font-semibold text-[#1B2B4B]">
+                Digital PDF and Excel file
                 <span className="px-2 text-[#c4a36a]">·</span>
                 {firstLeadCampaign.priceLabel}, paid once
               </p>
-              <div className="mt-7">
+              <div className="mt-5">
                 <PurchaseCta
                   checkoutUrl={checkoutUrl}
                   showStatus
                   className="w-full px-8 text-lg sm:w-auto sm:min-w-64"
                 />
               </div>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#3d4556]">
+                I’ve managed paid media for more than eight years, across Meta, Google, and Amazon.
+              </p>
+              <ul className="mt-5 grid max-w-xl grid-cols-2 gap-x-4 gap-y-2 text-sm font-semibold leading-snug text-[#1B2B4B]">
+                {kitContents.map((item) => (
+                  <li key={item} className="border-t border-[#e4dccb] pt-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-sm leading-relaxed text-[#5c564e]">
+                Digital files only. No printed book.
+              </p>
             </div>
             <div className="mt-12 lg:mt-14">
               <HeroProducts />
@@ -194,7 +218,7 @@ export function SalesPage({ checkoutUrl }: { checkoutUrl: string | null }) {
         <section className="bg-[#1B2B4B] px-5 py-14 text-white sm:px-8 sm:py-16">
           <div className="mx-auto w-full max-w-6xl">
             <h2 className="font-serif text-3xl font-medium tracking-tight sm:text-4xl">What’s in the kit</h2>
-            <ul className="mt-8 grid gap-8 md:grid-cols-3">
+            <ul className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {included.map((item) => (
                 <li key={item.n} className="border-t border-white/20 pt-5">
                   <p className="font-mono text-xs tracking-[0.16em] text-[#f3e6c8]">{item.n}</p>
@@ -206,7 +230,50 @@ export function SalesPage({ checkoutUrl }: { checkoutUrl: string | null }) {
           </div>
         </section>
 
-        <ExampleGenerator checkoutUrl={checkoutUrl} />
+        <section className="px-5 py-10 sm:px-8 sm:py-14">
+          <div className="mx-auto w-full min-w-0 max-w-xl rounded-3xl border border-[#e4dccb] bg-white p-5 shadow-[0_18px_40px_-32px_rgba(23,32,51,0.45)] sm:p-7">
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#8a6232]">
+              Example from the guide · Fictional business
+            </p>
+            <h2 className="mt-2 font-serif text-3xl font-medium tracking-tight text-[#1B2B4B]">
+              Northline Heating &amp; Air
+            </h2>
+            <div className="mt-4 space-y-3">
+              <div className="rounded-xl bg-[#f6f3ec] p-4">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-[#1B2B4B]">
+                  One offer sentence
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-[#172033]">
+                  If your air conditioner is failing, request a replacement estimate. We reply to
+                  schedule a visit.
+                </p>
+              </div>
+              <div className="rounded-xl bg-[#f6f3ec] p-4">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-[#1B2B4B]">
+                  Two ad openings
+                </h3>
+                <ol className="mt-2 list-decimal space-y-2 pl-5 text-base leading-relaxed text-[#172033]">
+                  <li>
+                    If the upstairs is warm and the downstairs is fine, it may be time to talk about
+                    a replacement.
+                  </li>
+                  <li>
+                    Request an estimate. We reply during business hours to see if a visit makes
+                    sense.
+                  </li>
+                </ol>
+              </div>
+              <div className="rounded-xl bg-[#f6f3ec] p-4">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-[#1B2B4B]">
+                  One Instant Form question
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-[#172033]">
+                  What do you need? Replacement estimate / Repair / Maintenance / Something else
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-white px-5 py-14 sm:px-8 sm:py-20">
           <div className="mx-auto grid w-full max-w-6xl items-center gap-8 sm:grid-cols-[14rem_1fr] sm:gap-12 lg:grid-cols-[16rem_1fr]">
