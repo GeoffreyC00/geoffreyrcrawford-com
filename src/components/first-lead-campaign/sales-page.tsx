@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { LandingFooter } from "@/components/first-lead-campaign/landing-footer";
 import { LandingHeader } from "@/components/first-lead-campaign/landing-header";
-import { PurchaseCta } from "@/components/first-lead-campaign/purchase-cta";
+import { GetFreeKitButton, KitOptInProvider, MobileKitBar } from "@/components/first-lead-campaign/opt-in-form";
 import { firstLeadCampaign } from "@/lib/products/first-lead-campaign";
 
 const included = [
@@ -101,7 +101,7 @@ const faqs = [
   },
   {
     q: "How does delivery work?",
-    a: "After you pay, the checkout receipt delivers both files. Use that email when you need them again. Read the refund terms on the checkout page before you pay.",
+    a: "Enter your email and the kit is sent to that inbox, with download links on the confirmation. The same email may be followed by practical campaign notes. There is no payment.",
   },
   {
     q: "What does the kit not promise?",
@@ -164,10 +164,11 @@ function HeroProducts() {
   );
 }
 
-export function SalesPage({ checkoutUrl }: { checkoutUrl: string | null }) {
+export function SalesPage() {
   return (
+    <KitOptInProvider>
     <div className="min-h-screen overflow-x-hidden bg-[#f6f3ec] text-[#172033]" style={{ colorScheme: "light" }}>
-      <LandingHeader checkoutUrl={checkoutUrl} />
+      <LandingHeader />
 
       <main>
         <section className="px-5 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16">
@@ -177,23 +178,20 @@ export function SalesPage({ checkoutUrl }: { checkoutUrl: string | null }) {
                 The First Lead Campaign Kit
               </p>
               <h1 className="mt-3 max-w-3xl font-serif text-[1.85rem] font-medium leading-[1.08] tracking-tight text-balance text-[#1B2B4B] sm:text-5xl lg:text-6xl">
-                Set up your first Meta lead campaign for your local service business.
+                Get the complete kit free.
               </h1>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-[#3d4556] sm:text-xl">
-                Follow a step-by-step guide and fill-in workbook to plan one Meta Leads campaign
-                with an Instant Form.
+                A PDF field guide and Excel workbook for planning one Meta Leads campaign with an
+                Instant Form.
               </p>
-              <p className="mt-4 text-base font-semibold text-[#1B2B4B]">
-                Digital PDF and Excel file
-                <span className="px-2 text-[#c4a36a]">·</span>
-                {firstLeadCampaign.priceLabel}, paid once
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-[#3d4556]">
+                It does not promise that Meta will approve the ads, or a number of leads, customers,
+                or profit.
               </p>
               <div className="mt-5">
-                <PurchaseCta
-                  checkoutUrl={checkoutUrl}
-                  showStatus
-                  className="w-full px-8 text-lg sm:w-auto sm:min-w-64"
-                />
+                <GetFreeKitButton className="inline-flex min-h-16 w-full items-center justify-center rounded-full bg-[#1B2B4B] px-8 text-xl font-semibold text-white sm:w-auto sm:min-w-72 sm:px-10">
+                  Get the free kit
+                </GetFreeKitButton>
               </div>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#3d4556]">
                 I’ve managed paid media for more than eight years, across Meta, Google, and Amazon.
@@ -405,7 +403,7 @@ export function SalesPage({ checkoutUrl }: { checkoutUrl: string | null }) {
         <section className="px-5 pb-14 sm:px-8 sm:pb-20">
           <div className="mx-auto w-full max-w-3xl">
             <h2 className="font-serif text-3xl font-medium tracking-tight text-[#1B2B4B] sm:text-4xl">
-              Before you buy
+              Before you start
             </h2>
             <div className="mt-6 divide-y divide-[#e4dccb] border-y border-[#e4dccb]">
               {faqs.map((item) => (
@@ -437,31 +435,21 @@ export function SalesPage({ checkoutUrl }: { checkoutUrl: string | null }) {
               One campaign. A guide and a workbook.
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-white/80">
-              {firstLeadCampaign.priceLabel}, paid once. PDF and Excel file.
+              The complete PDF and workbook are free.
             </p>
             <div className="mt-8 flex justify-center">
-              <PurchaseCta
-                checkoutUrl={checkoutUrl}
-                showStatus
-                onDark
-                className="min-w-64 px-8 text-lg"
-              />
+              <GetFreeKitButton className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-8 text-lg font-semibold text-[#1B2B4B]">
+                Get the free kit
+              </GetFreeKitButton>
             </div>
           </div>
         </section>
       </main>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e4dccb] bg-[#f6f3ec] px-4 py-3 sm:hidden">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-sm font-semibold">{firstLeadCampaign.priceLabel}</p>
-            <p className="text-xs text-[#5c564e]">{checkoutUrl ? "PDF and workbook" : "Not connected yet"}</p>
-          </div>
-          <PurchaseCta checkoutUrl={checkoutUrl} />
-        </div>
-      </div>
-
-      <LandingFooter clearance />
+      <LandingFooter />
+      <div aria-hidden="true" className="h-[calc(5.5rem+env(safe-area-inset-bottom))] sm:hidden" />
+      <MobileKitBar />
     </div>
+    </KitOptInProvider>
   );
 }
