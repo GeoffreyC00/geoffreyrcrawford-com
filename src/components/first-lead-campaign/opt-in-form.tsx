@@ -2,14 +2,11 @@
 
 import { createContext, useContext, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { firstLeadCampaign } from "@/lib/products/first-lead-campaign";
+import { rememberKitSignup } from "@/lib/products/kit-signup-handoff";
 
-type Status = "idle" | "loading" | "error" | "ready";
-
-type Downloads = {
-  guide: string;
-  workbook: string;
-};
+type Status = "idle" | "loading" | "error";
 
 type OpenKit = (trigger: HTMLButtonElement) => void;
 
@@ -92,13 +89,12 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const router = useRouter();
   const submitting = useRef(false);
-  const leadSent = useRef(false);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
-  const [downloads, setDownloads] = useState<Downloads | null>(null);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -114,8 +110,7 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
   }, []);
 
   useEffect(() => {
-    if (status === "ready") titleRef.current?.focus();
-    else if (status === "idle") emailRef.current?.focus();
+    if (status === "idle") emailRef.current?.focus();
   }, [status]);
 
   useEffect(() => {
@@ -173,7 +168,7 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
       });
       const body = (await response.json().catch(() => ({}))) as {
         error?: string;
-        downloads?: Downloads;
+        downloads?: { guide?: string; workbook?: string };
       };
 
       if (!response.ok || !body.downloads?.guide || !body.downloads?.workbook) {
@@ -182,12 +177,15 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
         return;
       }
 
-      setDownloads(body.downloads);
-      setStatus("ready");
-      if (!leadSent.current) {
-        leadSent.current = true;
-        window.fbq?.("track", "Lead");
+      try {
+        rememberKitSignup({ guide: body.downloads.guide, workbook: body.downloads.workbook });
+      } catch {
+        setStatus("error");
+        setError(RETRY);
+        return;
       }
+
+      router.push(firstLeadCampaign.thanksPath);
     } catch {
       setStatus("error");
       setError(RETRY);
@@ -195,8 +193,6 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
       submitting.current = false;
     }
   }
-
-  const ready = status === "ready" && downloads;
 
   return (
     <div
@@ -227,43 +223,14 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
           tabIndex={-1}
           className="pr-12 font-serif text-2xl font-medium tracking-tight text-[#1B2B4B] outline-none"
         >
-          {ready ? "The kit is on its way." : "Get the free kit"}
+          Get the free kit
         </h2>
         <p id={descriptionId} className="mt-3 text-base leading-relaxed text-[#3d4556]">
-          {ready
-            ? "Check your inbox for the delivery email. You can also download the files here. These links work for 7 days."
-            : "The PDF field guide and Excel workbook for planning one Meta Leads campaign with an Instant Form."}
+          The PDF field guide and Excel workbook for planning one Meta Leads campaign with an Instant
+          Form.
         </p>
 
-        {ready ? (
-          <div className="mt-5" role="status">
-            <div className="flex flex-col gap-3">
-              <a
-                href={downloads.guide}
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#1B2B4B] px-6 text-base font-semibold text-white"
-              >
-                Download the PDF
-              </a>
-              <a
-                href={downloads.workbook}
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#1B2B4B] bg-white px-6 text-base font-semibold text-[#1B2B4B]"
-              >
-                Download the workbook
-              </a>
-            </div>
-            <button
-              type="button"
-              onClick={() => {
-                setDownloads(null);
-                setStatus("idle");
-              }}
-              className="mt-4 min-h-11 text-sm font-semibold text-[#1B2B4B] underline underline-offset-4"
-            >
-              Request a fresh email
-            </button>
-          </div>
-        ) : (
-          <form onSubmit={submit} className="mt-5 space-y-3" noValidate>
+        <form onSubmit={submit} className="mt-5 space-y-3" noValidate>
             <div className="hidden" aria-hidden="true">
               <label>
                 Website
@@ -319,7 +286,6 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
               </p>
             ) : null}
           </form>
-        )}
       </div>
     </div>
   );

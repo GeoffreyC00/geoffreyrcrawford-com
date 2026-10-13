@@ -11,6 +11,7 @@ export const firstLeadCampaign = {
   author: siteConfig.name,
   email: siteConfig.email,
   path: "/first-lead-campaign",
+  thanksPath: "/first-lead-campaign/thanks",
   policiesPath: "/first-lead-campaign/policies",
 } as const;
 

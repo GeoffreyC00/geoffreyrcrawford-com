@@ -101,7 +101,7 @@ const faqs = [
   },
   {
     q: "How does delivery work?",
-    a: "Enter your email and the kit is sent to that inbox, with download links on the confirmation. The same email may be followed by practical campaign notes. There is no payment.",
+    a: "Enter your email and the kit is sent to that inbox. The thank-you page also has the download links. The same email may be followed by practical campaign notes. There is no payment.",
   },
   {
     q: "What does the kit not promise?",
