@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { firstLeadCampaign } from "@/lib/products/first-lead-campaign";
 import { rememberKitSignup } from "@/lib/products/kit-signup-handoff";
 
@@ -89,7 +88,6 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const router = useRouter();
   const submitting = useRef(false);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -168,24 +166,25 @@ function KitOptInDialog({ onClose }: { onClose: () => void }) {
       });
       const body = (await response.json().catch(() => ({}))) as {
         error?: string;
+        success?: boolean;
         downloads?: { guide?: string; workbook?: string };
       };
 
-      if (!response.ok || !body.downloads?.guide || !body.downloads?.workbook) {
+      if (!response.ok || body.success !== true) {
         setStatus("error");
         setError(visitorMessage(body.error));
         return;
       }
 
-      try {
-        rememberKitSignup({ guide: body.downloads.guide, workbook: body.downloads.workbook });
-      } catch {
-        setStatus("error");
-        setError(RETRY);
-        return;
+      if (body.downloads?.guide && body.downloads.workbook) {
+        try {
+          rememberKitSignup({ guide: body.downloads.guide, workbook: body.downloads.workbook });
+        } catch {
+          // The signup already succeeded. The email still has the download links.
+        }
       }
 
-      router.push(firstLeadCampaign.thanksPath);
+      window.location.assign(firstLeadCampaign.thanksPath);
     } catch {
       setStatus("error");
       setError(RETRY);

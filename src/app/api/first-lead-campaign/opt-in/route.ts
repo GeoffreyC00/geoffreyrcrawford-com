@@ -16,6 +16,17 @@ const hits = new Map<string, number[]>();
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+function publicOrigin(request: Request): string {
+  const host =
+    request.headers.get("x-forwarded-host")?.split(",")[0]?.trim() ||
+    request.headers.get("host")?.trim();
+  const forwardedProto = request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim();
+  const localHost = host?.startsWith("localhost") || host?.startsWith("127.0.0.1");
+  const proto = forwardedProto || (localHost ? "http" : "https");
+  if (host && /^[a-z0-9.-]+(?::\d+)?$/i.test(host)) return `${proto}://${host}`;
+  return new URL(request.url).origin;
+}
+
 function limited(request: Request): boolean {
   const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "";
   const key = (forwarded || "unknown").slice(0, 80);
@@ -109,7 +120,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const origin = new URL(request.url).origin;
+  const origin = publicOrigin(request);
   const guideUrl = kitDownloadUrl(origin, "guide", token);
   const workbookUrl = kitDownloadUrl(origin, "workbook", token);
   const privacyUrl = `${origin}/first-lead-campaign/policies`;

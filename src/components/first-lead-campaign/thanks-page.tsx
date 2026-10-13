@@ -4,14 +4,30 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LandingFooter } from "@/components/first-lead-campaign/landing-footer";
 import { firstLeadCampaign } from "@/lib/products/first-lead-campaign";
-import { readKitDownloads, takeKitLead, type KitDownloads } from "@/lib/products/kit-signup-handoff";
+import {
+  markKitLeadFired,
+  readKitDownloads,
+  takeKitLead,
+  type KitDownloads,
+} from "@/lib/products/kit-signup-handoff";
 
 export function ThanksPage() {
   const [downloads, setDownloads] = useState<KitDownloads | null>(null);
 
   useEffect(() => {
     setDownloads(readKitDownloads());
-    if (takeKitLead()) window.fbq?.("track", "Lead");
+    if (!takeKitLead()) return;
+
+    const started = Date.now();
+    const timer = window.setInterval(() => {
+      if (typeof window.fbq !== "function") {
+        if (Date.now() - started > 5000) window.clearInterval(timer);
+        return;
+      }
+      window.fbq("track", "Lead");
+      markKitLeadFired();
+      window.clearInterval(timer);
+    }, 50);
   }, []);
 
   return (
