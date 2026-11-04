@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         destination: "/work",
         permanent: true,
       },
+      {
+        source: "/chatgpt-workbook",
+        destination: "/first-5-chatgpt-tasks",
+        permanent: true,
+      },
     ];
   },
 };

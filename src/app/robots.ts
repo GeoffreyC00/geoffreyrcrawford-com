@@ -5,7 +5,13 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/hire-me/resume", "/poc-apogp", "/first-lead-campaign"],
+      disallow: [
+        "/hire-me/resume",
+        "/poc-apogp",
+        "/first-lead-campaign",
+        "/chatgpt-workbook",
+        "/first-5-chatgpt-tasks",
+      ],
     },
     sitemap: "https://geoffreyrcrawford.com/sitemap.xml",
   };

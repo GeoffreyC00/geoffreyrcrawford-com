@@ -5,10 +5,10 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
 /**
- * Standalone POC routes (e.g. /poc-apogp) render without Geoffrey's site chrome
- * so the proof-of-concept feels like its own website.
+ * Standalone product and POC routes render without the main site header and
+ * footer, so a campaign page can stay focused on one action.
  */
-const STANDALONE_PREFIXES = ["/poc-apogp", "/first-lead-campaign"];
+const STANDALONE_PREFIXES = ["/poc-apogp", "/first-lead-campaign", "/first-5-chatgpt-tasks"];
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
