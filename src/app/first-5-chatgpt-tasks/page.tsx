@@ -3,9 +3,9 @@ import { ChatgptWorkbookPage } from "@/components/chatgpt-workbook/sales-page";
 import { chatgptWorkbook } from "@/lib/products/chatgpt-workbook";
 
 export const metadata: Metadata = {
-  title: chatgptWorkbook.name,
+  title: "ChatGPT, step by step",
   description:
-    "A short PDF workbook for first-time ChatGPT users. Five everyday exercises. Finish one useful task in your first sitting. $19, one time.",
+    "Start with the basics. Learn how to open ChatGPT, ask your first question, and use it for five everyday tasks. Workbook: Your First 5 Things to Do With ChatGPT. $19, one time. Checkout is not open yet.",
   alternates: { canonical: chatgptWorkbook.path },
   robots: { index: false, follow: false },
 };

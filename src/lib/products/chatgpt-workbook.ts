@@ -31,50 +31,54 @@ export const followUpPrompt = `Shorten that to two sentences. Keep the Sunday af
 export const exercises = [
   {
     n: "01",
-    outcome: "Send a note you would actually send.",
-    detail: "Rewrite an awkward message.",
+    outcome: "A message you would actually send",
+    detail: "Rewrite a tricky note to a neighbor, a friend, or a coworker.",
   },
   {
     n: "02",
-    outcome: "Decide what to do first tomorrow.",
-    detail: "Sort a messy list.",
+    outcome: "A messy list, sorted",
+    detail: "Turn a pile of tasks into what to do first tomorrow.",
   },
   {
     n: "03",
-    outcome: "Understand a confusing notice.",
-    detail: "Get a plain-language summary and one question to ask a person.",
+    outcome: "A confusing notice, in plain language",
+    detail: "See what it says, and the one question to ask a person.",
   },
   {
     n: "04",
-    outcome: "Walk in with questions ready.",
-    detail: "Prepare for an appointment.",
+    outcome: "Questions ready for an appointment",
+    detail: "Walk in with a short list instead of trying to remember.",
   },
   {
     n: "05",
-    outcome: "Make dinner from food you already have.",
-    detail: "Plan a simple meal.",
+    outcome: "Dinner from food you already have",
+    detail: "Plan a meal without a new grocery trip.",
   },
 ] as const;
+
+export const chatGptWebUrl = "https://chatgpt.com/";
+export const chatGptIosUrl = "https://apps.apple.com/app/openai-chatgpt/id6448311069";
+export const chatGptAndroidUrl = "https://play.google.com/store/apps/details?id=com.openai.chatgpt";
 
 export const faqs = [
   {
     q: "What experience do I need?",
-    a: "None. The sample is for someone who has never used ChatGPT, or who opened it and did not know what to type.",
+    a: "None. This is for someone who keeps hearing about ChatGPT and has not downloaded it, opened it, or typed a question.",
   },
   {
-    q: "What device do I need?",
-    a: "A phone, tablet, or computer with a web browser. You can read the sample here and paste the prompt into ChatGPT on the same device.",
+    q: "Do I need a paid account?",
+    a: "No. OpenAI says ChatGPT is free to use. The free plan is for anyone who signs up for an account. This example uses ordinary text chat. Limits can change. If a chat says it is full, start a new chat and paste the example text again.",
   },
   {
-    q: "Do I need a paid ChatGPT account?",
-    a: "No. OpenAI says the free version of ChatGPT is available to everyone. This sample uses ordinary text chat. If a chat says it is full, start a new chat and paste the prompt again.",
+    q: "Do I need the app?",
+    a: "No. A phone browser is enough. Open chatgpt.com, or tap Open ChatGPT on this page. The official app is optional.",
   },
   {
-    q: "How do I open ChatGPT?",
-    a: "Go to chatgpt.com, or open the official ChatGPT app, and start a new chat. This page does not sign you in.",
+    q: "What should I leave out?",
+    a: "Leave out passwords, account numbers, and private medical or financial details. Read the reply before you use it. A clear reply can still be wrong.",
   },
   {
-    q: "What should I leave out of the prompt?",
-    a: "Leave out passwords, account numbers, and private medical or financial details. Read the reply before you send it. A clear reply can still be wrong.",
+    q: "Can I buy the workbook yet?",
+    a: "Not from this page. Checkout isn’t open yet. The planned price is $19, one time.",
   },
 ] as const;

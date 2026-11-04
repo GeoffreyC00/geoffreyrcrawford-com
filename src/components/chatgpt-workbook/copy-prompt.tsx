@@ -29,7 +29,7 @@ export function CopyPrompt({ text, label }: CopyPromptProps) {
     state === "copied"
       ? "Copied to your clipboard."
       : state === "failed"
-        ? "Select the prompt text and copy it from your browser."
+        ? "Select the example text and copy it from your browser."
         : "";
 
   return (
